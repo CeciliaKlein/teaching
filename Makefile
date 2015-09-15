@@ -3,9 +3,10 @@ LOGO = assets/crg_blue_logo.jpg
 README = readme.rst
 HTML_FILE = index.html
 BOOTSTRAP_VERSION = 3.0.0
+DEFAULT_OUT_FOLDER = out
 
 ifndef RNASEQ_TUTORIAL_FOLDER
-$(error Undefined variable - RNASEQ_TUTORIAL_FOLDER)
+	RNASEQ_TUTORIAL_FOLDER = $(shell pwd)/$(DEFAULT_OUT_FOLDER)
 endif
 
 html: $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE)
