@@ -8,7 +8,7 @@ ifndef RNASEQ_TUTORIAL_FOLDER
 $(error Undefined variable - RNASEQ_TUTORIAL_FOLDER)
 endif
 
-html: $(RNASEQ_TUTORIAL_FOLDER)/index.html
+html: $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE)
 $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE): $(PYENV) $(RNASEQ_TUTORIAL_FOLDER) $(README)
 	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
 		 version=$(BOOTSTRAP_VERSION) --jquery --embed-stylesheet $(README) \
