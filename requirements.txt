@@ -1,0 +1,1 @@
+git+https://github.com/emi80/rst2html5.git
