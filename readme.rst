@@ -1,11 +1,11 @@
 CRG RNAseq Data Analysis Hands-on
 =================================
 
-.. image:: crg_blue_logo.jpg
+.. image:: assets/crg_blue_logo.jpg
     :height: 160px
     :width: 350px
     :scale: 50 %
-    :align: right 
+    :align: right
     :alt: CRG Barcelona
 
 The default directory is the rnaseq directory in your home, if nothing else is specified.
@@ -30,7 +30,7 @@ In order to get all the required files for the hands-on you need to run the foll
 
     /no_backup_isis/rg/projects/courses/rnaseq/2015/setup
 
-The setup script copies all the required files into the ``rnaseq`` folder under your ``HOME``. You can see the contents of the directory in a tree-like format as follows:: 
+The setup script copies all the required files into the ``rnaseq`` folder under your ``HOME``. You can see the contents of the directory in a tree-like format as follows::
 
     tree ~/rnaseq
 
@@ -67,7 +67,7 @@ And this should be the output::
         ├── mm65.long.ok.gtf.junctions.keys
         ├── mouse_genome_mm9.fa.fai
         └── mouse_genome_mm9.gem
-    
+
     3 directories, 27 files
 
 
@@ -92,7 +92,7 @@ Count the number of exons of this gene::
 
     awk '$3=="exon"' Sec23a.gff | wc -l
 
-What is the biotype of the gene? 
+What is the biotype of the gene?
 
 What is the biotype of each transcript of this gene?
 
@@ -116,7 +116,7 @@ vi
 --
 
 To create a new file in the current folder just call ``vi`` with the name of the file::
-    
+
     vi file.txt
 
 Vi has several modes which are specified in the bottom part of screen.
@@ -155,13 +155,13 @@ Have a look at one of our fastq files::
    zcat ~/rnaseq/data/mouse_cns_E14_rep1_1.fastq.gz | head -4
 
 Create a folder for the fastqc output::
-    
+
     mkdir fastqc
 
 Create a bash script called ``run_fastqc.sh``.
 
 This script should contain the following command::
-    
+
     #!/bin/bash -e
 
     # load env
@@ -179,12 +179,12 @@ Submit the job to the cluster::
 
 To monitor the status of the job, type ``qstat``.
 
-You are able to display the fastqc results on the browser. Type the following in the terminal to open a browser showing your FastQC results::  
+You are able to display the fastqc results on the browser. Type the following in the terminal to open a browser showing your FastQC results::
 
     firefox ~/rnaseq/fastqc/mouse_cns_E18_rep1_1_fastqc.html
 
 
-Mapping 
+Mapping
 -------
 Create a folder for the alignment steps::
 
@@ -216,7 +216,7 @@ When finished we can look at the bam file::
     samtools view -h ~/rnaseq/alignments/mouse_cns_E18_rep1.filtered.bam | more
 
 And get some basic statistics about mapping::
-    
+
     # load env
     source ~/rnaseq/.rnaseqenv
 
@@ -232,7 +232,7 @@ Make bigWig file with RNAseq signal
 Create a bash script called ``run_bigwig.sh`` with the following::
 
     #!/bin/bash -e
-    
+
     # load env
     . ~/rnaseq/.rnaseqenv
 
@@ -278,9 +278,9 @@ Get Gene quantifications
 ------------------------
 
 Create a bash script called ``run_genes.sh`` with the following::
-    
+
     #!/bin/bash -e
-    
+
     # load env
     . ~/rnaseq/.rnaseqenv
 
@@ -288,10 +288,10 @@ Create a bash script called ``run_genes.sh`` with the following::
 
 Submit the job to the cluster::
 
-    qsub -cwd -q RNAseq -N genes_rnaseq_course -e logs -o logs ./run_genes.sh 
+    qsub -cwd -q RNAseq -N genes_rnaseq_course -e logs -o logs ./run_genes.sh
 
 To obtain a matrix of gene RPKM values::
-    
+
     cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v RPKM -d quantifications
 
 To obtain a matrix of gene read counts::
@@ -307,7 +307,7 @@ Create a directory dedicated to the analyses::
     mkdir analysis
 
 And move into it::
-    
+
     cd analysis
 
 RPKM distribution
@@ -315,7 +315,7 @@ RPKM distribution
 
 Have a look at the distribution of RPKM values::
 
-    rpkm_distribution.R -i ../quantifications/encode.mouse.gene.RPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age 
+    rpkm_distribution.R -i ../quantifications/encode.mouse.gene.RPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age
 
 To look at the plot::
 
@@ -350,11 +350,11 @@ Count how many overexpressed genes there are in each stage::
     wc -l edgeR.0.01.over*.txt
 
 Show the results in a heatmap::
-    
-    (echo -e "gene\tedgeR"; cat edgeR.0.01.over*.txt) > gene.edgeR.tsv
-    cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.RPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf 
 
-    
+    (echo -e "gene\tedgeR"; cat edgeR.0.01.over*.txt) > gene.edgeR.tsv
+    cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.RPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf
+
+
 
 Visualize your results in the UCSC genome browser
 -------------------------------------------------
@@ -367,13 +367,13 @@ Go to the USCS genome browser web page::
     http://genome.ucsc.edu/
 
 On the lefthand panel, click on ``Genomes``.
-Click on ``Add custom track``. 
+Click on ``Add custom track``.
 Make sure the assembly information is as follows::
 
     group: Mammal, genome: Mouse, assembly: July 2007 (NCBI/mm9)
 
 Paste the track specifications for each file in the box "Paste URLs or data"::
- 
+
     track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~sdjebali/rnaseq2/mouse_cns_E14_rep1.filtered.bw
     track name=mouse_cns_E14_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~sdjebali/rnaseq2/mouse_cns_E14_rep2.filtered.bw
     track name=mouse_cns_E18_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~sdjebali/rnaseq2/mouse_cns_E18_rep1.filtered.bw
@@ -397,13 +397,12 @@ Launch the GO enrichment script for the Biological Processes, Molecular Function
 
 The results can be visualized in the browser, pasting the following paths in the search line::
 
-    firefox ~/rnaseq/analysis/edgeR.overE14.BP.html 
-    firefox ~/rnaseq/analysis/edgeR.overE14.MF.html 
-    firefox ~/rnaseq/analysis/edgeR.overE14.CC.html 
+    firefox ~/rnaseq/analysis/edgeR.overE14.BP.html
+    firefox ~/rnaseq/analysis/edgeR.overE14.MF.html
+    firefox ~/rnaseq/analysis/edgeR.overE14.CC.html
 
 You can repeat the same for the genes overexpressed in E18::
 
     cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c BP -o edgeR.overE18 -s mouse
     cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c MF -o edgeR.overE18 -s mouse
     cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c CC -o edgeR.overE18 -s mouse
-
