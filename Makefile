@@ -8,7 +8,7 @@ html: $(PYENV) out_folder $(README)
 	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
 		 version=$(BOOTSTRAP_VERSION) --jquery --embed-stylesheet $(README) \
 		 > $(OUT_FOLDER)/index.html
-	@echo "Html file written to '$(OUT_FOLDER)'."
+	@echo "== Html file written to '$(OUT_FOLDER)'."
 
 $(PYENV): $(PYENV)/bin/activate
 
