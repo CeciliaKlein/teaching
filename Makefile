@@ -14,7 +14,7 @@ $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE): $(PYENV) $(RNASEQ_TUTORIAL_FOLDER) $(REA
 	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
 		 version=$(BOOTSTRAP_VERSION) --jquery --embed-stylesheet $(README) \
 		 > $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE)
-	@echo "== Written '$(HTML_FILE)' to '$(RNASEQ_TUTORIAL_FOLDER)'."
+	@echo "== Written file $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE)"
 
 $(PYENV): $(PYENV)/bin/activate
 $(PYENV)/bin/activate: requirements.txt
