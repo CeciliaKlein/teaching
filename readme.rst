@@ -190,30 +190,27 @@ Create a folder for the alignment steps::
 
     mkdir alignments
 
-Create a bash script called ``run_gemtools.sh`` with the following::
+Create a bash script called ``run_star.sh`` with the following::
 
     #!/bin/bash -e
 
     # load env
     . ~/rnaseq/.rnaseqenv
 
-    # load module
-    module load GEMtools/1.7.1-goolf-1.4.10-no-OFED-Python-2.7.3
+    # load modules
+    module load pigz/2.3.1-goolf-1.4.10-no-OFED
+    module load STAR/2.4.2a-goolf-1.4.10-no-OFED
 
     # run the mapping step
-    gemtools rna-pipeline -f ~/rnaseq/data/mouse_cns_E18_rep1_1.fastq.gz -q 33 -i ~/rnaseq/refs/mouse_genome_mm9.gem -a ~/rnaseq/refs/mm65.long.ok.gtf -t 2 -o alignments
-
-..
-
-    Note that only the '_1' fastq file have to be specified
+    STAR --runThreadN 2 --genomeDir ~/rnaseq/refs/mouse_genome_mm9_STAR_index --readFilesIn ~/rnaseq/data/mouse_cns_E18_rep1_1.fastq.gz ~/rnaseq/data/mouse_cns_E18_rep1_2.fastq.gz --outSAMunmapped Within --outFilterType BySJout --outSAMattributes NH HI AS NM MD --readFilesCommand pigz -p2 -dc --outSAMtype BAM SortedByCoordinate --quantMode TranscriptomeSAM --outFileNamePrefix alignments/mouse_cns_E18_rep1_
 
 Submit the job to the cluster::
 
-    qsub -cwd -q RNAseq -l virtual_free=16G -pe smp 2 -N mapping_rnaseq_course -e logs -o logs ./run_gemtools.sh
+    qsub -cwd -q RNAseq -l virtual_free=32G -pe smp 2 -N mapping_rnaseq_course -e logs -o logs ./run_star.sh
 
 When finished we can look at the bam file::
 
-    samtools view -h ~/rnaseq/alignments/mouse_cns_E18_rep1.filtered.bam | more
+    samtools view -h ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
 
 And get some basic statistics about mapping::
 
@@ -224,7 +221,7 @@ And get some basic statistics about mapping::
     module load pysam
 
     # get mapping statistics
-    BAMstats.py -i ~/rnaseq/alignments/mouse_cns_E18_rep1.filtered.bam
+    BAMstats.py -i ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam
 
 Make bigWig file with RNAseq signal
 -----------------------------------
@@ -242,9 +239,9 @@ Create a bash script called ``run_bigwig.sh`` with the following::
 
 
     # create bedgraph from mappings
-    genomeCoverageBed -split -bg -ibam alignments/mouse_cns_E18_rep1.filtered.bam > alignments/mouse_cns_E18_rep1.filtered_bedGraph.bed
+    genomeCoverageBed -split -bg -ibam alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam > alignments/mouse_cns_E18_rep1_bedGraph.bed
     # generate bigwig from bedgraph
-    bedGraphToBigWig alignments/mouse_cns_E18_rep1.filtered_bedGraph.bed ~/rnaseq/refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.filtered.bw
+    bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed ~/rnaseq/refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.bw
 
 Submit the job to the cluster::
 
@@ -268,7 +265,7 @@ Create a bash script called ``run_flux.sh`` with the following::
     module load flux-capacitor/1.6.1-Java-1.7.0_21
 
     # get isoform quantifications with the FluxCapacitor
-    flux-capacitor -i alignments/mouse_cns_E18_rep1.filtered.bam -a ~/rnaseq/refs/mm65.long.ok.gtf -m PAIRED_STRANDED --read-strand MATE2_SENSE -o quantifications/mouse_cns_E18_rep1.filtered_transcript.gtf
+    flux-capacitor -i alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam -a ~/rnaseq/refs/mm65.long.ok.gtf -m PAIRED_STRANDED --read-strand MATE2_SENSE -o quantifications/mouse_cns_E18_rep1_transcript.gtf
 
 Submit the job to the cluster::
 
@@ -284,7 +281,7 @@ Create a bash script called ``run_genes.sh`` with the following::
     # load env
     . ~/rnaseq/.rnaseqenv
 
-    TrtoGn_RPKM.sh -a ~/rnaseq/refs/mm65.long.ok.gtf -i quantifications/mouse_cns_E18_rep1.filtered_transcript.gtf -o quantifications/
+    TrtoGn_RPKM.sh -a ~/rnaseq/refs/mm65.long.ok.gtf -i quantifications/mouse_cns_E18_rep1_transcript.gtf -o quantifications/
 
 Submit the job to the cluster::
 
