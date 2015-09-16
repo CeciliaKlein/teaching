@@ -1,32 +1,38 @@
+.PHONY: html check_deploy deploy clean deepclean
+
 PYENV = env
-LOGO = assets/crg_blue_logo.jpg
-README = readme.rst
 HTML_FILE = index.html
+LOGO_FILE = assets/crg_blue_logo.jpg
+README = readme.rst
 BOOTSTRAP_VERSION = 3.0.0
-DEFAULT_OUT_FOLDER = out
+DEPLOY_LIST = deploy-list.txt
 
-ifndef RNASEQ_TUTORIAL_FOLDER
-	RNASEQ_TUTORIAL_FOLDER = $(shell pwd)/$(DEFAULT_OUT_FOLDER)
-endif
-
-html: $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE)
-$(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE): $(PYENV) $(RNASEQ_TUTORIAL_FOLDER) $(README)
+html: $(HTML_FILE)
+$(HTML_FILE): $(PYENV) $(README)
 	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
 		 version=$(BOOTSTRAP_VERSION) --jquery --embed-stylesheet $(README) \
-		 > $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE)
-	@echo "== Written file $(RNASEQ_TUTORIAL_FOLDER)/$(HTML_FILE)"
+		 > $(HTML_FILE)
+	@echo == Written file $(HTML_FILE)
 
 $(PYENV): $(PYENV)/bin/activate
 $(PYENV)/bin/activate: requirements.txt
 	@test -d $(PYENV) || virtualenv $(PYENV)
 	@$(PYENV)/bin/pip install -Ur requirements.txt
 
-$(RNASEQ_TUTORIAL_FOLDER): $(LOGO)
-	@mkdir -p $(RNASEQ_TUTORIAL_FOLDER)/assets
-	@cp -n $(LOGO) $(RNASEQ_TUTORIAL_FOLDER)/assets || true
+$(DEPLOY_LIST):
+	@echo $(HTML_FILE) >> $(DEPLOY_LIST)
+	@echo $(LOGO_FILE) >> $(DEPLOY_LIST)
+
+check_deploy:
+ifndef RNASEQ_DEPLOY_DIR
+	$(error Undefined variable RNASEQ_DEPLOY_DIR)
+endif
+
+deploy: html $(DEPLOY_LIST) check_deploy
+	rsync -a --files-from=$(DEPLOY_LIST) . $(RNASEQ_DEPLOY_DIR)
 
 clean:
-	rm -rf $(RNASEQ_TUTORIAL_FOLDER)
+	rm $(HTML_FILE) $(DEPLOY_LIST)
 
 deepclean: clean
 	rm -rf $(PYENV)
