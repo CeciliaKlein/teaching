@@ -212,7 +212,45 @@ When finished we can look at the bam file::
 
     samtools view -h ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
 
-And get some basic statistics about mapping::
+or at the mapping statistics that come with STAR::
+
+    cat ~/rnaseq/alignments/mouse_cns_E18_rep1_Log.final.out
+
+::
+
+                                 Started job on |       Sep 15 17:12:35
+                             Started mapping on |       Sep 15 17:16:32
+                                    Finished on |       Sep 15 17:17:38
+       Mapping speed, Million of reads per hour |       40.91
+
+                          Number of input reads |       750067
+                      Average input read length |       202
+                                    UNIQUE READS:
+                   Uniquely mapped reads number |       646593
+                        Uniquely mapped reads % |       86.20%
+                          Average mapped length |       200.63
+                       Number of splices: Total |       335381
+            Number of splices: Annotated (sjdb) |       330288
+                       Number of splices: GT/AG |       331908
+                       Number of splices: GC/AG |       2842
+                       Number of splices: AT/AC |       399
+               Number of splices: Non-canonical |       232
+                      Mismatch rate per base, % |       0.20%
+                         Deletion rate per base |       0.01%
+                        Deletion average length |       1.93
+                        Insertion rate per base |       0.01%
+                       Insertion average length |       1.44
+                             MULTI-MAPPING READS:
+        Number of reads mapped to multiple loci |       26254
+             % of reads mapped to multiple loci |       3.50%
+        Number of reads mapped to too many loci |       887
+             % of reads mapped to too many loci |       0.12%
+                                  UNMAPPED READS:
+       % of reads unmapped: too many mismatches |       0.00%
+                 % of reads unmapped: too short |       10.04%
+                     % of reads unmapped: other |       0.14%
+
+And get some general statistics about mapping::
 
     # load env
     source ~/rnaseq/.rnaseqenv
