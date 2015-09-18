@@ -285,14 +285,14 @@ Submit the job to the cluster::
 
     qsub -cwd -q RNAseq -N bigwig_rnaseq_course -e logs -o logs ./run_bigwig.sh
 
-Run Flux Capacitor
-------------------
+Transcript and gene expression quantification
+---------------------------------------------
 
 Create a folder for the quantifications::
 
     mkdir quantifications
 
-Create a bash script called ``run_flux.sh`` with the following::
+Create a bash script called ``run_rsem.sh`` with the following::
 
     #!/bin/bash -e
 
@@ -300,38 +300,22 @@ Create a bash script called ``run_flux.sh`` with the following::
     . ~/rnaseq/.rnaseqenv
 
     # load module
-    module load flux-capacitor/1.6.1-Java-1.7.0_21
+    module load RSEM/1.2.21-goolf-1.4.10-no-OFED
 
-    # get isoform quantifications with the FluxCapacitor
-    flux-capacitor -i alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam -a ~/rnaseq/refs/mm65.long.ok.gtf -m PAIRED_STRANDED --read-strand MATE2_SENSE -o quantifications/mouse_cns_E18_rep1_transcript.gtf
-
-Submit the job to the cluster::
-
-    qsub -cwd -q RNAseq -l virtual_free=16G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_flux.sh
-
-Get Gene quantifications
-------------------------
-
-Create a bash script called ``run_genes.sh`` with the following::
-
-    #!/bin/bash -e
-
-    # load env
-    . ~/rnaseq/.rnaseqenv
-
-    TrtoGn_RPKM.sh -a ~/rnaseq/refs/mm65.long.ok.gtf -i quantifications/mouse_cns_E18_rep1_transcript.gtf -o quantifications/
+    # get quantifications with RSEM
+    rsem-calculate-expression --bam --estimate-rspd --calc-ci --no-bam-output --seed 12345 -p 2 --paired-end --forward-prob 0 alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam ~/rnaseq/refs/mouse_genome_mm9_RSEM_index mouse_cns_E18_rep1
 
 Submit the job to the cluster::
 
-    qsub -cwd -q RNAseq -N genes_rnaseq_course -e logs -o logs ./run_genes.sh
+    qsub -cwd -q RNAseq -l virtual_free=32G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_rsem.sh
 
 To obtain a matrix of gene RPKM values::
 
-    cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v RPKM -d quantifications
+    cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v FPKM -d quantifications
 
 To obtain a matrix of gene read counts::
 
-    cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v reads -d quantifications
+    cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v expected_count -d quantifications
 
 
 RNA-seq data analysis
@@ -350,7 +334,7 @@ RPKM distribution
 
 Have a look at the distribution of RPKM values::
 
-    rpkm_distribution.R -i ../quantifications/encode.mouse.gene.RPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age
+    rpkm_distribution.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age
 
 To look at the plot::
 
@@ -361,7 +345,7 @@ Clustering analysis
 
 Perform hierarchical clustering to check replicability::
 
-    matrix_to_dist.R -i ../quantifications/encode.mouse.gene.RPKM.idr_NA.tsv --log10 -c pearson -o stdout | ggheatmap.R -i stdin --row_metadata ../data/quantifications.index.tsv --col_dendro --row_dendro -B 10 --matrix_palette=~/rnaseq/bin/terrain.colors.3.txt --rowSide_by age --matrix_fill_limits 0.85,1 -o cns.heatmap.pdf
+    matrix_to_dist.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv --log10 -c pearson -o stdout | ggheatmap.R -i stdin --row_metadata ../data/quantifications.index.tsv --col_dendro --row_dendro -B 10 --matrix_palette=~/rnaseq/bin/terrain.colors.3.txt --rowSide_by age --matrix_fill_limits 0.85,1 -o cns.heatmap.pdf
 
 Look at the clustering.
 
@@ -370,7 +354,7 @@ Differential gene expression
 
 Run the DE with the edgeR package (be careful takes read counts and not rpkm values as input)::
 
-    edgeR.analysis.R -i ../quantifications/encode.mouse.gene.reads.idr_NA.tsv -m ../data/quantifications.index.tsv -f age
+    edgeR.analysis.R -i ../quantifications/encode.mouse.gene.expected_count.idr_NA.tsv -m ../data/quantifications.index.tsv -f age
 
 Write a list of the genes overexpressed after 18 days, according to edgeR analysis::
 
@@ -387,7 +371,7 @@ Count how many overexpressed genes there are in each stage::
 Show the results in a heatmap::
 
     (echo -e "gene\tedgeR"; cat edgeR.0.01.over*.txt) > gene.edgeR.tsv
-    cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.RPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf
+    cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf
 
 
 
