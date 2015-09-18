@@ -1,3 +1,5 @@
+.. sectnum::
+
 CRG RNAseq Data Analysis Hands-on
 =================================
 
@@ -381,9 +383,9 @@ Visualize your results in the UCSC genome browser
 Add the gene expression track to the genome browser in bigWig format.
 The bigWig files must be either uploaded or linked (if they are present somewhere online)
 
-Go to the USCS genome browser web page::
+Go to the USCS genome browser web page:
 
-    http://genome.ucsc.edu/
+|ucsc_genome_browser|
 
 On the lefthand panel, click on ``Genomes``.
 Click on ``Add custom track``.
@@ -393,10 +395,10 @@ Make sure the assembly information is as follows::
 
 Paste the track specifications for each file in the box "Paste URLs or data"::
 
-    track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~sdjebali/rnaseq2/mouse_cns_E14_rep1.filtered.bw
-    track name=mouse_cns_E14_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~sdjebali/rnaseq2/mouse_cns_E14_rep2.filtered.bw
-    track name=mouse_cns_E18_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~sdjebali/rnaseq2/mouse_cns_E18_rep1.filtered.bw
-    track name=mouse_cns_E18_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~sdjebali/rnaseq2/mouse_cns_E18_rep2.filtered.bw
+    track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep1_Aligned.sortedByCoord.out.bw
+    track name=mouse_cns_E14_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep2_Aligned.sortedByCoord.out.bw
+    track name=mouse_cns_E18_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bw
+    track name=mouse_cns_E18_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep2_Aligned.sortedByCoord.out.bw
 
 Click "Submit"
 Go to the genome browser to look at some genes and their RNA-seq signal
@@ -425,3 +427,8 @@ You can repeat the same for the genes overexpressed in E18::
     cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c BP -o edgeR.overE18 -s mouse
     cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c MF -o edgeR.overE18 -s mouse
     cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c CC -o edgeR.overE18 -s mouse
+
+
+.. |ucsc_genome_browser| raw:: html
+
+  <a href="http://genome.ucsc.edu/" target="_blank" style='padding:10px;font-weight:bold;font-family:Monaco,Menlo,Consolas,"Courier New",monospace;'>http://genome.ucsc.edu/</a>
