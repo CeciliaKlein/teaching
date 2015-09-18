@@ -66,11 +66,14 @@ And this should be the output::
     └── refs
         ├── mm65.long.ok.gtf
         ├── mouse_genome_mm9.fa.fai
-        ├── mouse_genome_mm9_RSEM_index -> /no_backup_isis/rg/projects/courses/rnaseq/refs/mouse_genome_mm9_RSEM_index
+        ├── mouse_genome_mm9_RSEM_index
         └── mouse_genome_mm9_STAR_index -> /no_backup_isis/rg/projects/courses/rnaseq/refs/mouse_genome_mm9_STAR_index
 
     3 directories, 27 files
 
+..
+
+  **STAR** index folder has been soft linked because of its size
 
 Reference gene annotation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
