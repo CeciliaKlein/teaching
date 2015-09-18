@@ -304,7 +304,7 @@ Create a bash script called ``run_rsem.sh`` with the following::
     module load RSEM/1.2.21-goolf-1.4.10-no-OFED
 
     # get quantifications with RSEM
-    rsem-calculate-expression --bam --estimate-rspd --calc-ci --no-bam-output --seed 12345 -p 2 --paired-end --forward-prob 0 alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam ~/rnaseq/refs/mouse_genome_mm9_RSEM_index/RSEMref mouse_cns_E18_rep1
+    rsem-calculate-expression --bam --estimate-rspd --calc-ci --no-bam-output --seed 12345 -p 2 --paired-end --forward-prob 0 alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam ~/rnaseq/refs/mouse_genome_mm9_RSEM_index/RSEMref quantifications/mouse_cns_E18_rep1
 
 Submit the job to the cluster::
 
