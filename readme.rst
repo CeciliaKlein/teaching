@@ -309,7 +309,7 @@ Create a bash script called ``run_rsem.sh`` with the following::
 
 Submit the job to the cluster::
 
-    qsub -cwd -q RNAseq -l virtual_free=32G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_rsem.sh
+    qsub -cwd -q RNAseq -l virtual_free=16G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_rsem.sh
 
 To obtain a matrix of gene RPKM values::
 
