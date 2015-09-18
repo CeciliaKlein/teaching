@@ -30,7 +30,7 @@ RNAseq data
 
 In order to get all the required files for the hands-on you need to run the following command in your terminal::
 
-    /no_backup_isis/rg/projects/courses/rnaseq/2015/setup
+    /no_backup_isis/rg/projects/courses/rnaseq/setup2015nov
 
 The setup script copies all the required files into the ``rnaseq`` folder under your ``HOME``. You can see the contents of the directory in a tree-like format as follows::
 
@@ -38,7 +38,7 @@ The setup script copies all the required files into the ``rnaseq`` folder under 
 
 And this should be the output::
 
-    /users/rg/<username>/rnaseq
+    /users/<group>/<username>/rnaseq
     ├── bin
     │   ├── dashboard2tsv.py
     │   ├── DESeq.analysis.R
@@ -65,10 +65,9 @@ And this should be the output::
     │   └── quantifications.index.txt
     └── refs
         ├── mm65.long.ok.gtf
-        ├── mm65.long.ok.gtf.junctions.gem
-        ├── mm65.long.ok.gtf.junctions.keys
         ├── mouse_genome_mm9.fa.fai
-        └── mouse_genome_mm9.gem
+        ├── mouse_genome_mm9_RSEM_index -> /no_backup_isis/rg/projects/courses/rnaseq/refs/mouse_genome_mm9_RSEM_index
+        └── mouse_genome_mm9_STAR_index -> /no_backup_isis/rg/projects/courses/rnaseq/refs/mouse_genome_mm9_STAR_index
 
     3 directories, 27 files
 
