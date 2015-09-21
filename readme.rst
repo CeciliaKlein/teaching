@@ -333,6 +333,10 @@ And move into it::
 
     cd analysis
 
+Load the environment::
+
+    . ~/rnaseq/.rnaseqenv
+
 RPKM distribution
 -----------------
 
