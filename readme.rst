@@ -265,29 +265,6 @@ And get some general statistics about mapping::
     # get mapping statistics
     BAMstats.py -i ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam
 
-Make bigWig file with RNAseq signal
------------------------------------
-
-Create a bash script called ``run_bigwig.sh`` with the following::
-
-    #!/bin/bash -e
-
-    # load env
-    . ~/rnaseq/.rnaseqenv
-
-    # load module
-    module load BEDTools/2.21.0-goolf-1.4.10-no-OFED
-    module load KentUtils/308-goolf-1.4.10-no-OFED
-
-
-    # create bedgraph from mappings
-    genomeCoverageBed -split -bg -ibam alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam > alignments/mouse_cns_E18_rep1_bedGraph.bed
-    # generate bigwig from bedgraph
-    bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed ~/rnaseq/refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.bw
-
-Submit the job to the cluster::
-
-    qsub -cwd -q RNAseq -N bigwig_rnaseq_course -e logs -o logs ./run_bigwig.sh
 
 Transcript and gene expression quantification
 ---------------------------------------------
@@ -381,34 +358,6 @@ Show the results in a heatmap::
     (echo -e "gene\tedgeR"; cat edgeR.0.01.over*.txt) > gene.edgeR.tsv
     cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf
 
-
-
-Visualize your results in the UCSC genome browser
--------------------------------------------------
-
-Add the gene expression track to the genome browser in bigWig format.
-The bigWig files must be either uploaded or linked (if they are present somewhere online)
-
-Go to the USCS genome browser web page:
-
-|ucsc_genome_browser|
-
-On the lefthand panel, click on ``Genomes``.
-Click on ``Add custom track``.
-Make sure the assembly information is as follows::
-
-    group: Mammal, genome: Mouse, assembly: July 2007 (NCBI/mm9)
-
-Paste the track specifications for each file in the box "Paste URLs or data"::
-
-    track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep1_Aligned.sortedByCoord.out.bw
-    track name=mouse_cns_E14_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep2_Aligned.sortedByCoord.out.bw
-    track name=mouse_cns_E18_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bw
-    track name=mouse_cns_E18_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep2_Aligned.sortedByCoord.out.bw
-
-Click "Submit"
-Go to the genome browser to look at some genes and their RNA-seq signal
-
 GO enrichment
 -------------
 
@@ -438,3 +387,54 @@ You can repeat the same for the genes overexpressed in E18::
 .. |ucsc_genome_browser| raw:: html
 
   <a href="http://genome.ucsc.edu/" target="_blank" style='padding:10px;font-weight:bold;font-family:Monaco,Menlo,Consolas,"Courier New",monospace;'>http://genome.ucsc.edu/</a>
+
+Make bigWig file with RNAseq signal
+-----------------------------------
+
+Create a bash script called ``run_bigwig.sh`` with the following::
+
+    #!/bin/bash -e
+
+    # load env
+    . ~/rnaseq/.rnaseqenv
+
+    # load module
+    module load BEDTools/2.21.0-goolf-1.4.10-no-OFED
+    module load KentUtils/308-goolf-1.4.10-no-OFED
+
+
+    # create bedgraph from mappings
+    genomeCoverageBed -split -bg -ibam alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam > alignments/mouse_cns_E18_rep1_bedGraph.bed
+    # generate bigwig from bedgraph
+    bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed ~/rnaseq/refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.bw
+
+Submit the job to the cluster::
+
+    qsub -cwd -q RNAseq -N bigwig_rnaseq_course -e logs -o logs ./run_bigwig.sh
+
+
+Visualize your results in the UCSC genome browser
+-------------------------------------------------
+
+Add the gene expression track to the genome browser in bigWig format.
+The bigWig files must be either uploaded or linked (if they are present somewhere online)
+
+Go to the USCS genome browser web page:
+
+|ucsc_genome_browser|
+
+On the lefthand panel, click on ``Genomes``.
+Click on ``Add custom track``.
+Make sure the assembly information is as follows::
+
+    group: Mammal, genome: Mouse, assembly: July 2007 (NCBI/mm9)
+
+Paste the track specifications for each file in the box "Paste URLs or data"::
+
+    track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep1_Aligned.sortedByCoord.out.bw
+    track name=mouse_cns_E14_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep2_Aligned.sortedByCoord.out.bw
+    track name=mouse_cns_E18_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bw
+    track name=mouse_cns_E18_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep2_Aligned.sortedByCoord.out.bw
+
+Click "Submit"
+Go to the genome browser to look at some genes and their RNA-seq signal
