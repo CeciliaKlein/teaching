@@ -265,6 +265,9 @@ And get some general statistics about mapping::
     # get mapping statistics
     BAMstats.py -i ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam
 
+    # unload all modules
+    module purge
+
 
 Transcript and gene expression quantification
 ---------------------------------------------
