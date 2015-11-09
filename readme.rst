@@ -18,6 +18,10 @@ In order to gain time, mapping, bigwig and quantification processes will only be
 
 When you are waiting for a job to complete, please look at the input, output and help of the different programs run until that point.
 
+..
+
+  A cheatsheet with basic Linux and Cluster commands is available `here <cheatsheet.html>`_.
+
 Access the CRG cluster
 ~~~~~~~~~~~~~~~~~~~~~~
 
