@@ -1,0 +1,3 @@
+index.html
+cheatsheet.html
+assets/crg_blue_logo.jpg
