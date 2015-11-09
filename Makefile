@@ -7,18 +7,19 @@ LOGO_FILE = assets/crg_blue_logo.jpg
 README = readme.rst
 CHEATSHEET = cheatsheet.rst
 BOOTSTRAP_VERSION = 3.0.0
+BOOTSTRAP_CALLOUT = info
 DEPLOY_LIST = deploy-list.txt
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
 $(HTML_FILE): $(PYENV) $(README)
 	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
-		 version=$(BOOTSTRAP_VERSION) --jquery --embed-stylesheet $(README) \
+		 version=$(BOOTSTRAP_VERSION),callout=$(BOOTSTRAP_CALLOUT) --jquery --embed-stylesheet $(README) \
 		 > $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
 
 $(CHEATSHEET_HTML): $(PYENV) $(CHEATSHEET)
 	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
-		 version=$(BOOTSTRAP_VERSION) --jquery --embed-stylesheet $(CHEATSHEET) \
+		 version=$(BOOTSTRAP_VERSION),callout=$(BOOTSTRAP_CALLOUT) --jquery --embed-stylesheet $(CHEATSHEET) \
 		 > $(CHEATSHEET_HTML)
 	@echo == Written file $(CHEATSHEET_HTML)
 
