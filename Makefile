@@ -30,6 +30,7 @@ $(PYENV)/bin/activate: requirements.txt
 
 $(DEPLOY_LIST):
 	@echo $(HTML_FILE) >> $(DEPLOY_LIST)
+	@echo $(CHEATSHEET_HTML) >> $(DEPLOY_LIST)
 	@echo $(LOGO_FILE) >> $(DEPLOY_LIST)
 
 check_deploy:
