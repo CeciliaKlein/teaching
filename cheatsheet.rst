@@ -132,7 +132,7 @@ A simple example of job submission and deletion::
 
 .. |linux_crg| raw:: html
 
-  <a href="http://www.linux.crg.es/index.php/Main_Page" target="_blank" style='padding:0px;font-weight:bold;font-family:Monaco,Menlo,Consolas,"Courier New",monospace;'>http://www.linux.crg.es/index.php/Main_Page</a>
+  <a href="http://www.linux.crg.es/" target="_blank" style='padding:0px;font-weight:bold;font-family:Monaco,Menlo,Consolas,"Courier New",monospace;'>http://www.linux.crg.es</a>
 
 .. |vim| raw:: html
 
