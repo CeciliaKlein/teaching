@@ -1,6 +1,9 @@
 .. sectnum::
 
-Basic Linux commands
+CRG RNAseq course cheatsheet
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Basic Linux Commands
 ====================
 
 .. image:: assets/crg_blue_logo.jpg
@@ -69,7 +72,7 @@ Some other useful commands
 AWK programming
 ---------------
 
-**AWK** - UNIX shell programming language. An fast and stable tool for processing
+**AWK** - UNIX shell programming language. A fast and stable tool for processing
 text files.
 
 ===================================  ==============================================================
@@ -79,12 +82,8 @@ text files.
 ``awk 'NR % 2 == 0' <file>``         print even-numbered lines in the file
 ===================================  ==============================================================
 
-..
-
-  See |awk| and |awk_tutorial| for more information
-
 Some built-in variables
-~~~~~~~~~~~~~~~~~~~~~~~
+:::::::::::::::::::::::
 
 =======  ================================
 ``NR``   Number of records
@@ -93,35 +92,42 @@ Some built-in variables
 ``OFS``  Output field separator character
 =======  ================================
 
-Cluster basic commands
-----------------------
+..
 
-``ssh -Y username@ant-login.linux.crg.es``  access to the cluster. The ``-Y``
-option means you'll be able to open files in graphical applications.
+  See |awk| and |awk_tutorial| for more information
 
-``qsub`` batch job submission
+Basic Cluster Commands
+======================
 
-::
+==========================================  ========================================
+``ssh -Y username@ant-login.linux.crg.es``  access to the cluster - ``-Y`` allows
+                                            graphical output (**X11** forwarding)
+``qsub -q <queue> <script>``                submit a batch job to a specific queue
+``qstat``                                   monitor the status of submitted jobs
+``qstat -j <job_id>``                       display detailed information of a specific
+                                            job
+``qdel <job_id>``                           delete a submitted job
+==========================================  ========================================
+
+The ``job_id`` is an important number that identifies your job in the cluster. It's
+necessary for managing the job and control it.
+
+A simple example of job submission and deletion::
 
   $ qsub -q course sleeper.sh
-
   Your job 393672 ("sleeper.sh") has been submitted
 
-Job id: Important number that identifies your job in the cluster. It's necessary
-for managing the job and control it.
+  $ qstat
+  job-ID     prior   name       user         state submit/start at     queue            jclass             slots ja-task-ID
+  -------------------------------------------------------------------------------------------------------------------------
+    393672   0.00000 sleeper.sh epalumbo     qw    11/09/2015 11:18:01                                         1
 
-``qstat`` let you monitor the status of the jobs. The -j option causes qstat to
-display detailed information of a currently queued job.
-
-``qdel`` This command let you delete a job.
-
-::
-
-  $ qdel Job_id
+  $ qdel 393672
+  epalumbo has deleted job 393672
 
 ..
 
-    See |linux_crg| for the full **CRG** cluster documentation
+    See |linux_crg| for the complete **CRG** cluster documentation
 
 
 .. |linux_crg| raw:: html
