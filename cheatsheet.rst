@@ -99,15 +99,15 @@ Some built-in variables
 Basic Cluster Commands
 ======================
 
-==========================================  ========================================
-``ssh -Y username@ant-login.linux.crg.es``  access to the cluster - ``-Y`` allows
-                                            graphical output (**X11** forwarding)
+==========================================  ============================================
+``ssh -Y username@ant-login.linux.crg.es``  access to the cluster - the ``-Y`` option
+                                            allows graphical output (**X11** forwarding)
 ``qsub -q <queue> <script>``                submit a batch job to a specific queue
 ``qstat``                                   monitor the status of submitted jobs
 ``qstat -j <job_id>``                       display detailed information of a specific
                                             job
 ``qdel <job_id>``                           delete a submitted job
-==========================================  ========================================
+==========================================  ============================================
 
 The ``job_id`` is an important number that identifies your job in the cluster. It's
 necessary for managing the job and control it.
