@@ -6,7 +6,7 @@ CHEATSHEET_HTML = cheatsheet.html
 LOGO_FILE = assets/crg_blue_logo.jpg
 README = readme.rst
 CHEATSHEET = cheatsheet.rst
-BOOTSTRAP_VERSION = 3.0.0
+BOOTSTRAP_VERSION = 2.1.1
 BOOTSTRAP_CALLOUT = info
 DEPLOY_LIST = deploy-list.txt
 
