@@ -42,7 +42,7 @@ deploy: html $(DEPLOY_LIST) check_deploy
 	rsync -a --files-from=$(DEPLOY_LIST) . $(RNASEQ_DEPLOY_DIR)
 
 clean:
-	rm $(HTML_FILE) $(DEPLOY_LIST)
+	rm $(HTML_FILE) $(CHEATSHEET_HTML) $(DEPLOY_LIST)
 
 deepclean: clean
 	rm -rf $(PYENV)
