@@ -310,7 +310,7 @@ Submit the job to the cluster::
 
     qsub -cwd -q RNAseq -l virtual_free=16G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_rsem.sh
 
-To obtain a matrix of gene RPKM values::
+To obtain a matrix of gene FPKM values::
 
     cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v FPKM -d quantifications
 
