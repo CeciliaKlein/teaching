@@ -44,6 +44,7 @@ And this should be the output::
 
     /users/<group>/<username>/rnaseq
     ├── bin
+    │   ├── BAMstats.py
     │   ├── dashboard2tsv.py
     │   ├── DESeq.analysis.R
     │   ├── edgeR.analysis.R
@@ -51,8 +52,10 @@ And this should be the output::
     │   ├── ggheatmap.R
     │   ├── GO_enrichment.R
     │   ├── matrix_to_dist.R
+    │   ├── normalize.matrix.R
     │   ├── retrieve_element_rpkms.py
     │   ├── rpkm_distribution.R
+    │   ├── selectMatrixRows.sh
     │   ├── terrain.colors.3.txt
     │   ├── TrtoGn_RPKM.sh
     │   └── VennDiagram.R
@@ -71,10 +74,17 @@ And this should be the output::
         ├── mm65.long.ok.gtf
         ├── mouse_genome_mm9.fa.fai
         ├── mouse_genome_mm9_RSEM_index
+        │   ├── RSEMref.chrlist
+        │   ├── RSEMref.grp
+        │   ├── RSEMref.idx.fa
+        │   ├── RSEMref.n2g.idx.fa
+        │   ├── RSEMref.seq
+        │   ├── RSEMref.ti
+        │   └── RSEMref.transcripts.fa
         └── mouse_genome_mm9_STAR_index -> /no_backup_isis/rg/projects/courses/rnaseq/refs/mouse_genome_mm9_STAR_index
 
-    3 directories, 27 files
-
+    5 directories, 34 files
+    
 ..
 
   **STAR** index folder has been soft linked because of its size
