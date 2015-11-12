@@ -359,7 +359,7 @@ Differential gene expression
 
 Run the DE with the edgeR package (be careful takes read counts and not rpkm values as input)::
 
-    edgeR.analysis.R -i ../quantifications/encode.mouse.gene.expected_count.idr_NA.tsv -m ../data/quantifications.index.tsv -f age
+    edgeR.analysis.R -i ../quantifications/encode.mouse.gene.posterior_mean_count.idr_NA.tsv -m ../data/quantifications.index.tsv -f age
 
 Write a list of the genes overexpressed after 18 days, according to edgeR analysis::
 
