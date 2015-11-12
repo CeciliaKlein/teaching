@@ -84,7 +84,7 @@ And this should be the output::
         └── mouse_genome_mm9_STAR_index -> /no_backup_isis/rg/projects/courses/rnaseq/refs/mouse_genome_mm9_STAR_index
 
     5 directories, 34 files
-    
+
 ..
 
   **STAR** index folder has been soft linked because of its size
@@ -201,6 +201,9 @@ You are able to display the fastqc results on the browser. Type the following in
 
     firefox ~/rnaseq/fastqc/mouse_cns_E18_rep1_1_fastqc.html
 
+If you have an instance of firefox running in your local machine you need to modify the command as follows in order to be able to open the file::
+
+    firefox --new-instance ~/rnaseq/fastqc/mouse_cns_E18_rep1_1_fastqc.html
 
 Mapping
 -------
