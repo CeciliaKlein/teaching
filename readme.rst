@@ -316,7 +316,7 @@ To obtain a matrix of gene FPKM values::
 
 To obtain a matrix of gene read counts::
 
-    cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v posterior_mean_count -d quantifications
+    cat ~/rnaseq/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v expected_count -d quantifications
 
 
 RNA-seq data analysis
