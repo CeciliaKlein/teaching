@@ -40,14 +40,6 @@
 | `mv <file1> <file2>` | rename file1 to file2
 |===
 
-=== File editing
-
-[cols="^,1*"]
-|===
-| `gedit <file>` | text editor with graphical user interface
-| `vi <file>`    | text editor with command mode interface (See http://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi[a-beginners-guide-to-editing-text-files-with-vi^])
-|===
-
 === Some other useful commands
 
 [cols="^,1*"]
@@ -87,7 +79,48 @@ text files.
 
 NOTE:  See http://www.grymoire.com/Unix/Awk.html[^] and http://www.tutorialspoint.com/awk/awk_basic_examples.htm[^] for more information
 
-=== Basic Cluster Commands
+== Writing and editing files
+
+There are several ways to write and edit files.
+The most commonly used text editors are `vi`, `emacs` and `gedit`.
+
+=== Gedit
+
+Gedit is a text editor with graphical user interface. To create a new file in the current folder just call `gedit` with the name of the file:
+
+[source,bash]
+----
+gedit file.txt
+----
+
+Then save and close the file.
+
+=== Vi
+
+Vi is a text editor with a command mode interface. See http://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi[this article^] for a beginner's guide.
+
+To create a new file in the current folder just call `vi` with the name of the file:
+
+[source,bash]
+----
+vi file.txt
+----
+
+Vi has several modes which are specified in the bottom part of screen.
+When you just open the editor you cannot write on the file, because it is the command mode.
+To start writing, type `i`, and you will notice that the status in the bottom of the screen changed to `INSERT`.
+Now you can paste the text by right-click with the mouse and paste, or by pressing `SHIFT+Insert`.
+To go back to command mode press `ESC`.
+To save, make sure you are in command mode and type:
+
+[source,vim]
+----
+:wq
+----
+
+To undo, press `u` when you are in command mode.
+
+== Basic Cluster Commands
 
 [cols="^,1*"]
 |===
