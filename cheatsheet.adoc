@@ -4,6 +4,11 @@
 :nofooter:
 :icons: font
 :experimental:
+// links
+:awk: http://www.grymoire.com/Unix/Awk.html
+:awk-examples: http://www.tutorialspoint.com/awk/awk_basic_examples.htm
+:vim-beginners-guide: http://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi
+:linux-crg-es: http://www.linux.crg.es
 
 == Basic Linux Commands
 
@@ -78,7 +83,7 @@ text files.
 | `OFS` | Output field separator character
 |===
 
-NOTE:  See http://www.grymoire.com/Unix/Awk.html[^] and http://www.tutorialspoint.com/awk/awk_basic_examples.htm[^] for more information
+NOTE: See {awk}[^] and {awk-examples}[^] for more information
 
 == Writing and editing files
 
@@ -98,7 +103,7 @@ When you are done, save the file (by pressing kbd:[Ctrl+S] or by selecting menu:
 
 === Vi
 
-Vi is a text editor with a command mode interface. See http://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi[this article^] for a beginner's guide.
+Vi is a text editor with a command mode interface. See {vim-beginners-guide}[this article^] for a beginner's guide.
 
 To create a new file in the current folder just call `vi` with the name of the file:
 
@@ -153,4 +158,4 @@ $ qdel 393672
 epalumbo has deleted job 393672
 ----
 
-NOTE: See http://www.linux.crg.es[^] for the complete **CRG** cluster documentation
+NOTE: See {linux-crg-es}[^] for the complete **CRG** cluster documentation
