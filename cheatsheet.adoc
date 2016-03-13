@@ -3,6 +3,7 @@
 :hide-uri-scheme:
 :nofooter:
 :icons: font
+:experimental:
 
 == Basic Linux Commands
 
@@ -93,7 +94,7 @@ Gedit is a text editor with graphical user interface. To create a new file in th
 gedit file.txt
 ----
 
-Then save and close the file.
+When you are done, save the file (by pressing kbd:[Ctrl+S] or by selecting menu:File[Save]) and close Gedit.
 
 === Vi
 
@@ -108,9 +109,9 @@ vi file.txt
 
 Vi has several modes which are specified in the bottom part of screen.
 When you just open the editor you cannot write on the file, because it is the command mode.
-To start writing, type `i`, and you will notice that the status in the bottom of the screen changed to `INSERT`.
-Now you can paste the text by right-click with the mouse and paste, or by pressing `SHIFT+Insert`.
-To go back to command mode press `ESC`.
+To start writing, press kbd:[i], and you will notice that the status in the bottom of the screen changed to `INSERT`.
+Now you can paste the text by right-click with the mouse and paste, or by pressing kbd:[SHIFT+Insert].
+To go back to command mode press kbd:[ESC].
 To save, make sure you are in command mode and type:
 
 [source,vim]
@@ -118,7 +119,7 @@ To save, make sure you are in command mode and type:
 :wq
 ----
 
-To undo, press `u` when you are in command mode.
+To undo, press kbd:[u] when you are in command mode.
 
 == Basic Cluster Commands
 
