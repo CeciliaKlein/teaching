@@ -1,0 +1,77 @@
+:awk: http://www.grymoire.com/Unix/Awk.html
+:awk-examples: http://www.tutorialspoint.com/awk/awk_basic_examples.htm
+
+== Basic Linux Commands
+
+=== Browse the directory structure
+
+[cols="^,1*"]
+|===
+| `pwd`                    | tells you where you are
+| `ls`                     | list the content of the current directory
+| `ls <directory name>`    | list the content of a directory
+| `cd <directory name>`    | go to the specified directory
+| `cd  ~` (or `cd`)        | go to your home directory
+| `cd  ..`                 | go to the parent directory
+| `tree <directory name>`  | list the content of a directory in a tree-like format
+| `mkdir <directory name>` | creates specified directory
+|===
+
+=== View the content of a file
+
+[cols="^,1*"]
+|===
+| `less`, `more` | view text with paging
+| `head`         | prints first lines of a file
+| `tail`         | prints last lines of a file
+| `cat`          | print content of a file into the screen
+| `zcat`         | print content of a `gzip` compressed file
+|===
+
+=== File manipulations
+
+[cols="^,1*"]
+|===
+| `rm <file name>`     | remove file
+| `cp <file1> <file2>` | copy file1 into file2
+| `mv <file1> <file2>` | rename file1 to file2
+|===
+
+=== Some other useful commands
+
+[cols="^,1*"]
+|===
+| `grep <pattern>`         | show lines of text containing a given pattern
+| `grep -v <pattern>`       | show lines of text not containing a given pattern
+| `sort`                   | sort linesof text files
+| `wc`                     | counting words, lines and characters
+| `>` (output redirection)  | allows to redirect the output to a file
+| `\|` (pipe)               | allows to send output from one program to another
+| `cut`                    | to extract portion of a file by selecting columns
+| `echo`                    | input a line of text and display it on standard output
+|===
+
+=== AWK programming
+
+**AWK** - UNIX shell programming language. A fast and stable tool for processing
+text files.
+
+[cols="^,1*"]
+|===
+| `awk '/www/ { print $0 }' <file>` | search for the pattern 'www' in the each line of the file
+| `awk '$3=="www"' <file>`          | search for pattern 'www' in the third column of the file
+| `awk 'length($0) > 80' <file>`    | print every line in the file that is longer than 80 characters
+| `awk 'NR % 2 == 0' <file>`        | print even-numbered lines in the file
+|===
+
+==== Some built-in variables
+
+[cols="^,1*"]
+|===
+| `NR`  | Number of records
+| `NF`  | Number of fields
+| `FS`  | Field separator character
+| `OFS` | Output field separator character
+|===
+
+NOTE: See {awk}[^] and {awk-examples}[^] for more information

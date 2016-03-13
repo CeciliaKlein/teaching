@@ -1,0 +1,35 @@
+:linux-crg-es: http://www.linux.crg.es
+
+== Basic Cluster Commands
+
+[cols="^,1*"]
+|===
+| `ssh -Y username@ant-login.linux.crg.es` | access to the cluster - the `-Y` option
+                                             allows graphical output (**X11** forwarding)
+| `qsub -q <queue> <script>`               | submit a batch job to a specific queue
+| `qstat`                                  | monitor the status of submitted jobs
+| `qstat -j <job_id>`                      | display detailed information of a specific
+                                            job
+| `qdel <job_id>`                          | delete a submitted job
+|===
+
+The `job_id` is an important number that identifies your job in the cluster. It's
+necessary for managing the job and control it.
+
+A simple example of job submission and deletion:
+
+[source,bash]
+----
+$ qsub -q course sleeper.sh
+Your job 393672 ("sleeper.sh") has been submitted
+
+$ qstat
+job-ID     prior   name       user      state submit/start at   queue         jclass      slots ja-task-ID
+----------------------------------------------------------------------------------------------------------
+  393672   0.00000 sleeper.sh epalumbo  qw    11/09/2015 11:18:01                               1
+
+$ qdel 393672
+epalumbo has deleted job 393672
+----
+
+NOTE: See {linux-crg-es}[^] for the complete **CRG** cluster documentation
