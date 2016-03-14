@@ -1,11 +1,10 @@
+= Writing and editing files
 :vim-beginners-guide: http://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi
-
-== Writing and editing files
 
 There are several ways to write and edit files.
 The most commonly used text editors are `vi`, `emacs` and `gedit`.
 
-=== Gedit
+== Gedit
 
 Gedit is a text editor with graphical user interface. To create a new file in the current folder just call `gedit` with the name of the file:
 
@@ -16,7 +15,7 @@ gedit file.txt
 
 When you are done, save the file (by pressing kbd:[Ctrl+S] or by selecting menu:File[Save]) and close Gedit.
 
-=== Vi
+== Vi
 
 Vi is a text editor with a command mode interface. See {vim-beginners-guide}[this article^] for a beginner's guide.
 

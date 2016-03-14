@@ -1,14 +1,9 @@
-.. sectnum::
-
-CRG RNAseq Data Analysis Hands-on
-=================================
-
-.. image:: assets/crg_blue_logo.jpg
-    :height: 160px
-    :width: 350px
-    :scale: 50 %
-    :align: right
-    :alt: CRG Barcelona
+= CRG RNAseq Data Analysis Hands-on image:assets/crg_blue_logo.jpg[CRG Barcelona, 175, 80, role="right"]
+:sectnums:
+:hide-uri-scheme:
+:nofooter:
+:icons: font
+:experimental:
 
 The default directory is the rnaseq directory in your home, if nothing else is specified.
 
@@ -18,19 +13,9 @@ In order to gain time, mapping, bigwig and quantification processes will only be
 
 When you are waiting for a job to complete, please look at the input, output and help of the different programs run until that point.
 
-..
+NOTE: A cheatsheet with basic Linux and Cluster commands is available link:cheatsheet.html[here].
 
-  A cheatsheet with basic Linux and Cluster commands is available `here <cheatsheet.html>`_.
-
-Access the CRG cluster
-~~~~~~~~~~~~~~~~~~~~~~
-
-Connect to the cluster login node::
-
-    ssh -Y <username>@ant-login.linux.crg.es
-
-RNAseq data
-~~~~~~~~~~~
+== RNAseq data
 
 In order to get all the required files for the hands-on you need to run the following command in your terminal::
 
@@ -113,41 +98,6 @@ Count the number of exons of this gene::
 What is the biotype of the gene?
 
 What is the biotype of each transcript of this gene?
-
-
-Writing and editing files
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-There are several ways to write and edit files.
-The most commonly used text editors are vi, emacs and gedit.
-
-gedit
------
-
-To create a new file in the current folder just call ``gedit`` with the name of the file::
-
-    gedit file.txt
-
-Then save and close the file.
-
-vi
---
-
-To create a new file in the current folder just call ``vi`` with the name of the file::
-
-    vi file.txt
-
-Vi has several modes which are specified in the bottom part of screen.
-When you just open the editor you cannot write on the file, because it is the command mode.
-To start writing, type ``i``, and you will notice that the status in the bottom of the screen changed to ``INSERT``.
-Now you can paste the text by right-click with the mouse and paste, or by pressing ``SHIFT+Insert``.
-To go back to command mode press ``ESC``.
-To save, make sure you are in command mode and type::
-
-    :wq
-
-To undo, press ``u`` when you are in command mode.
-
 
 
 RNAseq data processing

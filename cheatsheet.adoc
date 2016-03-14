@@ -5,8 +5,12 @@
 :icons: font
 :experimental:
 
+:leveloffset: +1
+
 include::linux-commands.adoc[]
 
 include::files.adoc[]
 
 include::ant-cluster.adoc[]
+
+:leveloffset: -1

@@ -1,9 +1,8 @@
+= Basic Linux Commands
 :awk: http://www.grymoire.com/Unix/Awk.html
 :awk-examples: http://www.tutorialspoint.com/awk/awk_basic_examples.htm
 
-== Basic Linux Commands
-
-=== Browse the directory structure
+== Browse the directory structure
 
 [cols="^,1*"]
 |===
@@ -17,7 +16,7 @@
 | `mkdir <directory name>` | creates specified directory
 |===
 
-=== View the content of a file
+== View the content of a file
 
 [cols="^,1*"]
 |===
@@ -28,7 +27,7 @@
 | `zcat`         | print content of a `gzip` compressed file
 |===
 
-=== File manipulations
+== File manipulations
 
 [cols="^,1*"]
 |===
@@ -37,7 +36,7 @@
 | `mv <file1> <file2>` | rename file1 to file2
 |===
 
-=== Some other useful commands
+== Some other useful commands
 
 [cols="^,1*"]
 |===
@@ -51,7 +50,7 @@
 | `echo`                    | input a line of text and display it on standard output
 |===
 
-=== AWK programming
+== AWK programming
 
 **AWK** - UNIX shell programming language. A fast and stable tool for processing
 text files.
@@ -64,7 +63,7 @@ text files.
 | `awk 'NR % 2 == 0' <file>`        | print even-numbered lines in the file
 |===
 
-==== Some built-in variables
+=== Some built-in variables
 
 [cols="^,1*"]
 |===
