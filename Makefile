@@ -10,17 +10,17 @@ DEPLOY_LIST = deploy-list.txt
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
 $(HTML_FILE): setup $(README)
-	@GEM_HOME=$(GEMS) bin/asciidoctor $(README) -o $(HTML_FILE)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) -o $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
 
 $(CHEATSHEET_HTML): setup $(CHEATSHEET)
-	@GEM_HOME=$(GEMS) bin/asciidoctor $(CHEATSHEET) -o $(CHEATSHEET_HTML)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) -o $(CHEATSHEET_HTML)
 	@echo == Written file $(CHEATSHEET_HTML)
 
-setup: $(GEMS) bin/asciidoctor
+setup: $(GEMS)/bin/asciidoctor
 
-bin/asciidoctor: $(GEMS)
-	@GEM_HOME=$(GEMS) $(GEMS)/bin/bundle --path=$(GEMS) --binstubs
+$(GEMS)/bin/asciidoctor: $(GEMS)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/bundle --path=$(GEMS) --binstubs=$(GEMS)/bin
 
 $(GEMS): $(GEMS)/bin/bundle
 $(GEMS)/bin/bundle:
