@@ -9,12 +9,12 @@ CHEATSHEET = cheatsheet.adoc
 DEPLOY_LIST = deploy-list.txt
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
-$(HTML_FILE): $(SETUP) $(README)
-	@bin/asciidoctor $(README) -o $(HTML_FILE)
+$(HTML_FILE): setup $(README)
+	@GEM_HOME=$(GEMS) bin/asciidoctor $(README) -o $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
 
-$(CHEATSHEET_HTML): $(SETUP) $(CHEATSHEET)
-	@bin/asciidoctor $(CHEATSHEET) -o $(CHEATSHEET_HTML)
+$(CHEATSHEET_HTML): setup $(CHEATSHEET)
+	@GEM_HOME=$(GEMS) bin/asciidoctor $(CHEATSHEET) -o $(CHEATSHEET_HTML)
 	@echo == Written file $(CHEATSHEET_HTML)
 
 setup: $(GEMS) bin/asciidoctor
