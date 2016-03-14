@@ -1,32 +1,30 @@
 .PHONY: html check_deploy deploy clean deepclean
 
-PYENV = env
+GEMS = gems
 HTML_FILE = index.html
 CHEATSHEET_HTML = cheatsheet.html
 LOGO_FILE = assets/crg_blue_logo.jpg
-README = readme.rst
-CHEATSHEET = cheatsheet.rst
-BOOTSTRAP_VERSION = 2.1.1
-BOOTSTRAP_CALLOUT = info
+README = hands-on.adoc
+CHEATSHEET = cheatsheet.adoc
 DEPLOY_LIST = deploy-list.txt
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
-$(HTML_FILE): $(PYENV) $(README)
-	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
-		 version=$(BOOTSTRAP_VERSION),callout=$(BOOTSTRAP_CALLOUT) --jquery --embed-stylesheet $(README) \
-		 > $(HTML_FILE)
+$(HTML_FILE): $(SETUP) $(README)
+	@bin/asciidoctor $(README) -o $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
 
-$(CHEATSHEET_HTML): $(PYENV) $(CHEATSHEET)
-	@$(PYENV)/bin/rst2html5 --bootstrap-css --bootstrap-css-opts \
-		 version=$(BOOTSTRAP_VERSION),callout=$(BOOTSTRAP_CALLOUT) --jquery --embed-stylesheet $(CHEATSHEET) \
-		 > $(CHEATSHEET_HTML)
+$(CHEATSHEET_HTML): $(SETUP) $(CHEATSHEET)
+	@bin/asciidoctor $(CHEATSHEET) -o $(CHEATSHEET_HTML)
 	@echo == Written file $(CHEATSHEET_HTML)
 
-$(PYENV): $(PYENV)/bin/activate
-$(PYENV)/bin/activate: requirements.txt
-	@test -d $(PYENV) || virtualenv $(PYENV)
-	@$(PYENV)/bin/pip install -Ur requirements.txt
+setup: $(GEMS) bin/asciidoctor
+
+bin/asciidoctor: $(GEMS)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/bundle --path=$(GEMS) --binstubs
+
+$(GEMS): $(GEMS)/bin/bundle
+$(GEMS)/bin/bundle:
+	@GEM_HOME=$(GEMS) gem install bundler
 
 $(DEPLOY_LIST):
 	@echo $(HTML_FILE) >> $(DEPLOY_LIST)
@@ -45,4 +43,4 @@ clean:
 	rm -f $(HTML_FILE) $(CHEATSHEET_HTML) $(DEPLOY_LIST)
 
 deepclean: clean
-	rm -rf $(PYENV)
+	rm -rf $(GEMS) bin .bundle
