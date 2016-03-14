@@ -1,6 +1,6 @@
 .PHONY: html check_deploy deploy clean deepclean
 
-GEMS = gems
+GEMS = env
 HTML_FILE = index.html
 CHEATSHEET_HTML = cheatsheet.html
 LOGO_FILE = assets/crg_blue_logo.jpg
