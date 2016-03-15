@@ -2,7 +2,16 @@
 :hide-uri-scheme:
 :nofooter:
 :icons: font
+ifeval::["{backend}" == "html5"]
+:linkcss:
+:toc: left
+:cheatsheet: cheatsheet.adoc#,here
+endif::[]
+ifeval::["{backend}" == "pdf"]
+:cheatsheet: cheatsheet,at the end of this document
+endif::[]
 
+[discrete]
 == Introduction
 
 The default directory is the rnaseq directory in your home, if nothing else is specified.
@@ -13,7 +22,7 @@ In order to gain time, mapping, bigwig and quantification processes will only be
 
 When you are waiting for a job to complete, please look at the input, output and help of the different programs run until that point.
 
-NOTE: A cheatsheet with basic Linux and Cluster commands is available link:cheatsheet.html[here].
+NOTE: A cheatsheet with basic Linux and Cluster commands is available <<{cheatsheet}>>.
 
 :sectnums:
 
@@ -28,5 +37,10 @@ include::gene-annotation.adoc[]
 include::rna-seq-processing.adoc[]
 
 include::rna-seq-analyses.adoc[]
+
+ifeval::["{backend}" == "pdf"]
+[[cheatsheet]]
+include::cheatsheet.adoc[]
+endif::[]
 
 :leveloffset: -1
