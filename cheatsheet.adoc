@@ -1,4 +1,4 @@
-= CRG RNAseq course cheatsheet image:assets/crg_blue_logo.jpg[CRG Barcelona, 175, 80, role="right"]
+= CRG RNAseq course cheatsheet
 :sectnums:
 :hide-uri-scheme:
 :nofooter:
