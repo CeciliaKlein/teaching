@@ -2,7 +2,7 @@
 
 GEMS = env
 HTML_FILE = index.html
-PDF_FILE = hand-on.pdf
+PDF_FILE = hands-on.pdf
 CHEATSHEET_HTML = cheatsheet.html
 CHEATSHEET_PDF = cheatsheet.pdf
 LOGO_JPG = assets/crg_blue_logo.jpg
