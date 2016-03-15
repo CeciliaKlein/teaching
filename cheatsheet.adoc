@@ -3,6 +3,7 @@
 :hide-uri-scheme:
 :nofooter:
 :icons: font
+:linkcss:
 
 :leveloffset: +1
 
