@@ -3,6 +3,8 @@
 :nofooter:
 :icons: font
 ifeval::["{backend}" == "html5"]
+:stylesdir: ./css
+:stylesheet: crg.css
 :linkcss:
 :toc: left
 :cheatsheet: cheatsheet.adoc#,here

@@ -10,18 +10,17 @@ LOGO_PNG = assets/crg_blue_logo.png
 README = hands-on.adoc
 CHEATSHEET = cheatsheet.adoc
 DEPLOY_LIST = deploy-list.txt
-CSS = css/crg.css
 PDF = pdf
 
 all: html pdf
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
 $(HTML_FILE): setup $(README)
-	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) -a stylesheet=$(CSS) -o $(HTML_FILE)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) -o $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
 
 $(CHEATSHEET_HTML): setup $(CHEATSHEET)
-	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) -a stylesheet=$(CSS) -o $(CHEATSHEET_HTML)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) -o $(CHEATSHEET_HTML)
 	@echo == Written file $(CHEATSHEET_HTML)
 
 pdf: $(PDF_FILE) $(CHEATSHEET_PDF)
@@ -47,7 +46,7 @@ $(DEPLOY_LIST):
 	@echo $(CHEATSHEET_HTML) >> $(DEPLOY_LIST)
 	@echo $(LOGO_JPG) >> $(DEPLOY_LIST)
 	@echo $(LOGO_PNG) >> $(DEPLOY_LIST)
-	@echo $(CSS) >> $(DEPLOY_LIST)
+	@echo css >> $(DEPLOY_LIST)
 
 check_deploy:
 ifndef RNASEQ_DEPLOY_DIR

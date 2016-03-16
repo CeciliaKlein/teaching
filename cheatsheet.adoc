@@ -3,6 +3,8 @@
 :hide-uri-scheme:
 :nofooter:
 :icons: font
+:stylesdir: ./css
+:stylesheet: crg.css
 :linkcss:
 
 :leveloffset: +1
