@@ -176,6 +176,11 @@ BAMstats.py -i ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.
 module purge
 ----
 
+:leveloffset: +1
+
+include::UCSC_tracks.adoc[]
+
+:leveloffset: -1
 
 == Transcript and gene expression quantification
 
