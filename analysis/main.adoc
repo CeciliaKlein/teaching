@@ -3,21 +3,21 @@
 
 Create a directory dedicated to the analyses:
 
-[source,bash]
+[source,cmd]
 ----
 mkdir analysis
 ----
 
 And move into it:
 
-[source,bash]
+[source,cmd]
 ----
 cd analysis
 ----
 
 Load the environment:
 
-[source,bash]
+[source,cmd]
 ----
 . ~/rnaseq/.rnaseqenv
 ----

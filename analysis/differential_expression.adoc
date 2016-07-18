@@ -2,35 +2,35 @@
 
 Run the DE with the edgeR package (be careful takes read counts and not rpkm values as input):
 
-[source,bash]
+[source,cmd]
 ----
 edgeR.analysis.R -i ../quantifications/encode.mouse.gene.expected_count.idr_NA.tsv -m ../data/quantifications.index.tsv -f age
 ----
 
 Write a list of the genes overexpressed after 18 days, according to edgeR analysis:
 
-[source,bash]
+[source,cmd]
 ----
 awk '$NF<0.01 && $4>2{print $1"\tover18"}' edgeR.cpm1.n2.out.tsv > edgeR.0.01.overE18.txt
 ----
 
 Write a list of the genes overexpressed after 14 days, according to edgeR analysis:
 
-[source,bash]
+[source,cmd]
 ----
 awk '$NF<0.01 && $4<-2 {print $1"\tover14"}' edgeR.cpm1.n2.out.tsv > edgeR.0.01.overE14.txt
 ----
 
 Count how many overexpressed genes there are in each stage:
 
-[source,bash]
+[source,cmd]
 ----
 wc -l edgeR.0.01.over*.txt
 ----
 
 Show the results in a heatmap:
 
-[source,bash]
+[source,cmd]
 ----
 (echo -e "gene\tedgeR"; cat edgeR.0.01.over*.txt) > gene.edgeR.tsv
 cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf

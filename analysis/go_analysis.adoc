@@ -2,14 +2,14 @@
 
 Prepare a file with the list of all the genes in the annotation:
 
-[source,bash]
+[source,cmd]
 ----
 awk '{split($10,a,"\""); print a[2]}' ~/rnaseq/refs/mm65.long.ok.gtf | sort -u > universe.txt
 ----
 
 Launch the GO enrichment script for the Biological Processes, Molecular Function and Cellular Components in the set of genes overexpressed in E14:
 
-[source,bash]
+[source,cmd]
 ----
 cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c BP -o edgeR.overE14 -s mouse
 cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c MF -o edgeR.overE14 -s mouse
@@ -18,7 +18,7 @@ cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c CC 
 
 The results can be visualized in the browser, pasting the following paths in the search line:
 
-[source,bash]
+[source,cmd]
 ----
 firefox ~/rnaseq/analysis/edgeR.overE14.BP.html
 firefox ~/rnaseq/analysis/edgeR.overE14.MF.html
@@ -27,7 +27,7 @@ firefox ~/rnaseq/analysis/edgeR.overE14.CC.html
 
 You can repeat the same for the genes overexpressed in E18:
 
-[source,bash]
+[source,cmd]
 ----
 cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c BP -o edgeR.overE18 -s mouse
 cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c MF -o edgeR.overE18 -s mouse
