@@ -37,14 +37,12 @@ When finished we can look at the bam file:
 samtools view -h ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
 ----
 
-or at the mapping statistics that come with STAR:
+or at the mapping statistics that come with `STAR`:
 
 [source,cmd]
 ----
 cat ~/rnaseq/alignments/mouse_cns_E18_rep1_Log.final.out
 ----
-
-[source,bash]
 ----
                                  Started job on |       Sep 15 17:12:35
                              Started mapping on |       Sep 15 17:16:32
@@ -77,21 +75,4 @@ cat ~/rnaseq/alignments/mouse_cns_E18_rep1_Log.final.out
        % of reads unmapped: too many mismatches |       0.00%
                  % of reads unmapped: too short |       10.04%
                      % of reads unmapped: other |       0.14%
-----
-
-And get some general statistics about mapping:
-
-[source,cmd]
-----
-# load env
-source ~/rnaseq/.rnaseqenv
-
-# load pysam module
-module load pysam
-
-# get mapping statistics
-BAMstats.py -i ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam
-
-# unload all modules
-module purge
 ----
