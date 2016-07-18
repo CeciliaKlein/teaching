@@ -1,0 +1,20 @@
+Have a look at the `.rnaseqenv` file to see how the environment for the course has been configured.
+We will use the `rnaseq` folder under your `HOME` as the base folder for the tutorial. Be sure you are
+inside that folder before doing any processing. Use the `pwd` command to check your current folder
+and `cd` to move to the `rnaseq` folder, e.g.:
+
+[source,bash]
+----
+bash-4.1$ pwd
+/users/rg/epalumbo
+bash-4.1$ cd ~/rnaseq
+bash-4.1$ pwd
+/users/rg/epalumbo/rnaseq
+----
+
+Once you are inside the `rnaseq` folder, create a folder for storing the log files:
+
+[source,bash]
+----
+mkdir logs
+----

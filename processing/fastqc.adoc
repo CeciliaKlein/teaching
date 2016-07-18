@@ -1,0 +1,56 @@
+= Fastq files and read QC
+
+Have a look at one of our fastq files:
+
+[source,bash]
+----
+zcat ~/rnaseq/data/mouse_cns_E14_rep1_1.fastq.gz | head -4
+----
+
+Create a folder for the fastqc output:
+
+[source,bash]
+----
+mkdir fastqc
+----
+
+Create a bash script called `run_fastqc.sh`.
+
+This script should contain the following command:
+
+[source,bash]
+----
+#!/bin/bash -e
+
+# load env
+. ~/rnaseq/.rnaseqenv
+
+# load module
+module load FastQC/0.11.2
+
+# run fastqc
+fastqc -o fastqc -f fastq ~/rnaseq/data/mouse_cns_E18_rep1_1.fastq.gz
+----
+
+Submit the job to the cluster:
+
+[source,bash]
+----
+qsub -cwd -q RNAseq -l virtual_free=8G -N fastqc_rnaseq_course -e logs -o logs ./run_fastqc.sh
+----
+
+To monitor the status of the job, type `qstat`.
+
+You are able to display the fastqc results on the browser. Type the following in the terminal to open a browser showing your FastQC results:
+
+[source,bash]
+----
+firefox ~/rnaseq/fastqc/mouse_cns_E18_rep1_1_fastqc.html
+----
+
+If you have an instance of firefox running in your local machine you need to modify the command as follows in order to be able to open the file:
+
+[source,bash]
+----
+firefox --new-instance ~/rnaseq/fastqc/mouse_cns_E18_rep1_1_fastqc.html
+----
