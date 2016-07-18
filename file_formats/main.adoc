@@ -1,0 +1,18 @@
+= Common file formats
+:icons: font
+
+:leveloffset: +1
+
+include::fasta.adoc[]
+
+include::fastq.adoc[]
+
+include::sam.adoc[]
+
+include::gtf.adoc[]
+
+include::bed.adoc[]
+
+include::bigwig.adoc[]
+
+:leveloffset: -1
