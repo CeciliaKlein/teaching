@@ -1,7 +1,7 @@
 = Mapping
 Create a folder for the alignment steps:
 
-[source,bash]
+[source,cmd]
 ----
 mkdir alignments
 ----
@@ -25,21 +25,21 @@ STAR --runThreadN 2 --genomeDir ~/rnaseq/refs/mouse_genome_mm9_STAR_index --read
 
 Submit the job to the cluster:
 
-[source,bash]
+[source,cmd]
 ----
 qsub -cwd -q RNAseq -l virtual_free=32G -pe smp 2 -N mapping_rnaseq_course -e logs -o logs ./run_star.sh
 ----
 
 When finished we can look at the bam file:
 
-[source,bash]
+[source,cmd]
 ----
 samtools view -h ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
 ----
 
 or at the mapping statistics that come with STAR:
 
-[source,bash]
+[source,cmd]
 ----
 cat ~/rnaseq/alignments/mouse_cns_E18_rep1_Log.final.out
 ----
@@ -81,7 +81,7 @@ cat ~/rnaseq/alignments/mouse_cns_E18_rep1_Log.final.out
 
 And get some general statistics about mapping:
 
-[source,bash]
+[source,cmd]
 ----
 # load env
 source ~/rnaseq/.rnaseqenv
