@@ -1,4 +1,4 @@
-= RNAseq data processing
+= RNA-seq data processing
 
 include::intro.adoc[]
 
