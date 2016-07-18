@@ -23,13 +23,15 @@ include::ant-cluster.adoc[tags=access,leveloffset=-1]
 
 include::rna-seq-data.adoc[]
 
-include::edit-files.adoc[]
+include::edit_files/main.adoc[]
 
 include::gene-annotation.adoc[]
 
-include::rna-seq-processing.adoc[]
+include::file_formats/main.adoc[]
 
-include::rna-seq-analyses.adoc[]
+include::processing/main.adoc[]
+
+include::analysis/main.adoc[]
 
 ifeval::["{backend}" == "pdf"]
 [[cheatsheet]]
