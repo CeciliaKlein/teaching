@@ -1,4 +1,4 @@
-= RNAseq data
+= RNA-seq data
 :setup_script: /no_backup_isis/rg/projects/courses/rnaseq/setup2015nov
 
 In order to get all the required files for the hands-on you need to run the following command in your terminal:
