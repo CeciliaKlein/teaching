@@ -1,0 +1,10 @@
+= Gedit
+
+Gedit is a text editor with graphical user interface. To create a new file in the current folder just call `gedit` with the name of the file:
+
+[source,bash]
+----
+gedit file.txt
+----
+
+When you are done, save the file (by pressing kbd:[Ctrl+S] or by selecting menu:File[Save]) and close Gedit.
