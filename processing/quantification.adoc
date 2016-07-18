@@ -2,7 +2,7 @@
 
 Create a folder for the quantifications:
 
-[source,bash]
+[source,cmd]
 ----
 mkdir quantifications
 ----
