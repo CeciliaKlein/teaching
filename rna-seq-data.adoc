@@ -3,14 +3,14 @@
 
 In order to get all the required files for the hands-on you need to run the following command in your terminal:
 
-[source,bash, subs="attributes"]
+[source,cmd,subs="attributes"]
 ----
 {setup_script}
 ----
 
 The setup script copies all the required files into the `rnaseq` folder under your `$HOME`. You can see the contents of the directory in a tree-like format as follows:
 
-[source,bash]
+[source,cmd]
 ----
 tree ~/rnaseq
 ----
