@@ -25,7 +25,7 @@ bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed ~/rnaseq/refs/mouse_
 
 Submit the job to the cluster:
 
-[source,bash]
+[source,cmd]
 ----
 qsub -cwd -q RNAseq -N bigwig_rnaseq_course -e logs -o logs ./run_bigwig.sh
 ----
