@@ -6,7 +6,7 @@
 
 To connect to the cluster login node type:
 
-[source,bash]
+[source,cmd]
 ----
 ssh -Y <username>@ant-login.linux.crg.es
 ----
