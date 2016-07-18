@@ -1,12 +1,11 @@
 = Writing and editing files
+:experimental:
 
 There are several ways to write and edit files.
-The most commonly used text editors are `vi`, `emacs` and `gedit`.
+The most commonly used text editors are `vi`, `emacs` and `gedit`. To make things simpler, we will use `gedit` from now on.
 
 :leveloffset: +1
 
 include::gedit.adoc[]
-
-include::vi.adoc[]
 
 :leveloffset: -1
