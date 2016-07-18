@@ -1,0 +1,15 @@
+= RPKM distribution
+
+Have a look at the distribution of RPKM values:
+
+[source,bash]
+----
+rpkm_distribution.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age
+----
+
+To look at the plot:
+
+[source,bash]
+----
+evince boxplot.log_T.psd_0.out.pdf
+----
