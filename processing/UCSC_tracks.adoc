@@ -43,14 +43,12 @@ On the main menu, click on btn:[Genomes].
 Click on btn:[Add custom track].
 Make sure the assembly information is as follows:
 
-[source,html]
 ----
 clade: Mammal, genome: Mouse, assembly: July 2007 (NCBI/mm9)
 ----
 
 Paste the track specifications for each file in the box `Paste URLs or data`:
 
-[source,track]
 ----
 track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep1_Aligned.sortedByCoord.out.bw
 track name=mouse_cns_E14_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep2_Aligned.sortedByCoord.out.bw
