@@ -1,5 +1,4 @@
 = Vi
-:experimental:
 :vim-beginners-guide: http://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi
 
 Vi is a text editor with a command mode interface. See {vim-beginners-guide}[this article^] for a beginner's guide.
