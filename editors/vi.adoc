@@ -5,7 +5,7 @@ Vi is a text editor with a command mode interface. See {vim-beginners-guide}[thi
 
 To create a new file in the current folder just call `vi` with the name of the file:
 
-[source,bash]
+[source,cmd]
 ----
 vi file.txt
 ----
