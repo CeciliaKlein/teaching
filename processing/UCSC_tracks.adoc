@@ -1,4 +1,5 @@
 = Signal tracks for the UCSC genome browser
+:UCSC_genome_browser: http://genome.ucsc.edu
 
 == Create bigwig files from mappings
 

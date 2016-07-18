@@ -1,6 +1,5 @@
 = RNA-seq data analysis
 :experimental:
-:UCSC_genome_browser: http://genome.ucsc.edu
 
 Create a directory dedicated to the analyses:
 
