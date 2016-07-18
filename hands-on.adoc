@@ -23,7 +23,7 @@ include::ant-cluster.adoc[tags=access,leveloffset=-1]
 
 include::rna-seq-data.adoc[]
 
-include::edit_files/main.adoc[]
+include::editors/main.adoc[]
 
 include::gene-annotation.adoc[]
 

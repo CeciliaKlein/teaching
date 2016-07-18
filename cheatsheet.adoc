@@ -11,7 +11,7 @@
 
 include::linux-commands.adoc[]
 
-include::edit_files/main.adoc[]
+include::editors/main.adoc[]
 
 include::ant-cluster.adoc[]
 
