@@ -1,4 +1,4 @@
-= RNA-seq course hands-on
+= RNA-seq course hands-on 2016
 
 * [ ] change setup
 * [x] add file formats
