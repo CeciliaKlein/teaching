@@ -1,4 +1,4 @@
-= RNA-seq course hands-on 2016
+= TODO
 
 * [ ] change setup (use symlinks)
 * [x] add file formats
