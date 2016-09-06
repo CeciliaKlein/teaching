@@ -1,6 +1,6 @@
 = RNA-seq course hands-on 2016
 
-* [ ] change setup
+* [ ] change setup (use symlinks)
 * [x] add file formats
 * [x] move bigwig to mapping section (check http://genome.crg.es/~epalumbo/ngs2016[ngs2016^])
 * [x] remove `vi` part?
