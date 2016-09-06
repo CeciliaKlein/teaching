@@ -1,1 +1,9 @@
 .DS_Store
+env/
+.bundle/
+git_hooks/
+deploy-list.txt
+index.html
+cheatsheet.html
+hands-on.pdf
+cheatsheet.pdf
