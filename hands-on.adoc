@@ -16,12 +16,11 @@ ifeval::["{backend}" == "pdf"]
 :cheatsheet: cheatsheet,at the end of this document
 endif::[]
 
-include::todo.adoc[]
+include::todo.adoc[leveloffset=+1]
 
 :sectnums:
 
 :leveloffset: +1
-
 
 include::introduction.adoc[]
 
