@@ -46,7 +46,7 @@ $(DEPLOY_LIST):
 	@echo $(CHEATSHEET_HTML) >> $(DEPLOY_LIST)
 	@echo $(LOGO_JPG) >> $(DEPLOY_LIST)
 	@echo $(LOGO_PNG) >> $(DEPLOY_LIST)
-	@echo css >> $(DEPLOY_LIST)
+	@echo css/ >> $(DEPLOY_LIST)
 
 check_deploy:
 ifndef RNASEQ_DEPLOY_DIR
