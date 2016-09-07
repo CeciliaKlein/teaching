@@ -7,4 +7,4 @@
 * [ ] remove `bamstats` and add new genomic region command
 * [x] add command for generating the transcript matrix
 * [x] update `RSEM` command (#remove bayesian part#)
-* [ ] [line-through]##add [red]#splicing# and [red]#lncrnas# parts once ready##
+* [ ] add [red]#splicing# and [red]#lncrnas# parts once ready
