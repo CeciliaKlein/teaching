@@ -12,4 +12,6 @@ include::UCSC_tracks.adoc[]
 
 include::quantification.adoc[]
 
+include::splicing.adoc[]
+
 :leveloffset: -1
