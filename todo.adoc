@@ -1,11 +1,13 @@
 = TODO
 
-* [ ] change setup (use symlinks)
+* [ ] change setup
 * [x] add file formats
 * [x] move bigwig to mapping section (check http://genome.crg.es/~epalumbo/ngs2016[ngs2016^])
 * [x] remove `vi` part?
 * [ ] remove `bamstats` and add new genomic region command
 * [x] add command for generating the transcript matrix
 * [x] update `RSEM` command (#remove bayesian part#)
-* [ ] add [red]#splicing# section
-* [ ] add [red]#long non-coding RNA# section
+* [ ] separate bigwig generation from UCSC visualization
+* [ ] add subsection in RNA-seeq analysis on subsetting long-non-coding and protein coding genes
+* [ ] duplicate RPKM ditribution part
+* [ ] move [red]#splicing analysis# to own section
