@@ -1,0 +1,12 @@
+= Protein coding vs long-non coding
+
+For the first part of the analysis section we are going to produce separate plots for [crg]#protein coding# and [crg]#long non-coding# genes. We will split the quantification matrix, using gene identifiers selected in <<gene-annotation.adoc#_extract_gene_identifiers,4.1>>:
+
+[source,cmd]
+----
+# protein-coding
+(head -1 ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv; grep -F protein_coding_IDs.txt) > ../quantifications/encode.mouse.pc.gene.FPKM.idr_NA.tsv
+
+# long non-coding
+(head -1 ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv; grep -F lincRNA_IDs.txt) > ../quantifications/encode.mouse.linc.gene.FPKM.idr_NA.tsv
+----

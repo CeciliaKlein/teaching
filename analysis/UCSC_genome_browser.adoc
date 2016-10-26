@@ -1,0 +1,30 @@
+= Visualize RNA-seq signal in the UCSC genome browser
+:UCSC_genome_browser: http://genome.ucsc.edu
+
+Add the gene expression track to the genome browser in bigWig format.
+The bigWig files must be either uploaded or linked (if they are present somewhere online)
+
+Go to the UCSC genome browser web page:
+
+{UCSC_genome_browser}[^]
+
+On the main menu, click on btn:[Genomes].
+Click on btn:[Add custom track].
+Make sure the assembly information is as follows:
+
+----
+clade: Mammal, genome: Mouse, assembly: July 2007 (NCBI/mm9)
+----
+
+Paste the track specifications for each file in the box `Paste URLs or data`:
+
+----
+track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep1_Aligned.sortedByCoord.out.bw
+track name=mouse_cns_E14_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E14_rep2_Aligned.sortedByCoord.out.bw
+track name=mouse_cns_E18_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bw
+track name=mouse_cns_E18_rep2.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2015nov/mouse_cns_E18_rep2_Aligned.sortedByCoord.out.bw
+----
+
+Click btn:[Submit]
+
+Go to the genome browser to look at some genes and their RNA-seq signal
