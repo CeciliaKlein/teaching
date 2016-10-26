@@ -1,0 +1,28 @@
+= RNA-seq signal files
+
+Create a bash script called `run_bigwig.sh` with the following:
+
+[source,bash,subs="{markup-in-source}"]
+----
+#!/bin/bash -e
+
+# load env
+. {env_file}
+
+# load module
+module load BEDTools/2.21.0-goolf-1.4.10-no-OFED
+module load KentUtils/308-goolf-1.4.10-no-OFED
+
+
+# create bedgraph from mappings
+genomeCoverageBed -split -bg -ibam alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam > alignments/mouse_cns_E18_rep1_bedGraph.bed
+# generate bigwig from bedgraph
+bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed {rnaseq_folder}/refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.bw
+----
+
+Submit the job to the cluster:
+
+[source,cmd]
+----
+qsub -cwd -q RNAseq -N bigwig_rnaseq_course -e logs -o logs ./run_bigwig.sh
+----
