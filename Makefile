@@ -12,22 +12,23 @@ README = hands-on.adoc
 CHEATSHEET = cheatsheet.adoc
 DEPLOY_LIST = deploy-list.txt
 PDF = pdf
+ATTRS =
 
 all: html pdf
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
 $(HTML_FILE): setup $(README)
-	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) $(ATTRS) -o $(HTML_FILE)
+	GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) $(ATTRS) -o $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
+$(CHEATSHEET_HTML): setup $(CHEATSHEET)
+	GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) $(ATTRS) -o $(CHEATSHEET_HTML)
+	@echo == Written file $(CHEATSHEET_HTML)
 
-draft: set-draft $(HTML_FILE) $(CHEATSHEET_HTML)
+draft: set-draft html
 .PHONY: draft set-draft
 set-draft:
-ATTRS = -a draft
+	$(eval ATTRS := -a draft)
 
-$(CHEATSHEET_HTML): setup $(CHEATSHEET)
-	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) $(ATTRS) -o $(CHEATSHEET_HTML)
-	@echo == Written file $(CHEATSHEET_HTML)
 
 pdf: $(PDF_FILE) $(CHEATSHEET_PDF)
 $(PDF_FILE): setup $(README)
