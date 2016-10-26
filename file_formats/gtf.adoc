@@ -13,18 +13,18 @@ The attribute list must begin with the two mandatory attributes:
 
 Check the nineth GTF field of the sample annotation of the workshop:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-cut -f9 ~ngs00/refs/mm65.long.ok.gtf | head -1
+cut -f9 {annotation} | head -1
 ----
 ----
 gene_id "ENSMUSG00000076490"; transcript_id "ENSMUST00000103291"; exon_number "1"; gene_name "Trbc1"; gene_type "IG_C_gene"; transcript_name "Trbc1-201"; protein_id "ENSMUSP00000100099"; transcript_type "IG_C_gene";
 ----
 
 Look at the first line:
-[]
+[source, cmd, subs="{markup-in-source}"]
 ----
-head -1 ~ngs00/refs/mm65.long.ok.gtf | tr '\t' '\n'
+head -1 {annotation} | tr '\t' '\n'
 ----
 ----
 chr6 <1>
@@ -53,23 +53,23 @@ The third field in the GFF specification represents feature type for the line. I
 
 Look for the first of each feature in the sample annotation of the workshop:
 
-[source,cmd,subs="+quotes"]
+[source,cmd,subs="{markup-in-source}"]
 ----
-awk '$3=="intron"' ~ngs00/refs/mm65.long.ok.gtf | head -1
+awk '$3=="intron"' {annotation} | head -1
 ----
 ----
 chr17	ENSEMBL	#intron#	46893352	46893968	.	-	.	gene_id "ENSMUSG00000036858"; transcript_id "ENSMUST00000041012"; exon_number "3"; gene_name "Ptcra"; gene_type "IG_C_gene"; transcript_name "Ptcra-201"; transcript_type "IG_C_gene";
 ----
-[source,cmd,subs="+quotes"]
+[source,cmd,subs="{markup-in-source}"]
 ----
-awk '$3=="gene"' ~ngs00/refs/mm65.long.ok.gtf | head -1
+awk '$3=="gene"' {annotation} | head -1
 ----
 ----
 chr4	ENSEMBL	#gene#	116791824	116798271	.	-	.	gene_id "ENSMUSG00000073771"; transcript_id "ENSMUSG00000073771"; gene_type "protein_coding"; gene_status "NULL"; gene_name "Btbd19"; transcript_type "protein_coding"; transcript_status "NULL"; transcript_name "Btbd19";
 ----
-[source,cmd,subs="+quotes"]
+[source,cmd,subs="{markup-in-source}"]
 ----
-awk '$3=="transcript"' ~ngs00/refs/mm65.long.ok.gtf | head -1
+awk '$3=="transcript"' {annotation} | head -1
 ----
 ----
 chr13	ENSEMBL	transcript	19305972	19308487	.	+	.	gene_id "ENSMUSG00000076749"; transcript_id "ENSMUST00000103558"; exon_number "1"; gene_name "Gm17004"; gene_type "IG_C_gene"; transcript_name "Gm17004-201"; transcript_type "IG_C_gene";

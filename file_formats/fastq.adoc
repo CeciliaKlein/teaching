@@ -6,9 +6,9 @@ FASTQ is a text-based format for storing biological sequences and their correspo
 
 Have a look at one of the FASTQ files for the workshop:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-zcat ~ngs00/data/mouse_cns_E18_rep1_1.fastq.gz | head -4
+zcat {rnaseq_folder}/data/mouse_cns_E18_rep1_1.fastq.gz | head -4
 ----
 ----
 @HWI-ST985:73:C08BWACXX:8:1101:1920:2006 1:N:0: <1>

@@ -1,4 +1,4 @@
-= Mapping
+\= Mapping
 Create a folder for the alignment steps:
 
 [source,cmd]
@@ -8,19 +8,19 @@ mkdir alignments
 
 Create a bash script called `run_star.sh` with the following:
 
-[source,bash]
+[source,bash,subs="{markup-in-source}"]
 ----
 #!/bin/bash -e
 
 # load env
-. ~/rnaseq/.rnaseqenv
+. {env_file}
 
 # load modules
 module load pigz/2.3.1-goolf-1.4.10-no-OFED
 module load STAR/2.4.2a-goolf-1.4.10-no-OFED
 
 # run the mapping step
-STAR --runThreadN 2 --genomeDir ~/rnaseq/refs/mouse_genome_mm9_STAR_index --readFilesIn ~/rnaseq/data/mouse_cns_E18_rep1_1.fastq.gz ~/rnaseq/data/mouse_cns_E18_rep1_2.fastq.gz --outSAMunmapped Within --outFilterType BySJout --outSAMattributes NH HI AS NM MD --readFilesCommand pigz -p2 -dc --outSAMtype BAM SortedByCoordinate --quantMode TranscriptomeSAM --outFileNamePrefix alignments/mouse_cns_E18_rep1_
+STAR --runThreadN 2 --genomeDir {rnaseq_folder}/refs/mouse_genome_mm9_STAR_index --readFilesIn {rnaseq_folder}/data/mouse_cns_E18_rep1_1.fastq.gz {rnaseq_folder}/data/mouse_cns_E18_rep1_2.fastq.gz --outSAMunmapped Within --outFilterType BySJout --outSAMattributes NH HI AS NM MD --readFilesCommand pigz -p2 -dc --outSAMtype BAM SortedByCoordinate --quantMode TranscriptomeSAM --outFileNamePrefix alignments/mouse_cns_E18_rep1_
 ----
 
 Submit the job to the cluster:

@@ -8,10 +8,10 @@ include::fastqc.adoc[]
 
 include::mapping.adoc[]
 
-include::UCSC_tracks.adoc[]
+include::bigwig.adoc[]
 
 include::quantification.adoc[]
 
-include::splicing.adoc[]
+//include::splicing.adoc[]
 
 :leveloffset: -1

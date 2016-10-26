@@ -1,12 +1,5 @@
 = Fastq files and read QC
 
-Have a look at one of our fastq files:
-
-[source,cmd]
-----
-zcat ~/rnaseq/data/mouse_cns_E14_rep1_1.fastq.gz | head -4
-----
-
 Create a folder for the fastqc output:
 
 [source,cmd]
@@ -18,18 +11,18 @@ Create a bash script called `run_fastqc.sh`.
 
 This script should contain the following command:
 
-[source,bash]
+[source,bash,subs="{markup-in-source}"]
 ----
 #!/bin/bash -e
 
 # load env
-. ~/rnaseq/.rnaseqenv
+. {env_file}
 
 # load module
 module load FastQC/0.11.2
 
 # run fastqc
-fastqc -o fastqc -f fastq ~/rnaseq/data/mouse_cns_E18_rep1_1.fastq.gz
+fastqc -o fastqc -f fastq {rnaseq_folder}/data/mouse_cns_E18_rep1_1.fastq.gz
 ----
 
 Submit the job to the cluster:
@@ -41,7 +34,7 @@ qsub -cwd -q RNAseq -l virtual_free=8G -N fastqc_rnaseq_course -e logs -o logs .
 
 To monitor the status of the job, type `qstat`.
 
-You are able to display the fastqc results on the browser. Type the following in the terminal to open a browser showing your FastQC results:
+You can view fastqc results on the browser. Type the following in the terminal to open a browser showing your FastQC results:
 
 [source,cmd]
 ----

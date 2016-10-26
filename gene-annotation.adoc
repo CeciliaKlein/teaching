@@ -1,20 +1,21 @@
 = Reference gene annotation
 :experimental:
+:annotation: {rnaseq_folder}/refs/mm65.long.ok.gtf
 
 Look at the mouse gene annotation (ensembl v65, long genes):
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-more ~/rnaseq/refs/mm65.long.ok.gtf
+more {annotation}
 ----
 
 Type kbd:[q] to exit the view.
 
 Store information about gene Sec23a in a separate file:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-grep Sec23a ~/rnaseq/refs/mm65.long.ok.gtf > Sec23a.gff
+grep Sec23a {annotation} > Sec23a.gff
 ----
 
 Count the number of transcripts of this gene:
@@ -34,3 +35,16 @@ awk '$3=="exon"' Sec23a.gff | wc -l
 What is the biotype of the gene?
 
 What is the biotype of each transcript of this gene?
+
+== Extract gene identifiers
+
+Sometimes it is useful to get a list of gene identifiers from the annotation. For example, using the `gene_type` GTF tag:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+# select protein-coding gene ids
+awk '$3=="gene" && $0~/gene_type "protein_coding"/{ match($0, /gene_id "([^"]+)/, id); print id[1] }' {annotation} | sort > protein_coding_IDs.txt
+
+# select long non-coding gene ids
+awk '$3=="gene" && $0~/gene_type "lincRNA"/{ match($0, /gene_id "([^"]+)/, id); print id[1] }' {annotation} | sort > lincRNA_IDs.txt
+----

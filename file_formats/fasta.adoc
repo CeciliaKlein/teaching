@@ -4,9 +4,9 @@ FASTA is a text-based format for representing either nucleotide sequences or pep
 
 Let's have a look at the genome FASTA file we user in the workshop:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-head ~ngs00/refs/mouse_genome_mm9.fa
+head {rnaseq_folder}/refs/mouse_genome_mm9.fa
 ----
 ----
 >chr1 <1>

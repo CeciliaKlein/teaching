@@ -15,7 +15,7 @@ And move into it:
 cd analysis
 ----
 
-Load the environment:
+If you did not load load the environment yet, do it now:
 
 [source,cmd]
 ----
@@ -24,6 +24,8 @@ Load the environment:
 
 :leveloffset: +1
 
+include::separate_genes.adoc[]
+
 include::rpkm_distribution.adoc[]
 
 include::clustering.adoc[]
@@ -31,5 +33,7 @@ include::clustering.adoc[]
 include::differential_expression.adoc[]
 
 include::go_analysis.adoc[]
+
+include::UCSC_genome_browser.adoc[]
 
 :leveloffset: -1
