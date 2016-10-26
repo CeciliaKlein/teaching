@@ -1,13 +1,18 @@
 = TODO
 
-* [ ] change setup
+* [ ] remove setup, use a refernece folder (e.g. `/software/rg/rnaseq`)
 * [x] add file formats
 * [x] move bigwig to mapping section (check http://genome.crg.es/~epalumbo/ngs2016[ngs2016^])
-* [x] remove `vi` part?
-* [ ] remove `bamstats` and add new genomic region command
+* [x] remove `vi` part
+* [ ] remove `bamstats` (#and add new genomic region command?#)
 * [x] add command for generating the transcript matrix
 * [x] update `RSEM` command (#remove bayesian part#)
-* [ ] separate bigwig generation from UCSC visualization
-* [ ] add subsection in RNA-seeq analysis on subsetting long-non-coding and protein coding genes
-* [ ] duplicate RPKM ditribution part
-* [ ] move [red]#splicing analysis# to own section
+* [x] separate bigwig generation from UCSC visualization
+* [x] add subsection in RNA-seq analysis on subsetting long-non-coding and protein coding genes
+* [ ] check [red]#protein coding vs long non-coding# section and update commands if ok
+* [ ] update command for separating pc genes and linc genes in the quantification matrix
+* [x] duplicate RPKM ditribution part
+* [x] move [red]#splicing analysis# to own section
+* [ ] update content in [red]#splicing analysis# section
+* [ ] show environment file in 2
+* [ ] remove bayesian counts from RSEM output
