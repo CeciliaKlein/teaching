@@ -1,66 +1,48 @@
 = RNA-seq data
-:setup_script: /no_backup_isis/rg/projects/courses/rnaseq/setup2015nov
+:rnaseq_folder: /software/rg/rnaseq
+:env_file: {rnaseq_folder}/.rnaseqenv
 
-In order to get all the required files for the hands-on you need to run the following command in your terminal:
+All the data needed for the course is stored under:
+
+[source,subs="{markup-in-source}"]
+----
+{rnaseq_folder}
+----
+
+We prepared a bash file with the commands needed to set up your environment for the hands-on. The file needs to be http://ss64.com/bash/source.html[sourced^] in your current terminal session. Run the following command in your terminal in order to do it:
 
 [source,cmd,subs="attributes"]
 ----
-{setup_script}
+. {env_file}
 ----
 
-The setup script copies all the required files into the `rnaseq` folder under your `$HOME`. You can see the contents of the directory in a tree-like format as follows:
+You can have a look at the contents of the file:
+
+[source,cmd,subs="attributes"]
+----
+cat {env_file}
+----
+
+----
+# environment setup for modules
+export PATH=/software/as/el6.5/modules/Modules/3.2.10/bin/:$PATH
+export LD_LIBRARY_PATH=/software/as/el6.5/Tcl/lib/:$LD_LIBRARY_PATH
+source /software/as/el6.5/modules/Modules/3.2.10/init/bash
+
+# add modulefiles
+module use /software/as/el6.5/EasyBuild/CRG/modules/all/
+module use /software/rg/el6.3/EasyBuild/software/modules/all/
+
+# set R libraries path
+export R_LIBS=/software/R/packages/
+
+# add course scripts to path
+export PATH=/software/rg/rnaseq/bin:$PATH
+----
+
+As a working folder for the hands-on we create the folder `rnaseq` in your home folder and move to it:
 
 [source,cmd]
 ----
-tree ~/rnaseq
+mkdir -p ~/rnaseq && cd ~/rnaseq
 ----
-
-And this should be the output:
-
-[source,bash]
-----
-/users/<group>/<username>/rnaseq
-├── bin
-│   ├── BAMstats.py
-│   ├── dashboard2tsv.py
-│   ├── DESeq.analysis.R
-│   ├── edgeR.analysis.R
-│   ├── gff2gff.awk
-│   ├── ggheatmap.R
-│   ├── GO_enrichment.R
-│   ├── matrix_to_dist.R
-│   ├── normalize.matrix.R
-│   ├── retrieve_element_rpkms.py
-│   ├── rpkm_distribution.R
-│   ├── selectMatrixRows.sh
-│   ├── terrain.colors.3.txt
-│   ├── TrtoGn_RPKM.sh
-│   └── VennDiagram.R
-├── data
-│   ├── mouse_cns_E14_rep1_1.fastq.gz
-│   ├── mouse_cns_E14_rep1_2.fastq.gz
-│   ├── mouse_cns_E14_rep2_1.fastq.gz
-│   ├── mouse_cns_E14_rep2_2.fastq.gz
-│   ├── mouse_cns_E18_rep1_1.fastq.gz
-│   ├── mouse_cns_E18_rep1_2.fastq.gz
-│   ├── mouse_cns_E18_rep2_1.fastq.gz
-│   ├── mouse_cns_E18_rep2_2.fastq.gz
-│   ├── quantifications.index.tsv
-│   └── quantifications.index.txt
-└── refs
-    ├── mm65.long.ok.gtf
-    ├── mouse_genome_mm9.fa.fai
-    ├── mouse_genome_mm9_RSEM_index
-    │   ├── RSEMref.chrlist
-    │   ├── RSEMref.grp
-    │   ├── RSEMref.idx.fa
-    │   ├── RSEMref.n2g.idx.fa
-    │   ├── RSEMref.seq
-    │   ├── RSEMref.ti
-    │   └── RSEMref.transcripts.fa
-    └── mouse_genome_mm9_STAR_index -> /no_backup_isis/rg/projects/courses/rnaseq/refs/mouse_genome_mm9_STAR_index
-
-5 directories, 34 files
-----
-
-NOTE: **STAR** index folder has been soft linked because of its size
