@@ -10,6 +10,7 @@ ifeval::["{backend}" == "html5"]
 :source-highlighter: highlight.js
 :highlightjs-theme: github
 :toc: left
+:markup-in-source: attributes
 :cheatsheet: cheatsheet.adoc#,here
 endif::[]
 ifeval::["{backend}" == "pdf"]
@@ -40,6 +41,8 @@ include::file_formats/main.adoc[]
 include::processing/main.adoc[]
 
 include::analysis/main.adoc[]
+
+include::analysis/splicing.adoc[]
 
 ifeval::["{backend}" == "pdf"]
 [[cheatsheet]]

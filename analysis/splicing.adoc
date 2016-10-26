@@ -1,0 +1,90 @@
+= Splicing analysis
+
+Go back to the base folder:
+
+[source,cmd]
+----
+cd ~/rnaseq
+----
+
+Create a folder for the splicing analysis and move to it:
+
+[source,cmd]
+----
+mkdir splicing && cd splicing
+----
+
+== Run AStalavista
+
+In order to run AStalavista you first need to load the environment module:
+
+[source,cmd]
+----
+module load astalavista/3.2-Java-1.7.0_21
+----
+
+Extract alternative splicing (AS) events from a given genomic annotation of exon-intron gene coordinates:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+astalavista -t asta -i {rnaseq_folder}/refs/mm65.long.ok.gtf -o astalavista.pw.gtf.gz
+----
+
+Uncompress astalavista output:
+
+[source,cmd]
+----
+gunzip astalavista.pw.gtf.gz
+----
+
+To each pairwise event add a unique code obtained by the type of event and a counter
+
+[source,cmd]
+----
+cat astalavista.pw.gtf | awk '{split($3,a,"_");tag=toupper(a[1]); d[tag]++; id=d[tag]; zeros=sprintf("%*s",7-length(id),""); gsub(/ /, "0", zeros); print $0"event_id \"PW"(tag)(zeros)(id)"\";"}' > astalavista.pw.id.gtf
+----
+
+Get statistics of events:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+cat {rnaseq_folder}/splicing/events.txt | while read ev code; do echo -e "$ev\t$(cat astalavista.pw.gtf | awk '$3=="as_event"' | grep -P "$code" | wc -l)"; done > events.stats.txt
+----
+
+== Compute PSI values in specific pairs of transcripts
+
+Compute PSI and create a table for each sample:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+ls {rnaseq_folder}/splicing/*.A06IPSA.ssj.tsv |while read f; do id=$(basename $f .A06IPSA.ssj.tsv); ssj=$f; ssc=$(echo $f | sed 's/.ssj.tsv/.ssc.tsv/'); psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $ssj --ssc $ssc -o ${id}.$(basename astalavista.pw.id.gtf) --verbose | grep exon_skipping_single |cut -f1,4> exon_skipping_single/${id}.$(basename astalavista.pw.id.gtf .gtf).tsv; done &> psi.as.log
+----
+
+Create master table with all samples:
+
+[source,cmd]
+----
+join.2col.files.from.dir.pl --dir exon_skipping_single --tag astalavista > exon_skipping_single/exon_skipping_single.tsv
+----
+
+== Generate a heatmap with best examples
+
+[source,cmd,subs="{markup-in-source}"]
+----
+grep -v NA exon_skipping_single/exon_skipping_single.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.65 && $5>0.65) || ($2>0.65 && $3>0.65 && $4<0.35 && $5<0.35)){print}' | ggheatmap.R -i stdin --row_dendro --col_dendro -o exon_skipping_single/exon_skipping_single.pdf --row_metadata cp {rnaseq_folder}/splicing/metadata.PWAS.tsv --merge_row_mdata_on id --row_labels exon_position,event_position
+----
+
+== UCSC tracks
+
+Have a look at the examples in the heatmap on the UCSC genome browser:
+
+----
+track name=mouse_cns_E14_rep1_plus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE14PlusRawRep1.bigWig
+track name=mouse_cns_E14_rep1_minus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE14MinusRawRep1.bigWig
+track name=mouse_cns_E14_rep2_plus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE14PlusRawRep2.bigWig
+track name=mouse_cns_E14_rep2_minus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE14MinusRawRep2.bigWig
+track name=mouse_cns_E18_rep1_plus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE18PlusRawRep1.bigWig
+track name=mouse_cns_E18_rep1_minus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE18MinusRawRep1.bigWig
+track name=mouse_cns_E18_rep2_plus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE18PlusRawRep2.bigWig
+track name=mouse_cns_E18_rep2_minus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=69,139,0 viewLimits=0:30 bigDataUrl=http://genome.crg.es/~epalumbo/rnaseq/2016/wgEncodeCshlLongRnaSeqCnsE18MinusRawRep2.bigWig
+----
