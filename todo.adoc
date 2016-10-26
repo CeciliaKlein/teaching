@@ -4,7 +4,7 @@
 * [x] add file formats
 * [x] move bigwig to mapping section (check http://genome.crg.es/~epalumbo/ngs2016[ngs2016^])
 * [x] remove `vi` part
-* [ ] remove `bamstats` (#and add new genomic region command?#)
+* [x] remove `bamstats` ([line-through]#and add new genomic region command?#)
 * [x] add command for generating the transcript matrix
 * [x] update `RSEM` command (#remove bayesian part#)
 * [x] separate bigwig generation from UCSC visualization
