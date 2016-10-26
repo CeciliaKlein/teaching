@@ -9,10 +9,10 @@
 * [x] update `RSEM` command (#remove bayesian part#)
 * [x] separate bigwig generation from UCSC visualization
 * [x] add subsection in RNA-seq analysis on subsetting long-non-coding and protein coding genes
-* [ ] check [red]#protein coding vs long non-coding# section and update commands if ok
-* [ ] update command for separating pc genes and linc genes in the quantification matrix
+* [x] check [red]#protein coding vs long non-coding# section and update commands if ok
+* [x] update command for separating pc genes and linc genes in the quantification matrix
 * [x] duplicate RPKM ditribution part
 * [x] move [red]#splicing analysis# to own section
-* [ ] update content in [red]#splicing analysis# section
-* [ ] show environment file in 2
+* [x] update content in [red]#splicing analysis# section
+* [x] show environment file in rna-seq data section
 * [ ] remove bayesian counts from RSEM output
