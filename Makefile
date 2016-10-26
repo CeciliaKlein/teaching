@@ -7,6 +7,7 @@ CHEATSHEET_HTML = cheatsheet.html
 CHEATSHEET_PDF = cheatsheet.pdf
 LOGO_JPG = assets/crg_blue_logo.jpg
 LOGO_PNG = assets/crg_blue_logo.png
+DRAFT = assets/draft.png
 README = hands-on.adoc
 CHEATSHEET = cheatsheet.adoc
 DEPLOY_LIST = deploy-list.txt
@@ -16,11 +17,16 @@ all: html pdf
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
 $(HTML_FILE): setup $(README)
-	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) -o $(HTML_FILE)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) $(ATTRS) -o $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
 
+draft: set-draft $(HTML_FILE) $(CHEATSHEET_HTML)
+.PHONY: draft set-draft
+set-draft:
+ATTRS = -a draft
+
 $(CHEATSHEET_HTML): setup $(CHEATSHEET)
-	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) -o $(CHEATSHEET_HTML)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) $(ATTRS) -o $(CHEATSHEET_HTML)
 	@echo == Written file $(CHEATSHEET_HTML)
 
 pdf: $(PDF_FILE) $(CHEATSHEET_PDF)
@@ -41,11 +47,12 @@ $(GEMS): $(GEMS)/bin/bundle
 $(GEMS)/bin/bundle:
 	@GEM_HOME=$(GEMS) gem install bundler
 
-$(DEPLOY_LIST):
+$(DEPLOY_LIST): 
 	@echo $(HTML_FILE) >> $(DEPLOY_LIST)
 	@echo $(CHEATSHEET_HTML) >> $(DEPLOY_LIST)
 	@echo $(LOGO_JPG) >> $(DEPLOY_LIST)
 	@echo $(LOGO_PNG) >> $(DEPLOY_LIST)
+	@echo $(DRAFT) >> $(DEPLOY_LIST)
 	@echo css/ >> $(DEPLOY_LIST)
 
 check_deploy:
@@ -53,7 +60,10 @@ ifndef RNASEQ_DEPLOY_DIR
 	$(error Undefined variable RNASEQ_DEPLOY_DIR)
 endif
 
-deploy: html $(DEPLOY_LIST) check_deploy
+deploy: html $(DEPLOY_LIST) check_deploy sync
+deploy-draft: draft $(DEPLOY_LIST) check_deploy sync
+
+sync:
 	rsync -a --files-from=$(DEPLOY_LIST) . $(RNASEQ_DEPLOY_DIR)
 
 clean:
