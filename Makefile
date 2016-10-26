@@ -18,10 +18,10 @@ all: html pdf
 
 html: $(HTML_FILE) $(CHEATSHEET_HTML)
 $(HTML_FILE): setup $(README)
-	GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) $(ATTRS) -o $(HTML_FILE)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(README) $(ATTRS) -o $(HTML_FILE)
 	@echo == Written file $(HTML_FILE)
 $(CHEATSHEET_HTML): setup $(CHEATSHEET)
-	GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) $(ATTRS) -o $(CHEATSHEET_HTML)
+	@GEM_HOME=$(GEMS) $(GEMS)/bin/asciidoctor $(CHEATSHEET) $(ATTRS) -o $(CHEATSHEET_HTML)
 	@echo == Written file $(CHEATSHEET_HTML)
 
 draft: set-draft html
