@@ -17,9 +17,9 @@ cd analysis
 
 If you did not load load the environment yet, do it now:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-. ~/rnaseq/.rnaseqenv
+. {env_file}
 ----
 
 :leveloffset: +1
