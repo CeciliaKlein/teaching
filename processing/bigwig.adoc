@@ -17,7 +17,7 @@ module load KentUtils/308-goolf-1.4.10-no-OFED
 # create bedgraph from mappings
 genomeCoverageBed -split -bg -ibam alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam > alignments/mouse_cns_E18_rep1_bedGraph.bed
 # generate bigwig from bedgraph
-bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed {rnaseq_folder}/refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.bw
+bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed {rnaseq_folder}refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.bw
 ----
 
 Submit the job to the cluster:

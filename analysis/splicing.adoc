@@ -27,7 +27,7 @@ Extract alternative splicing (AS) events from a given genomic annotation of exon
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-astalavista -t asta -i {rnaseq_folder}/refs/mm65.long.ok.gtf -o astalavista.pw.gtf.gz
+astalavista -t asta -i {rnaseq_folder}refs/mm65.long.ok.gtf -o astalavista.pw.gtf.gz
 ----
 
 Uncompress astalavista output:
@@ -48,7 +48,7 @@ Get statistics of events:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-cat {rnaseq_folder}/splicing/events.txt | while read ev code; do echo -e "$ev\t$(cat astalavista.pw.gtf | awk '$3=="as_event"' | grep -P "$code" | wc -l)"; done > events.stats.txt
+cat {rnaseq_folder}splicing/events.txt | while read ev code; do echo -e "$ev\t$(cat astalavista.pw.gtf | awk '$3=="as_event"' | grep -P "$code" | wc -l)"; done > events.stats.txt
 ----
 
 == Compute PSI values in specific pairs of transcripts
@@ -57,7 +57,7 @@ Compute PSI and create a table for each sample:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-ls {rnaseq_folder}/splicing/*.A06IPSA.ssj.tsv |while read f; do id=$(basename $f .A06IPSA.ssj.tsv); ssj=$f; ssc=$(echo $f | sed 's/.ssj.tsv/.ssc.tsv/'); psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $ssj --ssc $ssc -o ${id}.$(basename astalavista.pw.id.gtf) --verbose | grep exon_skipping_single |cut -f1,4> exon_skipping_single/${id}.$(basename astalavista.pw.id.gtf .gtf).tsv; done &> psi.as.log
+ls {rnaseq_folder}splicing/*.A06IPSA.ssj.tsv |while read f; do id=$(basename $f .A06IPSA.ssj.tsv); ssj=$f; ssc=$(echo $f | sed 's/.ssj.tsv/.ssc.tsv/'); psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $ssj --ssc $ssc -o ${id}.$(basename astalavista.pw.id.gtf) --verbose | grep exon_skipping_single |cut -f1,4> exon_skipping_single/${id}.$(basename astalavista.pw.id.gtf .gtf).tsv; done &> psi.as.log
 ----
 
 Create master table with all samples:
@@ -71,7 +71,7 @@ join.2col.files.from.dir.pl --dir exon_skipping_single --tag astalavista > exon_
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-grep -v NA exon_skipping_single/exon_skipping_single.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.65 && $5>0.65) || ($2>0.65 && $3>0.65 && $4<0.35 && $5<0.35)){print}' | ggheatmap.R -i stdin --row_dendro --col_dendro -o exon_skipping_single/exon_skipping_single.pdf --row_metadata cp {rnaseq_folder}/splicing/metadata.PWAS.tsv --merge_row_mdata_on id --row_labels exon_position,event_position
+grep -v NA exon_skipping_single/exon_skipping_single.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.65 && $5>0.65) || ($2>0.65 && $3>0.65 && $4<0.35 && $5<0.35)){print}' | ggheatmap.R -i stdin --row_dendro --col_dendro -o exon_skipping_single/exon_skipping_single.pdf --row_metadata cp {rnaseq_folder}splicing/metadata.PWAS.tsv --merge_row_mdata_on id --row_labels exon_position,event_position
 ----
 
 == UCSC tracks

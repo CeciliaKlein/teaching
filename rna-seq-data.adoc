@@ -1,6 +1,6 @@
 = RNA-seq data
-:rnaseq_folder: /software/rg/rnaseq
-:env_file: {rnaseq_folder}/.rnaseqenv
+:rnaseq_folder: /software/rg/rnaseq/
+:env_file: {rnaseq_folder}.rnaseqenv
 
 All the data needed for the course is stored under:
 

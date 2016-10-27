@@ -6,7 +6,7 @@ Let's have a look at the genome FASTA file we user in the workshop:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-head {rnaseq_folder}/refs/mouse_genome_mm9.fa
+head {rnaseq_folder}refs/mouse_genome_mm9.fa
 ----
 ----
 >chr1 <1>
