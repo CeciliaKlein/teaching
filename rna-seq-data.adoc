@@ -1,48 +1,94 @@
 = RNA-seq data
-:rnaseq_folder: /software/rg/rnaseq/
-:env_file: {rnaseq_folder}.rnaseqenv
+:rnaseq_folder:
+:base_folder: /software/rg/rnaseq/
+:setup: {base_folder}env/setup
+:env_file: ~/rnaseq/.rnaseqenv
 
-All the data needed for the course is stored under:
+All the data needed for the course is stored in the following directory:
 
-[source,subs="{markup-in-source}"]
+[source,bash,	subs="{markup-in-source}"]
 ----
-{rnaseq_folder}
-----
-
-We prepared a bash file with the commands needed to set up your environment for the hands-on. The file needs to be http://ss64.com/bash/source.html[sourced^] in your current terminal session. Run the following command in your terminal in order to do it:
-
-[source,cmd,subs="attributes"]
-----
-. {env_file}
+{base_folder}
 ----
 
-You can have a look at the contents of the file:
+In order to set up your environment for the hands-on you need to run the following command in your terminal:
 
-[source,cmd,subs="attributes"]
+[source,cmd,subs="{markup-in-source}"]
 ----
-cat {env_file}
-----
-
-----
-# environment setup for modules
-export PATH=/software/as/el6.5/modules/Modules/3.2.10/bin/:$PATH
-export LD_LIBRARY_PATH=/software/as/el6.5/Tcl/lib/:$LD_LIBRARY_PATH
-source /software/as/el6.5/modules/Modules/3.2.10/init/bash
-
-# add modulefiles
-module use /software/as/el6.5/EasyBuild/CRG/modules/all/
-module use /software/rg/el6.3/EasyBuild/software/modules/all/
-
-# set R libraries path
-export R_LIBS=/software/R/packages/
-
-# add course scripts to path
-export PATH=/software/rg/rnaseq/bin:$PATH
+{setup}
 ----
 
-As a working folder for the hands-on we create the folder `rnaseq` in your home folder and move to it:
+You should get a similar output:
+
+[source,bash]
+----
+ [INFO] Create folder /users/rg/epalumbo/rnaseq
+ [INFO] Link '/software/rg/rnaseq/bin' to '/users/rg/epalumbo/rnaseq'
+ [INFO] Link '/software/rg/rnaseq/data' to '/users/rg/epalumbo/rnaseq'
+ [INFO] Link '/software/rg/rnaseq/refs' to '/users/rg/epalumbo/rnaseq'
+ [INFO] Link '/software/rg/rnaseq/splicing' to '/users/rg/epalumbo/rnaseq'
+ [INFO] Link '/software/rg/rnaseq/env/.rnaseqenv' to '/users/rg/epalumbo/rnaseq'
+ [INFO] Done
+----
+
+The script creates a `rnaseq` folder within your home, making soft links to the data in the main course folder. To start working, move to this newly created folder:
 
 [source,cmd]
 ----
-mkdir -p ~/rnaseq && cd ~/rnaseq
+cd ~/rnaseq
 ----
+
+and have a look at its contents:
+
+[source,cmd]
+----
+ls -l
+----
+[source,bash]
+----
+total 6
+lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 23 Oct 27 16:52 bin -> /software/rg/rnaseq/bin
+lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 24 Oct 27 16:52 data -> /software/rg/rnaseq/data
+lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 24 Oct 27 16:52 refs -> /software/rg/rnaseq/refs
+lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 28 Oct 27 16:52 splicing -> /software/rg/rnaseq/splicing
+----
+
+There is one more important file linked during the setup that needs to be http://ss64.com/bash/source.html[sourced^]:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+. {env_file}
+----
+[source,bash]
+----
+ [INFO] Done loading rnaseq environment
+----
+
+[NOTE]
+====
+For the whole hands-on, and unless stated otherwise, we assume to be working from within the `~/rnaseq` folder.
+
+You can use the `pwd` command to check the folder you are currently in:
+
+[source,cmd]
+----
+pwd
+----
+----
+/users/rg/epalumbo
+----
+
+and move to the `rnaseq` folder if you are not there:
+
+[source,cmd]
+----
+cd ~/rnaseq
+----
+[source,cmd]
+----
+pwd
+----
+----
+/users/rg/epalumbo/rnaseq
+----
+====

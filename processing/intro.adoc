@@ -1,23 +1,4 @@
-Make sure you are inside the `rnaseq` folder in your home before doing any processing. Use the `pwd` command to check your current folder and move to the `rnaseq` folder if you are not there, e.g.:
-
-[source,cmd]
-----
-pwd
-----
-----
-/users/rg/epalumbo
-----
-
-[source,cmd]
-----
-cd ~/rnaseq
-pwd
-----
-----
-/users/rg/epalumbo/rnaseq
-----
-
-Once you are inside the `rnaseq` folder, create a folder for storing the log files:
+Create a folder for storing the log files:
 
 [source,cmd]
 ----
