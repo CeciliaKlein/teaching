@@ -32,6 +32,9 @@ Show the results in a heatmap:
 
 [source,cmd]
 ----
-(echo -e "gene\tedgeR"; cat edgeR.0.01.over*.txt) > gene.edgeR.tsv
-cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf
+join.py -a <(awk 'BEGIN{OFS="\t"}$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print var[1],var[2]  }' ~/rnaseq/refs/mm65.long.ok.gtf ) -b <(cat edgeR.0.01.over*.txt) | sed '1igene\tedgeR\tgene_type' > gene.edgeR.tsv
+----
+[source,cmd]
+----
+cut -f1 gene.edgeR.tsv | tail -n+2 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv | ggheatmap.R -W 5 -H 9 --col_metadata ../data/quantifications.index.tsv --colSide_by age --col_labels labExpId --row_metadata gene.edgeR.tsv --merge_row_mdata_on gene --rowSide_by edgeR,gene_type --row_labels none -l -p 0.1 --col_dendro --row_dendro -o heatmap.edgeR.pdf
 ----
