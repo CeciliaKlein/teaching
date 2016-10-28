@@ -51,27 +51,34 @@ Get statistics of events:
 cat {rnaseq_folder}splicing/events.txt | while read ev code; do echo -e "$ev\t$(cat astalavista.pw.gtf | awk '$3=="as_event"' | grep -P "$code" | wc -l)"; done > events.stats.txt
 ----
 
+Generate metadata of events:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+awk 'BEGIN{OFS="\t"; print "id","exon_position","event_position"}$16~/"0,1-2\^"/{ match($0, /splice_chain ",([^-]+)-([^\^]+).+event_id "([^"]+)/, sc); if($7=="+"){ print sc[3],$1":"sc[1]"-"sc[2],$1":"$4"-"$5}else{print sc[3],$1":"sc[2]"-"sc[1],$1":"$4"-"$5}}' astalavista.pw.id.gtf > metadata.PWAS.tsv
+----
+
 == Compute PSI values in specific pairs of transcripts
 
 Compute PSI and create a table for each sample:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-ls {rnaseq_folder}splicing/*.A06IPSA.ssj.tsv |while read f; do id=$(basename $f .A06IPSA.ssj.tsv); ssj=$f; ssc=$(echo $f | sed 's/.ssj.tsv/.ssc.tsv/'); psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $ssj --ssc $ssc -o ${id}.$(basename astalavista.pw.id.gtf) --verbose | grep exon_skipping_single |cut -f1,4> exon_skipping_single/${id}.$(basename astalavista.pw.id.gtf .gtf).tsv; done &> psi.as.log
+ls *.A06IPSA.ssj.tsv | while read file; do id=$(basename $file .A06IPSA.ssj.tsv); perl psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $file --out $id.astalavista.psi --event ESS; done
 ----
 
 Create master table with all samples:
 
 [source,cmd]
 ----
-join.2col.files.from.dir.pl --dir exon_skipping_single --tag astalavista > exon_skipping_single/exon_skipping_single.tsv
+perl join.2col.files.from.dir.pl --dir ESS --tag astalavista > ESS/ESS.tsv
 ----
 
 == Generate a heatmap with best examples
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-grep -v NA exon_skipping_single/exon_skipping_single.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.65 && $5>0.65) || ($2>0.65 && $3>0.65 && $4<0.35 && $5<0.35)){print}' | ggheatmap.R -i stdin --row_dendro --col_dendro -o exon_skipping_single/exon_skipping_single.pdf --row_metadata cp {rnaseq_folder}splicing/metadata.PWAS.tsv --merge_row_mdata_on id --row_labels exon_position,event_position
+grep -v NA ESS/ESS.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.65 && $5>0.65) || ($2>0.65 && $3>0.65 && $4<0.35 && $5<0.35)){print}'  | ggheatmap.R -i stdin --row_dendro --col_dendro -o ESS/ESS.pdf  --row_metadata metadata.PWAS.tsv --merge_row_mdata_on id --row_labels exon_position,event_position
 ----
 
 == UCSC tracks
