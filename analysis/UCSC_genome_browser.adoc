@@ -8,15 +8,15 @@ Go to the UCSC genome browser web page:
 
 {UCSC_genome_browser}[^]
 
-On the main menu, click on btn:[Genomes].
-Click on btn:[Add custom track].
+On the main menu, click on btn:[Genomes/Mouse NCBI37/mmm9].
+Scroll down and click on btn:[Add custom track].
 Make sure the assembly information is as follows:
 
 ----
-clade: Mammal, genome: Mouse, assembly: July 2007 (NCBI/mm9)
+genome: Mouse    assembly: July 2007 (NCBI37/mm9)    [mm9]
 ----
 
-Paste the track specifications for each file in the box `Paste URLs or data`:
+Paste the track specifications in the box `Paste URLs or data`:
 
 ----
 track name=mouse_cns_E14_rep1.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://public-docs.crg.es/rguigo/courses/rnaseq/data/mouse_cns_E14_rep1_Aligned.sortedByCoord.out.bw
