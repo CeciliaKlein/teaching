@@ -5,8 +5,8 @@ For the first part of the analysis section we are going to produce separate plot
 [source,cmd]
 ----
 # protein-coding
-(head -1 ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv; grep -f ../protein_coding_IDs.txt ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv) > ../quantifications/encode.mouse.pc.gene.FPKM.idr_NA.tsv
+(head -1 ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv; grep -Ff ../protein_coding_IDs.txt ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv) > ../quantifications/encode.mouse.pc.gene.FPKM.idr_NA.tsv
 
 # long non-coding
-(head -1 ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv; grep -f ../lincRNA_IDs.txt ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv) > ../quantifications/encode.mouse.linc.gene.FPKM.idr_NA.tsv
+(head -1 ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv; grep -Ff ../lincRNA_IDs.txt ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv) > ../quantifications/encode.mouse.linc.gene.FPKM.idr_NA.tsv
 ----
