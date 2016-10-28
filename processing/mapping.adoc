@@ -34,14 +34,14 @@ When finished we can look at the bam file:
 
 [source,cmd]
 ----
-samtools view -h ~/rnaseq/alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
+samtools view -h {rnaseq_folder}alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
 ----
 
 or at the mapping statistics that come with `STAR`:
 
 [source,cmd]
 ----
-cat ~/rnaseq/alignments/mouse_cns_E18_rep1_Log.final.out
+cat {rnaseq_folder}alignments/mouse_cns_E18_rep1_Log.final.out
 ----
 ----
                                  Started job on |       Sep 15 17:12:35
