@@ -64,14 +64,14 @@ Compute PSI and create a table for each sample:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-ls ../data/*.A06IPSA.ssj.tsv | while read file; do id=$(basename $file .A06IPSA.ssj.tsv); perl psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $file --out $id.astalavista.psi --event ESS; done
+ls ../data/*.A06IPSA.ssj.tsv | while read file; do id=$(basename $file .A06IPSA.ssj.tsv); psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $file --out $id.astalavista.psi --event ESS; done
 ----
 
 Create master table with all samples:
 
 [source,cmd]
 ----
-perl join.2col.files.from.dir.pl --dir ESS --tag astalavista > ESS/ESS.tsv
+join.2col.files.from.dir.pl --dir ESS --tag astalavista > ESS/ESS.tsv
 ----
 
 == Generate a heatmap with best examples
