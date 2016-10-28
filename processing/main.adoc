@@ -1,4 +1,5 @@
 = RNA-seq data processing
+:queue: RNAseq
 
 include::intro.adoc[]
 

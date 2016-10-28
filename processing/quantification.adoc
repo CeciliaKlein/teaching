@@ -25,9 +25,9 @@ rsem-calculate-expression --bam --estimate-rspd --no-bam-output --seed 12345 -p 
 
 Submit the job to the cluster:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-qsub -cwd -q RNAseq -l virtual_free=16G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_rsem.sh
+qsub -cwd -q {queue} -l virtual_free=16G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_rsem.sh
 ----
 
 To obtain a matrix of gene FPKM values:
