@@ -48,7 +48,7 @@ Get statistics of events:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-cat {rnaseq_folder}splicing/events.txt | while read ev code; do echo -e "$ev\t$(cat astalavista.pw.gtf | awk '$3=="as_event"' | grep -P "$code" | wc -l)"; done > events.stats.txt
+cat ../data/events.txt | while read ev code; do echo -e "$ev\t$(cat astalavista.pw.gtf | awk '$3=="as_event"' | grep -P "$code" | wc -l)"; done > events.stats.txt
 ----
 
 Generate metadata of events:
@@ -64,7 +64,7 @@ Compute PSI and create a table for each sample:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-ls *.A06IPSA.ssj.tsv | while read file; do id=$(basename $file .A06IPSA.ssj.tsv); perl psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $file --out $id.astalavista.psi --event ESS; done
+ls ../data/*.A06IPSA.ssj.tsv | while read file; do id=$(basename $file .A06IPSA.ssj.tsv); perl psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $file --out $id.astalavista.psi --event ESS; done
 ----
 
 Create master table with all samples:
