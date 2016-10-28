@@ -8,7 +8,7 @@ Go to the UCSC genome browser web page:
 
 {UCSC_genome_browser}[^]
 
-On the main menu, click on btn:[Genomes/Mouse NCBI37/mmm9].
+On the main menu, click on btn:[Genomes/Mouse NCBI37/mm9].
 Scroll down and click on btn:[Add custom track].
 Make sure the assembly information is as follows:
 
