@@ -1,6 +1,6 @@
 = TODO
 
-* [x] remove setup, use a refernece folder (e.g. `/software/rg/rnaseq`)
+* [x] update setup, use a refernece folder (e.g. `/software/rg/rnaseq`) and softlink
 * [x] add file formats
 * [x] move bigwig to mapping section (check http://genome.crg.es/~epalumbo/ngs2016[ngs2016^])
 * [x] remove `vi` part
