@@ -32,14 +32,14 @@ qsub -cwd -q {queue} -l virtual_free=32G -pe smp 2 -N mapping_rnaseq_course -e l
 
 When finished we can look at the bam file:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
 samtools view -h {rnaseq_folder}alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
 ----
 
 or at the mapping statistics that come with `STAR`:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
 cat {rnaseq_folder}alignments/mouse_cns_E18_rep1_Log.final.out
 ----
