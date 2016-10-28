@@ -1,7 +1,7 @@
 [discrete]
 = Introduction
 
-The default directory is the `rnaseq` directory in your home, if nothing else is specified.
+The default directory is the `rnaseq` directory in your home, if nothing else is specified. You can use the `pwd` command to check your current working folder and move to `~/rnaseq` if you are not there.
 
 The RNA-seq data comes from brain samples (CNS) of mouse embryos at day 14 and day 18, done in 2 bioreplicates (1% of the reads are randomly sampled here).
 
