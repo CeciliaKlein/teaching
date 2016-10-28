@@ -1,17 +1,17 @@
 = Splicing analysis
 
-Go back to the base folder:
+Create a directory dedicated to the splicing analyses within the `rnaseq` folder:
 
 [source,cmd]
 ----
-cd ~/rnaseq
+mkdir ../splicing
 ----
 
-Create a folder for the splicing analysis and move to it:
+and move to it:
 
 [source,cmd]
 ----
-mkdir splicing && cd splicing
+cd ../splicing
 ----
 
 == Run AStalavista
@@ -27,7 +27,7 @@ Extract alternative splicing (AS) events from a given genomic annotation of exon
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-astalavista -t asta -i {rnaseq_folder}refs/mm65.long.ok.gtf -o astalavista.pw.gtf.gz
+astalavista -t asta -i ../refs/mm65.long.ok.sorted.gtf -o astalavista.pw.gtf.gz
 ----
 
 Uncompress astalavista output:
