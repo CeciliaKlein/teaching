@@ -4,7 +4,7 @@ Prepare a file with the list of all the genes in the annotation:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-awk '{split($10,a,"\""); print a[2]}' {rnaseq_folder}refs/mm65.long.ok.gtf | sort -u > universe.txt
+awk '{split($10,a,"\""); print a[2]}' ../refs/mm65.long.ok.gtf | sort -u > universe.txt
 ----
 
 Launch the GO enrichment script for the Biological Processes, Molecular Function and Cellular Components in the set of genes overexpressed in E14:
