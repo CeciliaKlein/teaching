@@ -15,4 +15,4 @@
 * [x] move [red]#splicing analysis# to own section
 * [x] update content in [red]#splicing analysis# section
 * [x] show environment file in rna-seq data section
-* [ ] remove bayesian counts from RSEM output
+* [x] remove bayesian counts from RSEM output
