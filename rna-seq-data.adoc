@@ -26,7 +26,6 @@ You should get a similar output:
  [INFO] Link '/software/rg/rnaseq/bin' to '/users/rg/epalumbo/rnaseq'
  [INFO] Link '/software/rg/rnaseq/data' to '/users/rg/epalumbo/rnaseq'
  [INFO] Link '/software/rg/rnaseq/refs' to '/users/rg/epalumbo/rnaseq'
- [INFO] Link '/software/rg/rnaseq/splicing' to '/users/rg/epalumbo/rnaseq'
  [INFO] Link '/software/rg/rnaseq/env/.rnaseqenv' to '/users/rg/epalumbo/rnaseq'
  [INFO] Done
 ----
@@ -50,7 +49,6 @@ total 6
 lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 23 Oct 27 16:52 bin -> /software/rg/rnaseq/bin
 lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 24 Oct 27 16:52 data -> /software/rg/rnaseq/data
 lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 24 Oct 27 16:52 refs -> /software/rg/rnaseq/refs
-lrwxrwxrwx 1 epalumbo CRG_Lab_Roderic_Guigo 28 Oct 27 16:52 splicing -> /software/rg/rnaseq/splicing
 ----
 
 There is one more important file linked during the setup that needs to be http://ss64.com/bash/source.html[sourced^]:
