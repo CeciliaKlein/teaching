@@ -83,7 +83,12 @@ grep -v NA ESS/ESS.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.
 
 == UCSC tracks
 
-Have a look at the examples in the heatmap on the UCSC genome browser:
+Have a look at the examples in the heatmap on the {UCSC_genome_browser}[UCSC genome browser^].
+
+Go to the browser and, if you completed the section <<_visualize_rna_seq_signal_in_the_ucsc_genome_browser>>,
+remove the tracks loaded in that section. If you have a clean browser session you can skip this paragraph. Click on the button btn:[Manage custom track]. Select all tracks using the btn:[+] button and remove them using the btn:[delete] button.
+
+Click on the button btn:[Add custom track] and paste the track specifications in the box `Paste URLs or data`:
 
 ----
 track name=mouse_cns_E14_rep1_plus.bw type=bigWig visibility=2 autoScale=off maxHeightPixels=30 color=0,149,347 viewLimits=0:30 bigDataUrl=http://public-docs.crg.es/rguigo/courses/rnaseq/data/wgEncodeCshlLongRnaSeqCnsE14PlusRawRep1.bigWig
