@@ -1,4 +1,4 @@
-== Mapping
+= Mapping
 Create a folder for the alignment steps:
 
 [source,cmd]
