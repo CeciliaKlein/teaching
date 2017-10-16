@@ -29,7 +29,7 @@ Submit the job to the cluster:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-qsub -cwd -q {queue} -l virtual_free=8G -N fastqc_rnaseq_course -e logs -o logs ./run_fastqc.sh
+qsub -cwd -q {queue} -l virtual_free=10G -N fastqc_rnaseq_course -e logs -o logs ./run_fastqc.sh
 ----
 
 To monitor the status of the job, type `qstat`.
