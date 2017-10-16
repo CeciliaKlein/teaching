@@ -20,7 +20,7 @@ In order to run AStalavista you first need to load the environment module:
 
 [source,cmd]
 ----
-module load astalavista/3.2-Java-1.7.0_21
+module load astalavista/3.2
 ----
 
 Extract alternative splicing (AS) events from a given genomic annotation of exon-intron gene coordinates:

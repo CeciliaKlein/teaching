@@ -26,7 +26,7 @@ You should get a similar output:
  [INFO] Link '/software/rg/rnaseq/bin' to '/users/rg/epalumbo/rnaseq'
  [INFO] Link '/software/rg/rnaseq/data' to '/users/rg/epalumbo/rnaseq'
  [INFO] Link '/software/rg/rnaseq/refs' to '/users/rg/epalumbo/rnaseq'
- [INFO] Link '/software/rg/rnaseq/env/.rnaseqenv' to '/users/rg/epalumbo/rnaseq'
+ [INFO] Link '/software/rg/rnaseq/env/<YEAR>/.rnaseqenv' to '/users/rg/epalumbo/rnaseq'
  [INFO] Done
 ----
 

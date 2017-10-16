@@ -17,7 +17,7 @@ Create a bash script called `run_rsem.sh` with the following:
 . {env_file}
 
 # load module
-module load RSEM/1.2.21-goolf-1.4.10-no-OFED
+module load RSEM/1.2.21
 
 # get quantifications with RSEM
 rsem-calculate-expression --bam --estimate-rspd --no-bam-output --seed 12345 -p 2 --paired-end --forward-prob 0 alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam {rnaseq_folder}refs/mouse_genome_mm9_RSEM_index/RSEMref quantifications/mouse_cns_E18_rep1

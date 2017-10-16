@@ -10,8 +10,8 @@ Create a bash script called `run_bigwig.sh` with the following:
 . {env_file}
 
 # load module
-module load BEDTools/2.21.0-goolf-1.4.10-no-OFED
-module load KentUtils/308-goolf-1.4.10-no-OFED
+module load BEDTools/2.21.0
+module load KentUtils/308
 
 
 # create bedgraph from mappings
