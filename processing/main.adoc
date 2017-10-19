@@ -13,6 +13,8 @@ include::bigwig.adoc[]
 
 include::quantification.adoc[]
 
+include::UCSC_genome_browser.adoc[]
+
 //include::splicing.adoc[]
 
 :leveloffset: -1
