@@ -70,6 +70,25 @@ NH:i:1  HI:i:1  AS:i:200  NM:i:0  MD:Z:101 <12>
 <11> quality
 <12> optional fields
 
+== CIGAR string
+
+most common CIGAR abbreviations:
+
+[cols="1,l,1",options="autowidth"]
+|===
+| [red]#{counter:index}# | M      | alignment match 
+| [red]#{counter:index}# | I      | Insertion to the reference
+| [red]#{counter:index}# | D      | Deletion from the reference
+| [red]#{counter:index}# | N      | Skipped region
+| [red]#{counter:index}# | S      | Soft clipping, clipped sequences present in SEQ 
+| [red]#{counter:index}# | H      | Hard clipping, clipped sequences present in SEQ 
+|===
+
+----
+101M        == entire read was mapped without gaps, continuous mapping
+51M1217N50M == read was mapped with 217nt gap, split mapping
+----
+
 == BAM
 
 BAM is a BGZF compressed version of the SAM format. BGZF is block compression implemented on top of the standard gzip
