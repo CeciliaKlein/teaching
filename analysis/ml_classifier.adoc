@@ -1,0 +1,29 @@
+= Constructing a classifier model with machine learning
+
+For this exercise, we will work with Whole Blood samples from GTEx data. The goal is to use RNAseq data of protein coding genes (gene expression) in order to explore if it is possible to distinguish individuals that have an abnormal white blood cell count. We will use data from 749 individuals for which we know their white blood cell count status (affected by abnormalities, or not affected). To train and validate the model, we work with a split of 70% (525 individuals) of the data, while the remaining 30% (224) will be used for testing. Start by creating a folder to store the classifier results:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+mkdir classifier
+----
+
+The necessary datasets have been already prepared and preprocessed for you, so we can just launch a job to the cluster:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+qsub -cwd -q RNAseq -l virtual_free=10G -pe smp 1 -N bloodclassify -e logs -o logs -b y Rscript bin/fit-tissue-classifier.R --vanilla
+----
+
+The classification will take around 1 minute. Remember that you can check the status of the job with `qstat`. Once the job has finished, we can view the PCA plots for both training and testing datasets. For the testing data, the classification results per sample are also shown on the plot, coded by shape and color.
+
+[source,cmd,subs="{markup-in-source}"]
+----
+evince classifier/train.pdf classifier/test.pdf
+----
+
+We can also take a look at the confusion matrix to understand how the classifier is performing:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+cat classifier/confusionMatrix.txt
+----
