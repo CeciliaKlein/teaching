@@ -11,9 +11,9 @@ include::mapping.adoc[]
 
 include::bigwig.adoc[]
 
-include::quantification.adoc[]
-
 include::UCSC_genome_browser.adoc[]
+
+include::quantification.adoc[]
 
 //include::splicing.adoc[]
 
