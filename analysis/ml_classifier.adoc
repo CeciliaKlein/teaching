@@ -2,6 +2,14 @@
 
 For this exercise, we will work with Whole Blood samples from GTEx data. The goal is to use RNAseq data of protein coding genes (gene expression) in order to explore if it is possible to distinguish individuals that have an abnormal white blood cell count. We will use data from 749 individuals for which we know their white blood cell count status (affected by abnormalities, or not affected). To train and validate the model, we work with a split of 70% (525 individuals) of the data, while the remaining 30% (224) will be used for testing. Start by creating a folder to store the classifier results:
 
+Move to the root folder
+
+[source,cmd,subs="{markup-in-source}"]
+----
+cd ../
+----
+
+Create folder for the classifier analysis
 [source,cmd,subs="{markup-in-source}"]
 ----
 mkdir classifier
