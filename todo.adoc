@@ -5,7 +5,7 @@
 * [x] remove editors section
 * [x] move gene annotation section to processing section
 * [x] remove file formats section
-* [ ] remove fastq and read QC section
+* [x] remove fastq and read QC section
 * [ ] remove BAMstats.py from scripts
 * [ ] remove long-non-coding parts
 * [x] remove splicing

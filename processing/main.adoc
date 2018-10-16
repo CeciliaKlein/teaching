@@ -7,7 +7,7 @@ include::intro.adoc[]
 
 include::gene-annotation.adoc[]
 
-include::fastqc.adoc[]
+//include::fastqc.adoc[]
 
 include::mapping.adoc[]
 
