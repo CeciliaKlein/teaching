@@ -24,7 +24,7 @@ If you did not load load the environment yet, do it now:
 
 :leveloffset: +1
 
-include::separate_genes.adoc[]
+//include::separate_genes.adoc[]
 
 include::rpkm_distribution.adoc[]
 

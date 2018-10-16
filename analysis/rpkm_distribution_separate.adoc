@@ -1,0 +1,19 @@
+= RPKM distribution
+
+Have a look at the distribution of RPKM values:
+
+[source,cmd]
+----
+# protein coding
+rpkm_distribution.R -i ../quantifications/encode.mouse.pc.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age -o pc
+
+# long non-coding
+rpkm_distribution.R -i ../quantifications/encode.mouse.linc.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age -o linc
+----
+
+To look at the plots:
+
+[source,cmd]
+----
+evince boxplot.log_T.psd_0.pc.pdf boxplot.log_T.psd_0.linc.pdf
+----

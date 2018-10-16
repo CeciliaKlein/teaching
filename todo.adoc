@@ -7,6 +7,6 @@
 * [x] remove file formats section
 * [x] remove fastq and read QC section
 * [ ] remove BAMstats.py from scripts
-* [ ] remove long-non-coding parts
+* [x] remove long-non-coding parts
 * [x] remove splicing
 * [x] remove ML part
