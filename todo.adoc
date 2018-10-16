@@ -8,5 +8,5 @@
 * [ ] remove fastq and read QC section
 * [ ] remove BAMstats.py from scripts
 * [ ] remove long-non-coding parts
-* [ ] remove splicing
+* [x] remove splicing
 * [ ] remove ML part
