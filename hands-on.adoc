@@ -32,8 +32,6 @@ include::rna-seq-data.adoc[]
 
 include::gene-annotation.adoc[]
 
-include::file_formats/main.adoc[]
-
 include::processing/main.adoc[]
 
 include::analysis/main.adoc[]

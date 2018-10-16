@@ -4,7 +4,7 @@
 * [ ] update RNA-seq data section
 * [x] remove editors section
 * [ ] move gene annotation section to processing section
-* [ ] remove file formats section
+* [x] remove file formats section
 * [ ] remove fastq and read QC section
 * [ ] remove BAMstats.py from scripts
 * [ ] remove long-non-coding parts
