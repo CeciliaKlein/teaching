@@ -1,5 +1,6 @@
 = TODO
 
+* [ ] update introduction
 * [x] remove access to the CRG cluster
 * [ ] update RNA-seq data section
 * [x] remove editors section
