@@ -1,8 +1,9 @@
 = TODO
 
-* [ ] remove file formats
+* [ ] remove access to the CRG cluster
+* [ ] remove editors section
+* [ ] remove file formats section
 * [ ] move bigwig section after mapping 
-* [ ] remove editors part
 * [ ] remove BAMstats.py from scripts
 * [ ] separate bigwig generation from UCSC visualization
 * [ ] remove long-non-coding parts
