@@ -1,11 +1,12 @@
 = TODO
 
 * [ ] remove access to the CRG cluster
+* [ ] update RNA-seq data section
 * [ ] remove editors section
+* [ ] move gene annotation section to processing section
 * [ ] remove file formats section
-* [ ] move bigwig section after mapping 
+* [ ] remove fastq and read QC section
 * [ ] remove BAMstats.py from scripts
-* [ ] separate bigwig generation from UCSC visualization
 * [ ] remove long-non-coding parts
 * [ ] remove splicing
 * [ ] remove ML part
