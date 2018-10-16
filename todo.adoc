@@ -1,18 +1,10 @@
 = TODO
 
-* [x] update setup, use a refernece folder (e.g. `/software/rg/rnaseq`) and softlink
-* [x] add file formats
-* [x] move bigwig to mapping section (check http://genome.crg.es/~epalumbo/ngs2016[ngs2016^])
-* [x] remove `vi` part
-* [x] remove `bamstats` ([line-through]#and add new genomic region command?#)
-* [x] add command for generating the transcript matrix
-* [x] update `RSEM` command (#remove bayesian part#)
-* [x] separate bigwig generation from UCSC visualization
-* [x] add subsection in RNA-seq analysis on subsetting long-non-coding and protein coding genes
-* [x] check [red]#protein coding vs long non-coding# section and update commands if ok
-* [x] update command for separating pc genes and linc genes in the quantification matrix
-* [x] duplicate RPKM ditribution part
-* [x] move [red]#splicing analysis# to own section
-* [x] update content in [red]#splicing analysis# section
-* [x] show environment file in rna-seq data section
-* [x] remove bayesian counts from RSEM output
+* [ ] remove file formats
+* [ ] move bigwig section after mapping 
+* [ ] remove editors part
+* [ ] remove BAMstats.py from scripts
+* [ ] separate bigwig generation from UCSC visualization
+* [ ] remove long-non-coding parts
+* [ ] remove splicing
+* [ ] remove ML part
