@@ -9,4 +9,4 @@
 * [ ] remove BAMstats.py from scripts
 * [ ] remove long-non-coding parts
 * [x] remove splicing
-* [ ] remove ML part
+* [x] remove ML part

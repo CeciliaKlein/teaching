@@ -34,7 +34,7 @@ include::differential_expression.adoc[]
 
 include::go_analysis.adoc[]
 
-include::ml_classifier.adoc[]
+//include::ml_classifier.adoc[]
 
 //include::UCSC_genome_browser.adoc[]
 
