@@ -3,7 +3,7 @@
 * [x] remove access to the CRG cluster
 * [ ] update RNA-seq data section
 * [x] remove editors section
-* [ ] move gene annotation section to processing section
+* [x] move gene annotation section to processing section
 * [x] remove file formats section
 * [ ] remove fastq and read QC section
 * [ ] remove BAMstats.py from scripts

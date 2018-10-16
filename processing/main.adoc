@@ -5,6 +5,8 @@ include::intro.adoc[]
 
 :leveloffset: +1
 
+include::gene-annotation.adoc[]
+
 include::fastqc.adoc[]
 
 include::mapping.adoc[]
