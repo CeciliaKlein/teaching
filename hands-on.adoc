@@ -28,8 +28,6 @@ endif::draft[]
 
 include::introduction.adoc[]
 
-include::ant-cluster.adoc[tags=access,leveloffset=-1]
-
 include::rna-seq-data.adoc[]
 
 include::editors/main.adoc[]

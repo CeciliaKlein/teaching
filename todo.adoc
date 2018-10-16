@@ -1,6 +1,6 @@
 = TODO
 
-* [ ] remove access to the CRG cluster
+* [x] remove access to the CRG cluster
 * [ ] update RNA-seq data section
 * [ ] remove editors section
 * [ ] move gene annotation section to processing section
