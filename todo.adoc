@@ -2,7 +2,7 @@
 
 * [x] remove access to the CRG cluster
 * [ ] update RNA-seq data section
-* [ ] remove editors section
+* [x] remove editors section
 * [ ] move gene annotation section to processing section
 * [ ] remove file formats section
 * [ ] remove fastq and read QC section

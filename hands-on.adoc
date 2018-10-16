@@ -30,8 +30,6 @@ include::introduction.adoc[]
 
 include::rna-seq-data.adoc[]
 
-include::editors/main.adoc[]
-
 include::gene-annotation.adoc[]
 
 include::file_formats/main.adoc[]
