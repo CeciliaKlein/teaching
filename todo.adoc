@@ -4,7 +4,7 @@
 * [x] remove access to the CRG cluster
 * [ ] remove all cluster scripts and submissions with local runs
 * [ ] replace RNA-seq data section with a setup section
-* [ ] check X11 within containers
+* [x] check X11 within containers
 * [x] remove editors section
 * [x] move gene annotation section to processing section
 * [x] remove file formats section
