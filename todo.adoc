@@ -17,3 +17,7 @@
 * [x] remove long-non-coding parts
 * [x] remove splicing
 * [x] remove ML part
+* Centos 7 issues:
+    * fix docker bridge problem with 172.17.0.0/16 network
+    * add docker group
+    * add general guest/training user
