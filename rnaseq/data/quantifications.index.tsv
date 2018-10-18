@@ -1,0 +1,5 @@
+path	age	labExpId	type
+/rnaseq/data/mouse_cns_E14_rep1.genes.results	E14	mouse_cns_E14_rep1	rsem
+/rnaseq/data/mouse_cns_E14_rep2.genes.results	E14	mouse_cns_E14_rep2	rsem
+/rnaseq/data/mouse_cns_E18_rep1.genes.results	E18	mouse_cns_E18_rep1	rsem
+/rnaseq/data/mouse_cns_E18_rep2.genes.results	E18	mouse_cns_E18_rep2	rsem

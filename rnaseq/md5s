@@ -1,0 +1,10 @@
+f712b6a3e873468a0c49c4b96bde42ec  ./analysis/edgeR.0.01.overE14.txt
+7522cd7e43f1f66498b7584018964529  ./analysis/edgeR.0.01.overE18.txt
+da3954eb97cbba112a38e652fc5ee129  ./analysis/edgeR.cpm1.n2.out.tsv
+b8f85d76aa99a6a5e32f174d16d84196  ./analysis/edgeR.overE14.BP.tsv
+70a904631bb008368c96ee0ae0f2587e  ./analysis/edgeR.overE14.CC.tsv
+34aebffa17f2c891e53e56a8228b736b  ./analysis/edgeR.overE14.MF.tsv
+cfbbbf547ca8867b762b3dad60ee9df8  ./analysis/gene.edgeR.tsv
+b29c1e789adee0ad7635b11edb6ea492  ./analysis/universe.txt
+6af5c3a203a032a3ab6f74a7c62c1a76  ./quantifications/encode.mouse.gene.FPKM.idr_NA.tsv
+aea1ab612a5c6e557b040aece16fe4e2  ./quantifications/encode.mouse.gene.expected_count.idr_NA.tsv

@@ -1,0 +1,4 @@
+/rnaseq/data/mouse_cns_E14_rep1.genes.results	labExpId="mouse_cns_E14_rep1"; age="E14"; type=rsem;
+/rnaseq/data/mouse_cns_E14_rep2.genes.results	labExpId="mouse_cns_E14_rep2"; age="E14"; type=rsem;
+/rnaseq/data/mouse_cns_E18_rep1.genes.results	labExpId="mouse_cns_E18_rep1"; age="E18"; type=rsem;
+/rnaseq/data/mouse_cns_E18_rep2.genes.results	labExpId="mouse_cns_E18_rep2"; age="E18"; type=rsem;
