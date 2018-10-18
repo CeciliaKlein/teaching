@@ -2,7 +2,7 @@ FROM continuumio/miniconda
 
 # install some utilities
 RUN apt-get update --fix-missing && \
-    apt-get install -y vim nano gawk && \
+    apt-get install -y vim nano gawk pigz && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
