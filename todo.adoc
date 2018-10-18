@@ -1,6 +1,6 @@
 = TODO
 
-* [ ] update introduction
+* [x] update introduction
 * [x] remove access to the CRG cluster
 * [ ] remove all cluster scripts and submissions with local runs
 * [ ] replace RNA-seq data section with a setup section
