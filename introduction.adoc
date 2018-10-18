@@ -5,6 +5,6 @@ The RNA-seq data comes from brain samples (CNS) of mouse embryos at day 14 and d
 
 In order to gain time, mapping, bigwig and quantification processes will only be done with one sample, however the analysis will use all 4 samples.
 
-NOTE: The default working directory is your home, if nothing else is specified. You can use the `pwd` command to check your current working folder.
+NOTE: The default working directory is the `rnaseq` folder inside your home directory, if nothing else is specified. You can use the `pwd` command to [crg]##p##rint your current [crg]##w##orking [crg]##d##irectory.
 
 NOTE: A cheatsheet with basic Linux and Cluster commands is available <<{cheatsheet}>>.
