@@ -20,6 +20,6 @@
 
 == Centos 7 installation:
 
-* fix docker bridge problem with 172.17.0.0/16 network
+* fix docker bridge problem with `172.17.0.0/16` network
 * add docker group
 * add general guest/training user
