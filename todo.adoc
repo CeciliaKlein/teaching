@@ -1,14 +1,19 @@
 = TODO
 
 * [ ] update introduction
-* [ ] remove all cluster scripts and submissions with local runs
 * [x] remove access to the CRG cluster
+* [ ] remove all cluster scripts and submissions with local runs
 * [ ] replace RNA-seq data section with a setup section
+* [ ] check X11 within containers
 * [x] remove editors section
 * [x] move gene annotation section to processing section
 * [x] remove file formats section
 * [x] remove fastq and read QC section
-* [ ] remove BAMstats.py from scripts
+* [x] remove BAMstats.py from scripts
+* [ ] use STAR to produce bigwig files
+* [ ] remove transcript matrix creation
+* [ ] remove RPKM distribution
+* [ ] use Revigo in GO enrichment
 * [x] remove long-non-coding parts
 * [x] remove splicing
 * [x] remove ML part
