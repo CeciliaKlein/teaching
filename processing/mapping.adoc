@@ -8,7 +8,7 @@ mkdir alignments
 
 Run the following command:
 
-[source,bash,subs="{markup-in-source}"]
+[source,cmd,subs="{markup-in-source}"]
 ----
 STAR --runThreadN 2 \
      --genomeDir {rnaseq_folder}refs/mouse_genome_mm9_STAR_index \

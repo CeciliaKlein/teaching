@@ -9,7 +9,7 @@ mkdir quantifications
 
 Run the following command:
 
-[source,bash,subs="{markup-in-source}"]
+[source,cmd,subs="{markup-in-source}"]
 ----
 rsem-calculate-expression -p 2 \
                           --bam \
