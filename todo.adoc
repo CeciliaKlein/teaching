@@ -2,7 +2,7 @@
 
 * [x] update introduction
 * [x] remove access to the CRG cluster
-* [ ] remove all cluster scripts and submissions with local runs
+* [x] remove all cluster scripts and submissions with local runs
 * [x] replace RNA-seq data section with a setup section
 * [x] check X11 within containers
 * [x] remove editors section
@@ -10,16 +10,10 @@
 * [x] remove file formats section
 * [x] remove fastq and read QC section
 * [x] remove BAMstats.py from scripts
-* [ ] use STAR to produce bigwig files
+* [x] use STAR to produce bigwig files
 * [ ] remove transcript matrix creation
 * [ ] remove RPKM distribution
 * [ ] use Revigo in GO enrichment
 * [x] remove long-non-coding parts
 * [x] remove splicing
 * [x] remove ML part
-
-== Centos 7 installation:
-
-* fix docker bridge problem with `172.17.0.0/16` network
-* create common guest/training user
-* add common user to docker group
