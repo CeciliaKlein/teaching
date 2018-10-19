@@ -16,7 +16,8 @@ RUN conda create -y -n rnaseq \
     samtools=1.3.1 \
     rsem=1.3.1 \
     star=2.6.1b \
-    salmon=0.11.2
+    salmon=0.11.2 \
+    ucsc-bedgraphtobigwig=366
 
 # install R packages
 RUN conda install -y -n rnaseq \
