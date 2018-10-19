@@ -28,7 +28,7 @@ endif::draft[]
 
 include::introduction.adoc[]
 
-include::rna-seq-data.adoc[]
+include::setup.adoc[]
 
 include::processing/main.adoc[]
 

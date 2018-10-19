@@ -1,0 +1,39 @@
+= Setup
+:rnaseq_folder:
+:base_folder: /training/rg/
+
+All the data needed for the course is stored in the following directory:
+
+[source,bash,	subs="{markup-in-source}"]
+----
+{base_folder}
+----
+
+In order to set up your environment for the hands-on you need to run the following command in your terminal:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+singularity shell -B /training/rg/rnaseq:/rnaseq \
+                  -s /bin/bash \
+                  /training/rg/rnaseq.simg
+----
+
+You should get a similar output:
+
+[source,bash]
+----
+Singularity: Invoking an interactive shell within container...
+
+(rnaseq) training@workstation:~$
+----
+
+We are going to use the folder `~/rnaseq` as our working directory. Create the folder within your home and move to it:
+
+[source,cmd]
+----
+# create the rnaseq folder
+mkdir ~/rnaseq
+
+# move to the folder
+cd ~/rnaseq
+----
