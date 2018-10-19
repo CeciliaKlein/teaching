@@ -25,6 +25,8 @@ rsem-calculate-expression -p 2 \
 
 NOTE: Here we are correctly treating the data as [crg]#**stranded**#.
 
+RSEM generates expression quantification at transcript and gene level. For the data analysis section we are going to use only [crg]#gene expression data#.
+
 To obtain a matrix of gene FPKM values:
 
 [source,cmd,subs="{markup-in-source}"]
