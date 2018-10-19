@@ -7,28 +7,23 @@ Create a folder for the quantifications:
 mkdir quantifications
 ----
 
-Create a bash script called `run_rsem.sh` with the following:
+Run the following command:
 
 [source,bash,subs="{markup-in-source}"]
 ----
-#!/bin/bash -e
-
-# load env
-. {env_file}
-
-# load module
-module load RSEM/1.2.21
-
-# get quantifications with RSEM
-rsem-calculate-expression --bam --estimate-rspd --no-bam-output --seed 12345 -p 2 --paired-end --forward-prob 0 alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam {rnaseq_folder}refs/mouse_genome_mm9_RSEM_index/RSEMref quantifications/mouse_cns_E18_rep1
+rsem-calculate-expression --bam \
+                          --estimate-rspd \
+                          --no-bam-output \
+                          --seed 12345 \
+                          -p 2 \
+                          --paired-end \
+                          --forward-prob 0 \
+                          alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam \
+                          {rnaseq_folder}refs/mouse_genome_mm9_RSEM_index/RSEMref \
+                          quantifications/mouse_cns_E18_rep1
 ----
 
-Submit the job to the cluster:
-
-[source,cmd,subs="{markup-in-source}"]
-----
-qsub -cwd -q {queue} -l virtual_free=16G -pe smp 2 -N isoforms_rnaseq_course -e logs -o logs ./run_rsem.sh
-----
+NOTE: Here we are correctly treating the data as [crg]#**stranded**#.
 
 To obtain a matrix of gene FPKM values:
 

@@ -1,28 +1,26 @@
 = RNA-seq signal files
 
-Create a bash script called `run_bigwig.sh` with the following:
+We user STAR to generate BedGraph files from the alignments. Launch the following command to run it:
 
 [source,bash,subs="{markup-in-source}"]
 ----
-#!/bin/bash -e
-
-# load env
-. {env_file}
-
-# load module
-module load BEDTools/2.21.0
-module load KentUtils/308
-
-
-# create bedgraph from mappings
-genomeCoverageBed -split -bg -ibam alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam > alignments/mouse_cns_E18_rep1_bedGraph.bed
-# generate bigwig from bedgraph
-bedGraphToBigWig alignments/mouse_cns_E18_rep1_bedGraph.bed {rnaseq_folder}refs/mouse_genome_mm9.fa.fai alignments/mouse_cns_E18_rep1.bw
+STAR --runThreadN 2 \
+     --runMode inputAlignmentsFromBAM \
+     --inputBAMfile alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam \
+     --outWigType bedGraph \
+     --outWigStrand Unstranded \
+     --outFileNamePrefix alignments/mouse_cns_E18_rep1_ \
+     --outWigReferencesPrefix chr
 ----
 
-Submit the job to the cluster:
+NOTE: For demonstation purposes in the context of the hands on we are processing the data as unstranded even if it is [crg]#**stranded**#.
 
-[source,cmd,subs="{markup-in-source}"]
+STAR produces two files: one using uniquely mapped reads, the other using multimapped reads. We convert one of the BedGraph files to BigWig:
+
+[source,bash,subs="{markup-in-source}"]
 ----
-qsub -cwd -q {queue} -N bigwig_rnaseq_course -e logs -o logs ./run_bigwig.sh
+bedGraphToBigWig alignments/mouse_cns_E18_rep1_Signal.Unique.str1.out.bg\
+                 /rnaseq/refs/mouse_genome_mm9.fa.fai \
+                 mouse_cns_E18_rep1_uniq.bw
 ----
+
