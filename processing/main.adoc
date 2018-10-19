@@ -1,7 +1,7 @@
 = RNA-seq data processing
 :queue: RNAseq
 
-include::intro.adoc[]
+//include::intro.adoc[]
 
 :leveloffset: +1
 
