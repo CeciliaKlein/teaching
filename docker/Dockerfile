@@ -32,8 +32,9 @@ RUN conda install -y -n rnaseq \
 ADD scripts/* /opt/conda/envs/rnaseq/bin/
 
 # Update bash.bashrc
-RUN echo $'\n\
-    # Activate rnaseq conda environment\n\
-    . /opt/conda/etc/profile.d/conda.sh\n\
-    conda activate rnaseq\n'\
-    >> /etc/bash.bashrc
+RUN echo "# Activate rnaseq conda environment" >> /etc/bash.bashrc && \
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> /etc/bash.bashrc && \
+    echo "conda activate rnaseq" >> /etc/bash.bashrc
+
+# Update root bashrc
+RUN sed -i 's/conda activate base$/conda activate rnaseq/' ~/.bashrc
