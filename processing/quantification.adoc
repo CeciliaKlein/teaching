@@ -32,23 +32,9 @@ To obtain a matrix of gene FPKM values:
 cat {rnaseq_folder}data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v FPKM -d quantifications
 ----
 
-To obtain a matrix of transcript FPKM values:
-
-[source,cmd,subs="{markup-in-source}"]
-----
-cat {rnaseq_folder}data/quantifications.index.txt | sed 's/gene/isoform/' | retrieve_element_rpkms.py -o encode -O mouse -e transcript -v FPKM -d quantifications
-----
-
 To obtain a matrix of gene read counts:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
 cat {rnaseq_folder}data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v expected_count -d quantifications
-----
-
-To obtain a matrix of transcript read counts:
-
-[source,cmd,subs="{markup-in-source}"]
-----
-cat {rnaseq_folder}data/quantifications.index.txt | sed 's/gene/isoform/' | retrieve_element_rpkms.py -o encode -O mouse -e transcript -v expected_count -d quantifications
 ----
