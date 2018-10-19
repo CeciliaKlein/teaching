@@ -1,7 +1,7 @@
 = Setup
 :rnaseq_folder: rnaseq
 :base_folder: /training/rg
-:working_dir: ~/rnaseq
+:working_dir: ~/rnaseq.handson
 
 All the data needed for the course is stored in the following directory:
 
@@ -14,7 +14,7 @@ We are going to run all the commands of the hands-on within a Singularity contai
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-singularity shell -B {base_folder}/{rnaseq_folder}:/rnaseq \
+singularity shell -B {base_folder}/{rnaseq_folder}:/{rnaseq_folder} \
                   -s /bin/bash \
                   {base_folder}/rnaseq.simg
 ----
