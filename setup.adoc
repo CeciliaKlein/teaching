@@ -1,6 +1,7 @@
 = Setup
-:rnaseq_folder:
-:base_folder: /training/rg/
+:rnaseq_folder: /rnaseq
+:base_folder: /training/rg
+:working_dir: ~/rnaseq
 
 All the data needed for the course is stored in the following directory:
 
@@ -9,13 +10,13 @@ All the data needed for the course is stored in the following directory:
 {base_folder}
 ----
 
-In order to set up your environment for the hands-on you need to run the following command in your terminal:
+We are going to run all the commands of the hands-on within a Singularity container. In order to run the container shell you need to run the following command in your terminal:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-singularity shell -B /training/rg/rnaseq:/rnaseq \
+singularity shell -B {base_folder}/{rnaseq_folder}:/rnaseq \
                   -s /bin/bash \
-                  /training/rg/rnaseq.simg
+                  {base_folder}/rnaseq.simg
 ----
 
 You should get a similar output:
@@ -24,16 +25,16 @@ You should get a similar output:
 ----
 Singularity: Invoking an interactive shell within container...
 
-(rnaseq) training@workstation:~$
+(rnaseq) training@CZC8297PTV:~$
 ----
 
-We are going to use the folder `~/rnaseq` as our working directory. Create the folder within your home and move to it:
+We are going to use the folder `{working_dir}` as our working directory. Create the folder within your home and move to it:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
 # create the rnaseq folder
-mkdir ~/rnaseq
+mkdir {working_dir}
 
 # move to the folder
-cd ~/rnaseq
+cd {working_dir}
 ----
