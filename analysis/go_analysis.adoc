@@ -16,14 +16,14 @@ cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c MF 
 cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c CC -o edgeR.overE14 -s mouse
 ----
 
-The results can be visualized in the browser, pasting the following paths in the search line:
+The results can be visualized in a web browser, using the online Gene Ontology visualizer REVIGO. As an example, prepare REVIGO input for the Biological Process (BP) results:
 
 [source,cmd]
 ----
-firefox ~/rnaseq/analysis/edgeR.overE14.BP.html
-firefox ~/rnaseq/analysis/edgeR.overE14.MF.html
-firefox ~/rnaseq/analysis/edgeR.overE14.CC.html
+cut -f1,4 edgeR.overE14.BP.tsv > revigo.BP.tsv
 ----
+
+Copy the contents of the `revigo.BP.tsv` file and copy them in the text box on the main page of the REVIGO web site. The click the button `[Start Revigo]` and have a look at the results.
 
 You can repeat the same for the genes overexpressed in E18:
 
