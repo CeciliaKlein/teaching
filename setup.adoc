@@ -1,5 +1,5 @@
 = Setup
-:rnaseq_folder: /rnaseq
+:rnaseq_folder: rnaseq
 :base_folder: /training/rg
 :working_dir: ~/rnaseq
 
