@@ -11,13 +11,13 @@ Run the following command:
 
 [source,bash,subs="{markup-in-source}"]
 ----
-rsem-calculate-expression --bam \
+rsem-calculate-expression -p 2 \
+                          --bam \
+                          --paired-end \
                           --estimate-rspd \
+                          --forward-prob 0 \
                           --no-bam-output \
                           --seed 12345 \
-                          -p 2 \
-                          --paired-end \
-                          --forward-prob 0 \
                           alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam \
                           {rnaseq_folder}refs/mouse_genome_mm9_RSEM_index/RSEMref \
                           quantifications/mouse_cns_E18_rep1
