@@ -15,13 +15,6 @@ And move into it:
 cd analysis
 ----
 
-If you did not load load the environment yet, do it now:
-
-[source,cmd,subs="{markup-in-source}"]
-----
-. {env_file}
-----
-
 :leveloffset: +1
 
 //include::separate_genes.adoc[]
