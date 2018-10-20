@@ -20,10 +20,10 @@ The results can be visualized in a web browser, using the online Gene Ontology v
 
 [source,cmd]
 ----
-cut -f1,4 edgeR.overE14.BP.tsv > revigo.BP.tsv
+cut -f1,4 edgeR.overE14.BP.tsv
 ----
 
-Copy the contents of the `revigo.BP.tsv` file and paste them in the text box on the main page of the REVIGO web site. Then click the button `[Start Revigo]` and have a look at the results.
+Copy the above command output and paste it in the text box on the main page of the REVIGO web site. Then click the button `[Start Revigo]` and have a look at the results.
 
 You can repeat the same for the genes overexpressed in E18:
 
