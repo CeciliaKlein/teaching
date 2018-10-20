@@ -16,7 +16,7 @@ cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c MF 
 cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c CC -o edgeR.overE14 -s mouse
 ----
 
-The results can be visualized in a web browser, using the online Gene Ontology visualizer link:http://revigo.irb.hr[REVIGO^]. As an example, prepare REVIGO input for Biological Process (BP) results:
+The results can be visualized in a web browser, using the online Gene Ontology visualizer link:http://revigo.irb.hr[REVIGO^]. As an example, prepare REVIGO input using Biological Process (BP) results:
 
 [source,cmd]
 ----
