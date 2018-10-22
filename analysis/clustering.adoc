@@ -2,7 +2,7 @@
 
 Perform hierarchical clustering to check replicability:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
 matrix_to_dist.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv \
                  --log10 \
