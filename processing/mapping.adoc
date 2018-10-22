@@ -22,6 +22,9 @@ STAR --runThreadN 2 \
      --sjdbGTFfile {rnaseq_folder}refs/anno.gtf \
      --genomeSAindexNbases 11
 ----
+// real	0m20.906s
+// user	0m20.811s
+// sys	0m0.591s
 
 Run the following command to perform the mapping:
 
@@ -39,6 +42,9 @@ STAR --runThreadN 2 \
      --quantMode TranscriptomeSAM \
      --outFileNamePrefix alignments/mouse_cns_E18_rep1_
 ----
+// real	0m40.882s
+// user	0m40.841s
+// sys	0m0.261s
 
 When finished we can look at the bam file:
 
