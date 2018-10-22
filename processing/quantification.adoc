@@ -7,6 +7,15 @@ Create a folder for the quantifications:
 mkdir quantifications
 ----
 
+Create the transcriptome index for RSEM:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+rsem-prepare-reference --gtf {rnaseq_dir}refs/anno.gtf \
+                      {rnaseq_dir}refs/genome.fa \
+                      txIndex/RSEMref
+----
+
 Run the following command:
 
 [source,cmd,subs="{markup-in-source}"]
@@ -19,7 +28,7 @@ rsem-calculate-expression -p 2 \
                           --no-bam-output \
                           --seed 12345 \
                           alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam \
-                          {rnaseq_folder}refs/mouse_genome_mm9_RSEM_index/RSEMref \
+                          txIndex/RSEMref \
                           quantifications/mouse_cns_E18_rep1
 ----
 
