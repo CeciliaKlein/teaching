@@ -11,12 +11,17 @@ Create the transcriptome index for RSEM:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
+mkdir txIndex
+----
+
+[source,cmd,subs="{markup-in-source}"]
+----
 rsem-prepare-reference --gtf {rnaseq_dir}refs/anno.gtf \
                       {rnaseq_dir}refs/genome.fa \
                       txIndex/RSEMref
 ----
 
-Run the following command:
+Run the following command to estimete the expression:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
