@@ -17,6 +17,8 @@ cd analysis
 
 :leveloffset: +1
 
+NOTE: Remember that you can always have a look at the options for all the R scripts that we are using in the analysis by typing `--help` after the command (e.g. `edgeR.analysis.R --help`).
+
 //include::separate_genes.adoc[]
 
 //include::rpkm_distribution.adoc[]
