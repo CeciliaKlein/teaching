@@ -1,5 +1,5 @@
 = Visualize RNA-seq signal in the UCSC genome browser
-:UCSC_genome_browser: http://genome.ucsc.edu
+:UCSC_genome_browser: http://genome-euro.ucsc.edu
 
 Add the gene expression track to the genome browser in bigWig format.
 The bigWig files must be either uploaded or linked (if they are present somewhere online)
