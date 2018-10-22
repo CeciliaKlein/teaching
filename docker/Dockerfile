@@ -33,7 +33,15 @@ RUN conda install -y -n rnaseq \
 ADD scripts/* /opt/conda/envs/rnaseq/bin/
 
 # Update bash.bashrc
-RUN echo "# Activate rnaseq conda environment" >> /etc/bash.bashrc && \
+RUN echo "# Set time zone" >> /etc/bash.bashrc && \
+    echo "export TZ=Europe/Madrid" && \
+    echo "" && \
+    echo "# Set aliases" >> /etc/bash.bashrc && \
+    echo "alias ls='ls --color=auto'" >> /etc/bash.bashrc && \
+    echo "alias ll='ls -l'" >> /etc/bash.bashrc && \
+    echo "alias la='ls -al'" >> /etc/bash.bashrc && \
+    echo "" && \
+    echo "# Activate rnaseq conda environment" >> /etc/bash.bashrc && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> /etc/bash.bashrc && \
     echo "conda activate rnaseq" >> /etc/bash.bashrc
 
