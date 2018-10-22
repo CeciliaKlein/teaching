@@ -12,6 +12,9 @@ STAR --runThreadN 2 \
      --outFileNamePrefix alignments/mouse_cns_E18_rep1_ \
      --outWigReferencesPrefix chr
 ----
+// real	0m0.691s
+// user	0m0.673s
+// sys	0m0.018s
 
 NOTE: For demonstation purposes in the context of the hands on we are processing the data as unstranded even if it is [crg]#**stranded**#.
 
@@ -23,4 +26,7 @@ bedGraphToBigWig alignments/mouse_cns_E18_rep1_Signal.Unique.str1.out.bg \
                  {rnaseq_folder}refs/genome.fa.fai \
                  alignments/mouse_cns_E18_rep1_uniq.bw
 ----
+// real	0m0.440s
+// user	0m0.425s
+// sys	0m0.013s
 
