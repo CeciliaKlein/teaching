@@ -6,12 +6,24 @@ Create a folder for the alignment steps:
 mkdir alignments
 ----
 
-Run the following command:
+Create the genome index for STAR:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
 STAR --runThreadN 2 \
-     --genomeDir {rnaseq_folder}refs/mouse_genome_mm9_STAR_index \
+     --runMode genomeGenerate \
+     --genomeDir genomeIndex \
+     --genomeFastaFiles {rnaseq_folder}refs/genome.fa \
+     --sjdbGTFfile {rnaseq_folder}refs/anno.gtf \
+     --genomeSAindexNbases 11
+----
+
+Run the following command to perform the mapping:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+STAR --runThreadN 2 \
+     --genomeDir genomeIndex \
      --readFilesIn {rnaseq_folder}data/mouse_cns_E18_rep1_1.fastq.gz \
                    {rnaseq_folder}data/mouse_cns_E18_rep1_2.fastq.gz \
      --outSAMunmapped Within \
@@ -37,35 +49,38 @@ or at the mapping statistics that come with `STAR`:
 cat alignments/mouse_cns_E18_rep1_Log.final.out
 ----
 ----
-                                 Started job on |       Sep 15 17:12:35
-                             Started mapping on |       Sep 15 17:16:32
-                                    Finished on |       Sep 15 17:17:38
-       Mapping speed, Million of reads per hour |       40.91
+                                 Started job on |	Oct 22 08:15:01
+                             Started mapping on |	Oct 22 08:15:01
+                                    Finished on |	Oct 22 08:16:00
+       Mapping speed, Million of reads per hour |	6.10
 
-                          Number of input reads |       750067
-                      Average input read length |       202
+                          Number of input reads |	100000
+                      Average input read length |	202
                                     UNIQUE READS:
-                   Uniquely mapped reads number |       646593
-                        Uniquely mapped reads % |       86.20%
-                          Average mapped length |       200.63
-                       Number of splices: Total |       335381
-            Number of splices: Annotated (sjdb) |       330288
-                       Number of splices: GT/AG |       331908
-                       Number of splices: GC/AG |       2842
-                       Number of splices: AT/AC |       399
-               Number of splices: Non-canonical |       232
-                      Mismatch rate per base, % |       0.20%
-                         Deletion rate per base |       0.01%
-                        Deletion average length |       1.93
-                        Insertion rate per base |       0.01%
-                       Insertion average length |       1.44
+                   Uniquely mapped reads number |	89923
+                        Uniquely mapped reads % |	89.92%
+                          Average mapped length |	200.60
+                       Number of splices: Total |	39649
+            Number of splices: Annotated (sjdb) |	25836
+                       Number of splices: GT/AG |	13661
+                       Number of splices: GC/AG |	104
+                       Number of splices: AT/AC |	2
+               Number of splices: Non-canonical |	25882
+                      Mismatch rate per base, % |	0.23%
+                         Deletion rate per base |	0.02%
+                        Deletion average length |	1.59
+                        Insertion rate per base |	0.00%
+                       Insertion average length |	1.38
                              MULTI-MAPPING READS:
-        Number of reads mapped to multiple loci |       26254
-             % of reads mapped to multiple loci |       3.50%
-        Number of reads mapped to too many loci |       887
-             % of reads mapped to too many loci |       0.12%
+        Number of reads mapped to multiple loci |	1946
+             % of reads mapped to multiple loci |	1.95%
+        Number of reads mapped to too many loci |	86
+             % of reads mapped to too many loci |	0.09%
                                   UNMAPPED READS:
-       % of reads unmapped: too many mismatches |       0.00%
-                 % of reads unmapped: too short |       10.04%
-                     % of reads unmapped: other |       0.14%
+       % of reads unmapped: too many mismatches |	0.00%
+                 % of reads unmapped: too short |	7.96%
+                     % of reads unmapped: other |	0.08%
+                                  CHIMERIC READS:
+                       Number of chimeric reads |	0
+                            % of chimeric reads |	0.00%
 ----
