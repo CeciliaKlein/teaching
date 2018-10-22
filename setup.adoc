@@ -1,7 +1,4 @@
 = Setup
-:rnaseq_folder: /rnaseq/
-:base_folder: /training/rg
-:working_dir: ~/rnaseq.handson
 
 All the data needed for the course is stored in the following directory:
 

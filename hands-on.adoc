@@ -24,6 +24,10 @@ endif::draft[]
 
 :sectnums:
 
+:rnaseq_folder: /rnaseq/
+:base_folder: /training/rg
+:working_dir: ~/rnaseq.handson
+
 :leveloffset: +1
 
 include::introduction.adoc[]
