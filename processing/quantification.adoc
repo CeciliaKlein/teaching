@@ -20,6 +20,9 @@ rsem-prepare-reference --gtf {rnaseq_folder}refs/anno.gtf \
                       {rnaseq_folder}refs/genome.fa \
                       txIndex/RSEMref
 ----
+// real	0m0.420s
+// user	0m0.371s
+// sys	0m0.049s
 
 Run the following command to estimete the expression:
 
@@ -36,6 +39,9 @@ rsem-calculate-expression -p 2 \
                           txIndex/RSEMref \
                           quantifications/mouse_cns_E18_rep1
 ----
+// real	0m5.070s
+// user	0m7.821s
+// sys	0m0.597s
 
 NOTE: Here we are correctly treating the data as [crg]#**stranded**#.
 
