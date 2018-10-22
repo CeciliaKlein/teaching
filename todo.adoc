@@ -12,8 +12,8 @@
 * [x] remove BAMstats.py from scripts
 * [x] use STAR to produce bigwig files
 * [x] remove transcript matrix creation
-* [ ] remove RPKM distribution
-* [ ] use Revigo in GO enrichment
+* [x] remove RPKM distribution
+* [x] use Revigo in GO enrichment
 * [x] remove long-non-coding parts
 * [x] remove splicing
 * [x] remove ML part
