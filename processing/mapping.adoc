@@ -60,20 +60,20 @@ or at the mapping statistics that come with `STAR`:
 cat alignments/mouse_cns_E18_rep1_Log.final.out
 ----
 ----
-                                 Started job on |	Oct 22 09:47:38
-                             Started mapping on |	Oct 22 09:47:38
-                                    Finished on |	Oct 22 09:48:19
+                                 Started job on |	Oct 22 10:11:05
+                             Started mapping on |	Oct 22 10:11:05
+                                    Finished on |	Oct 22 10:11:46
        Mapping speed, Million of reads per hour |	8.78
 
                           Number of input reads |	100000
                       Average input read length |	202
                                     UNIQUE READS:
-                   Uniquely mapped reads number |	90153
-                        Uniquely mapped reads % |	90.15%
-                          Average mapped length |	200.44
-                       Number of splices: Total |	36918
-            Number of splices: Annotated (sjdb) |	121
-                       Number of splices: GT/AG |	36559
+                   Uniquely mapped reads number |	90162
+                        Uniquely mapped reads % |	90.16%
+                          Average mapped length |	200.46
+                       Number of splices: Total |	37153
+            Number of splices: Annotated (sjdb) |	1851
+                       Number of splices: GT/AG |	36794
                        Number of splices: GC/AG |	190
                        Number of splices: AT/AC |	2
                Number of splices: Non-canonical |	167
@@ -83,8 +83,8 @@ cat alignments/mouse_cns_E18_rep1_Log.final.out
                         Insertion rate per base |	0.00%
                        Insertion average length |	1.39
                              MULTI-MAPPING READS:
-        Number of reads mapped to multiple loci |	1720
-             % of reads mapped to multiple loci |	1.72%
+        Number of reads mapped to multiple loci |	1713
+             % of reads mapped to multiple loci |	1.71%
         Number of reads mapped to too many loci |	100
              % of reads mapped to too many loci |	0.10%
                                   UNMAPPED READS:
