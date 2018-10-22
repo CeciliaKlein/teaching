@@ -17,6 +17,10 @@ logOK() {
     printf "\e[32;1m%s\e[0m\n" OK
 }
 
+logKO() {
+    printf "\e[31;1m%s\e[0m\n" OK
+}
+
 logn() {
     echo "$@"
 }
@@ -66,11 +70,63 @@ exons=$((zgrep Sec23a $RNASEQ/refs/mm65.long.ok.gtf.gz | awk '$3=="exon"' | wc -
 pcgenes=$((zcat $RNASEQ/refs/mm65.long.ok.gtf.gz | awk '$3=="gene" && $0~/gene_type "protein_coding"/{ match($0, /gene_id "([^"]+)/, id); print id[1] }' | sort | wc -l)  2> error.log)
 [ $pcgenes -eq 22380 ] && logOK
 
-#########################
-# Quantification Matrices
+#########
+# Mapping
 #
-log "Expression matrices"
-mkdir -p quantifications
+log "Mapping"
+(mkdir genomeIndex && STAR --runThreadN 2 \
+     --runMode genomeGenerate \
+     --genomeDir genomeIndex \
+     --genomeFastaFiles $RNASEQ/refs/genome.fa \
+     --sjdbGTFfile $RNASEQ/refs/anno.gtf \
+     --genomeSAindexNbases 11) &> error.log
+(mkdir alignments && STAR --runThreadN 2 \
+     --genomeDir genomeIndex \
+     --readFilesIn $RNASEQ/data/mouse_cns_E18_rep1_1.fastq.gz \
+                   $RNASEQ/data/mouse_cns_E18_rep1_2.fastq.gz \
+     --outSAMunmapped Within \
+     --outFilterType BySJout \
+     --outSAMattributes NH HI AS NM MD \
+     --readFilesCommand pigz -p2 -dc \
+     --outSAMtype BAM SortedByCoordinate \
+     --quantMode TranscriptomeSAM \
+     --outFileNamePrefix alignments/mouse_cns_E18_rep1_) &> error.log
+nreads=$(samtools view -c alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam 2> error.log)
+[ $nreads -eq 207544 ] && logOK || logKO
+
+#########
+# Signal
+#
+log "Signal"
+STAR --runThreadN 2 \
+     --runMode inputAlignmentsFromBAM \
+     --inputBAMfile alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam \
+     --outWigType bedGraph \
+     --outWigStrand Unstranded \
+     --outFileNamePrefix alignments/mouse_cns_E18_rep1_ \
+     --outWigReferencesPrefix chr &> error.log
+bedGraphToBigWig alignments/mouse_cns_E18_rep1_Signal.Unique.str1.out.bg \
+                 /rnaseq/refs/genome.fa.fai \
+                 alignments/mouse_cns_E18_rep1_uniq.bw &> error.log
+logOK
+
+#################
+# Quantifications
+#
+log "Quantifications"
+(mkdir txIndex && rsem-prepare-reference --gtf /rnaseq/refs/anno.gtf \
+                      /rnaseq/refs/genome.fa \
+                      txIndex/RSEMref) &> error.log
+(mkdir quantifications && rsem-calculate-expression -p 2 \
+                          --bam \
+                          --paired-end \
+                          --estimate-rspd \
+                          --forward-prob 0 \
+                          --no-bam-output \
+                          --seed 12345 \
+                          alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam \
+                          txIndex/RSEMref \
+                          quantifications/mouse_cns_E18_rep1) &> error.log
 (cat $RNASEQ/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v FPKM -d quantifications) 2> error.log
 (cat $RNASEQ/data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v expected_count -d quantifications) 2> error.log
 logOK
