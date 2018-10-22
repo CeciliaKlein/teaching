@@ -17,6 +17,6 @@
 * [x] remove long-non-coding parts
 * [x] remove splicing
 * [x] remove ML part
-* [ ] put command help also in analysis
+* [x] put command help (also in analysis)
 * [x] fix rnaseq folder in intro
-* [ ] put long options only
+* [x] put long options only
