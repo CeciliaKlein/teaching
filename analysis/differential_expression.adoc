@@ -56,5 +56,6 @@ cut -f1 gene.edgeR.tsv \
               -p 0.1 \
               --col_dendro \
               --row_dendro \
+              --matrix_palette=/rnaseq/palettes/terrain.colors.3.txt \
               -o heatmap.edgeR.pdf
 ----
