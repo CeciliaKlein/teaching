@@ -11,9 +11,24 @@ Launch the GO enrichment script for the Biological Processes, Molecular Function
 
 [source,cmd]
 ----
-cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c BP -o edgeR.overE14 -s mouse
-cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c MF -o edgeR.overE14 -s mouse
-cut -f1 edgeR.0.01.overE14.txt | GO_enrichment.R -u universe.txt -G stdin -c CC -o edgeR.overE14 -s mouse
+cut -f1 edgeR.0.01.overE14.txt \
+| GO_enrichment.R --universe universe.txt \
+                  --genes stdin \
+                  --categ BP \
+                  --output edgeR.overE14 \
+                  --species mouse
+cut -f1 edgeR.0.01.overE14.txt \
+| GO_enrichment.R --universe universe.txt \
+                  --genes stdin \
+                  --categ MF \
+                  --output edgeR.overE14 \
+                  --species mouse
+cut -f1 edgeR.0.01.overE14.txt \
+| GO_enrichment.R --universe universe.txt \
+                  --genes stdin \
+                  --categ CC \
+                  --output edgeR.overE14 \
+                  --species mouse
 ----
 
 The results can be visualized in a web browser, using the online Gene Ontology visualizer link:http://revigo.irb.hr[REVIGO^]. As an example, prepare REVIGO input using Biological Process (BP) results:
@@ -29,7 +44,22 @@ You can repeat the same for the genes overexpressed in E18:
 
 [source,cmd]
 ----
-cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c BP -o edgeR.overE18 -s mouse
-cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c MF -o edgeR.overE18 -s mouse
-cut -f1 edgeR.0.01.overE18.txt | GO_enrichment.R -u universe.txt -G stdin -c CC -o edgeR.overE18 -s mouse
+cut -f1 edgeR.0.01.overE18.txt \
+| GO_enrichment.R --universe universe.txt \
+                  --genes stdin \
+                  --categ BP \
+                  --output edgeR.overE18 \
+                  --species mouse
+cut -f1 edgeR.0.01.overE18.txt \
+| GO_enrichment.R --universe universe.txt \
+                  --genes stdin \
+                  --categ MF \
+                  --output edgeR.overE18 \
+                  --species mouse
+cut -f1 edgeR.0.01.overE18.txt \
+| GO_enrichment.R --universe universe.txt \
+                  --genes stdin \
+                  --categ CC \
+                  --output edgeR.overE18 \
+                  --species mouse
 ----
