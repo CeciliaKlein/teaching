@@ -10,6 +10,11 @@ Create the genome index for STAR:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
+mkdir genomeIndex
+----
+
+[source,cmd,subs="{markup-in-source}"]
+----
 STAR --runThreadN 2 \
      --runMode genomeGenerate \
      --genomeDir genomeIndex \
