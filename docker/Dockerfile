@@ -34,7 +34,7 @@ ADD scripts/* /opt/conda/envs/rnaseq/bin/
 
 # Update bash.bashrc
 RUN echo "# Set time zone" >> /etc/bash.bashrc && \
-    echo "export TZ=Europe/Madrid" && \
+    echo "export TZ=Europe/Madrid" >> /etc/bash.bashrc && \
     echo "" && \
     echo "# Set aliases" >> /etc/bash.bashrc && \
     echo "alias ls='ls --color=auto'" >> /etc/bash.bashrc && \
