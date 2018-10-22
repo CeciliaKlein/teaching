@@ -46,7 +46,7 @@ STAR --runThreadN 2 \
 // user	0m40.841s
 // sys	0m0.261s
 
-NOTE: Remember that, in general, you can always have a look at programs options by typing `--help` after the command (e.g. `STAR --help`).
+NOTE: Remember that, in general, you can always have a look at programs options by just typing the command name or `--help` after the command (e.g. `STAR --help`).
 
 When finished we can look at the bam file:
 

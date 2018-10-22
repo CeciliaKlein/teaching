@@ -45,7 +45,7 @@ rsem-calculate-expression --num-threads 2 \
 
 NOTE: Here we are correctly treating the data as [crg]#**stranded**#.
 
-NOTE: Remember that, in general, you can always have a look at programs options by typing `--help` after the command (e.g. `rsem-calculate-expression --help`).
+NOTE: Remember that, in general, you can always have a look at programs options by just typing the command name or `--help` after the command (e.g. `STAR --help`).
 
 RSEM generates expression quantification at transcript and gene level. For the data analysis section we are going to use only [crg]#gene expression data#.
 
