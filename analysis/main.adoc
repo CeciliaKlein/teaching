@@ -19,7 +19,7 @@ cd analysis
 
 //include::separate_genes.adoc[]
 
-include::rpkm_distribution.adoc[]
+//include::rpkm_distribution.adoc[]
 
 include::clustering.adoc[]
 
