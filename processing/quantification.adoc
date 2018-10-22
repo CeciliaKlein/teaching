@@ -28,7 +28,7 @@ Run the following command to estimete the expression:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-rsem-calculate-expression -p 2 \
+rsem-calculate-expression --num-threads 2 \
                           --bam \
                           --paired-end \
                           --estimate-rspd \
@@ -45,18 +45,30 @@ rsem-calculate-expression -p 2 \
 
 NOTE: Here we are correctly treating the data as [crg]#**stranded**#.
 
+NOTE: Remember that you can usually have a look at programs options by typing `--help` after the command (e.g. `rsem-calculate-expression --help`).
+
 RSEM generates expression quantification at transcript and gene level. For the data analysis section we are going to use only [crg]#gene expression data#.
 
 To obtain a matrix of gene FPKM values:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-cat {rnaseq_folder}data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v FPKM -d quantifications
+cat {rnaseq_folder}data/quantifications.index.txt \
+| retrieve_element_rpkms.py --output encode \
+                            --organism mouse \
+                            --element gene \
+                            --value FPKM \
+                            --output_dir quantifications
 ----
 
 To obtain a matrix of gene read counts:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-cat {rnaseq_folder}data/quantifications.index.txt | retrieve_element_rpkms.py -o encode -O mouse -e gene -v expected_count -d quantifications
+cat {rnaseq_folder}data/quantifications.index.txt \
+| retrieve_element_rpkms.py --output encode \
+                            --organism mouse \
+                            --element gene \
+                            --value expected_count \
+                            --output_dir quantifications
 ----
