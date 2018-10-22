@@ -11,8 +11,8 @@ We are going to run all the commands of the hands-on within a Singularity contai
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-singularity shell -B {base_folder}{rnaseq_folder}:{rnaseq_folder} \
-                  -s /bin/bash \
+singularity shell --bind {base_folder}{rnaseq_folder}:{rnaseq_folder} \
+                  --shell /bin/bash \
                   {base_folder}/rnaseq.simg
 ----
 
