@@ -16,8 +16,8 @@ mkdir txIndex
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-rsem-prepare-reference --gtf {rnaseq_dir}refs/anno.gtf \
-                      {rnaseq_dir}refs/genome.fa \
+rsem-prepare-reference --gtf {rnaseq_folder}refs/anno.gtf \
+                      {rnaseq_folder}refs/genome.fa \
                       txIndex/RSEMref
 ----
 

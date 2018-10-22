@@ -20,7 +20,7 @@ STAR produces two files: one using uniquely mapped reads, the other using multim
 [source,cmd,subs="{markup-in-source}"]
 ----
 bedGraphToBigWig alignments/mouse_cns_E18_rep1_Signal.Unique.str1.out.bg \
-                 /rnaseq/refs/genome.fa.fai \
+                 {rnaseq_folder}refs/genome.fa.fai \
                  alignments/mouse_cns_E18_rep1_uniq.bw
 ----
 
