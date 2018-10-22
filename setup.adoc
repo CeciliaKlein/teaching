@@ -29,9 +29,10 @@ We are going to use the folder `{working_dir}` as our working directory. Create 
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-# create the rnaseq folder
 mkdir {working_dir}
+----
 
-# move to the folder
+[source,cmd,subs="{markup-in-source}"]
+----
 cd {working_dir}
 ----
