@@ -9,4 +9,4 @@ NOTE: The default working directory is `{working_dir}`, if nothing else is speci
 
 NOTE: A cheatsheet with basic Linux and Cluster commands is available <<{cheatsheet}>>.
 
-NOTE: A copy of the slides of the course can be found <<Tutorial_RNAseq_CRG_Oct2018.pdf,here>>.
+NOTE: A copy of the slides of the course can be found link:Tutorial_RNAseq_CRG_Oct2018.pdf[here].
