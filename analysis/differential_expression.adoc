@@ -34,7 +34,7 @@ Show the results in a heatmap:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-awk '$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print var[1],var[2] }' OFS="\t" {rnaseq_folder}refs/mm65.long.ok.gtf) \
+awk '$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print var[1],var[2] }' OFS="\t" {rnaseq_folder}refs/mm65.long.ok.gtf \
 | join.py --file1 stdin \
           --file2 <(cat edgeR.0.01.over*.txt) \
 | sed '1igene\tedgeR\tgene_type' > gene.edgeR.tsv
