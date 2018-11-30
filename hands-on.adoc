@@ -1,4 +1,4 @@
-= CRG RNA-seq Data Analysis Hands-on
+= Data Analysis Hands-on
 :hide-uri-scheme:
 :nofooter:
 :icons: font

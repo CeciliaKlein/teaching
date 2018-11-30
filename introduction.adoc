@@ -1,11 +1,11 @@
 [discrete]
 = Introduction
 
-The RNA-seq data used for the analysis comes from brain samples (CNS) of 2 mouse embryo samples at day 14 and day 18, done in 2 bioreplicates (1% of the reads are randomly sampled here).
+The RNA-seq, ChIP-seq and ATAC-seq data used for the analysis comes from brain, heart and liver of mouse embryo samples at 10.5 days of development, done in 2 bioreplicates (1% of the reads are randomly sampled here). This data is provided by ENCODE: Encyclopedia of DNA Elements (https://www.encodeproject.org/).
 
 For time and memory restrictions, only one sample is used for the data processing. This sample has been built with a hundred thousand alignment-based pre-filtered reads. A small sample of the genome and annotation (21 chromosomes, 1Mb long) is used as the reference.
 
-NOTE: The default working directory is `{working_dir}`, if nothing else is specified. You can use the `pwd` command to [crg]##**p**##rint your current [crg]##**w**##orking [crg]##**d**##irectory.
+//NOTE: The default working directory is `{working_dir}`, if nothing else is specified. You can use the `pwd` command to [crg]##**p**##rint your current [crg]##**w**##orking [crg]##**d**##irectory.
 
 NOTE: A cheatsheet with basic Linux and Cluster commands is available <<{cheatsheet}>>.
 
