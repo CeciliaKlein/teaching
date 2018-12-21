@@ -4,7 +4,7 @@ Have a look at the distribution of RPKM values:
 
 [source,cmd]
 ----
-rpkm_distribution.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/quantifications.index.tsv -f age
+rpkm_distribution.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/gene.quantifications.index.tsv -f tissue
 ----
 
 To look at the plots:

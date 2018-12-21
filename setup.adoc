@@ -7,32 +7,61 @@ All the data needed for the course is stored in the following directory:
 {base_folder}
 ----
 
-We are going to run all the commands of the hands-on within a Singularity container. In order to run the container shell you need to run the following command in your terminal:
+NOTE: `Linux and Mac`: The Bash shell is available on Linux and Mac OS.
+
+NOTE: `Windows`: Use VirtualBox or VMWare player to import this virtual machine with `Ubuntu 18.04` and Docker pre-installed. Follow the instructions provided by Diego Garrido link:https://github.com/dgarrimar/uvic_msc/wiki[here].
+
+
+Download and uncompress the data:
+[source,cmd,	subs="{markup-in-source}"]
+----
+wget {base_folder}
+tar -zxvf tutorial.tar.gz
+----
+
+
+We are going to use the folder `{working_dir}` as our working directory. Move to it:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-singularity shell --bind {base_folder}{rnaseq_folder}:{rnaseq_folder} \
-                  --shell /bin/bash \
-                  {base_folder}/rnaseq.simg
+cd {working_dir}
+----
+
+The scripts used in this course are available in GitHub:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+git clone https://github.com/CeciliaKlein/teaching-utils.git
+----
+
+NOTE: Review Git hands-on by Diego Garrido link:https://github.com/dgarrimar/uvic_msc/wiki/2.-Git-hands-on[here].
+
+
+
+
+We are going to run all the commands of the hands-on within a Docker container. Check the path to the folder where you saved the data for the course.
+
+
+In order to run the container shell you need to run the following command in your terminal:
+
+NOTE: Replace `/path/to/tutorial` to the path where the tutorial data is stored in your computer. Use `pwd` to check your current location.
+
+[source,cmd,subs="{markup-in-source}"]
+----
+
+docker run -i -t -v /path/to/tutorial:/tutorial -w /tutorial ceciliaklein/teaching:uvic
 ----
 
 You should get a similar output:
 
 [source,bash]
 ----
-Singularity: Invoking an interactive shell within container...
-
-(rnaseq) training@CZC8297PTV:~$
+(main) root@516a2307ed2b:/tutorial# 
 ----
 
-We are going to use the folder `{working_dir}` as our working directory. Create the folder within your home and move to it:
+Add /teaching-utils folder to the PATH environment variable
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-mkdir {working_dir}
-----
-
-[source,cmd,subs="{markup-in-source}"]
-----
-cd {working_dir}
+export PATH=$PATH:/tutorial/teaching-utils/;
 ----

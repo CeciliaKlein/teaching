@@ -53,7 +53,8 @@ To obtain a matrix of gene FPKM values:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-cat {rnaseq_folder}data/quantifications.index.txt \
+
+cat {rnaseq_folder}data/gene.quantifications.index.txt \
 | retrieve_element_rpkms.py --output encode \
                             --organism mouse \
                             --element gene \
@@ -65,7 +66,7 @@ To obtain a matrix of gene read counts:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-cat {rnaseq_folder}data/quantifications.index.txt \
+cat {rnaseq_folder}data/gene.quantifications.index.txt \
 | retrieve_element_rpkms.py --output encode \
                             --organism mouse \
                             --element gene \

@@ -24,9 +24,10 @@ endif::draft[]
 
 :sectnums:
 
-:rnaseq_folder: /rnaseq/
-:base_folder: /training/rg
-:working_dir: ~/rnaseq.handson
+:rnaseq_folder: /tutorial/
+:base_folder: https://public-docs.crg.es/rguigo/Data/cklein/courses/UVIC/data/tutorial.tar.gz
+:working_dir: tutorial
+
 
 :leveloffset: +1
 

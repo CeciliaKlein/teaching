@@ -9,12 +9,12 @@ matrix_to_dist.R --input_matrix ../quantifications/encode.mouse.gene.FPKM.idr_NA
                  --cor pearson \
                  --output stdout \
 | ggheatmap.R --input_matrix stdin \
-              --row_metadata {rnaseq_folder}data/quantifications.index.tsv \
+              --row_metadata {rnaseq_folder}data/gene.quantifications.index.tsv \
               --col_dendro \
               --row_dendro \
               --base_size 10 \
               --matrix_palette {rnaseq_folder}palettes/terrain.colors.3.txt \
-              --rowSide_by age \
+              --rowSide_by tissue \
               --matrix_fill_limits 0.85,1 \
               --output cns.heatmap.pdf
 ----

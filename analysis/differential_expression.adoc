@@ -5,8 +5,8 @@ Run the DE with the edgeR package (be careful takes read counts and not rpkm val
 [source,cmd,subs="{markup-in-source}"]
 ----
 edgeR.analysis.R --input_matrix ../quantifications/encode.mouse.gene.expected_count.idr_NA.tsv \
-                 --metadata {rnaseq_folder}data/quantifications.index.tsv \
-                 --fields age
+                 --metadata {rnaseq_folder}data/gene.quantifications.index.tsv \
+                 --fields tissue
 ----
 
 Write a list of the genes overexpressed after 18 days, according to edgeR analysis:
@@ -34,7 +34,7 @@ Show the results in a heatmap:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-awk '$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print var[1],var[2] }' OFS="\t" {rnaseq_folder}refs/mm65.long.ok.gtf \
+awk '$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print var[1],var[2] }' OFS="\t" {rnaseq_folder}refs/genM11.gtf \
 | join.py --file1 stdin \
           --file2 <(cat edgeR.0.01.over*.txt) \
 | sed '1igene\tedgeR\tgene_type' > gene.edgeR.tsv
@@ -46,8 +46,8 @@ cut -f1 gene.edgeR.tsv \
 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv \
 | ggheatmap.R --width 5 \
               --height 9 \
-              --col_metadata {rnaseq_folder}data/quantifications.index.tsv \
-              --colSide_by age \
+              --col_metadata {rnaseq_folder}data/gene.quantifications.index.tsv \
+              --colSide_by tissue \
               --col_labels labExpId \
               --row_metadata gene.edgeR.tsv \
               --merge_row_mdata_on gene \

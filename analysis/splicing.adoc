@@ -27,7 +27,7 @@ Extract alternative splicing (AS) events from a given genomic annotation of exon
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-astalavista -t asta -i ../refs/mm65.long.ok.sorted.gtf -o astalavista.pw.gtf.gz
+astalavista -t asta -i ../refs/genM11.gtf -o astalavista.pw.gtf.gz
 ----
 
 Uncompress astalavista output:
