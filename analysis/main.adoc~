@@ -31,9 +31,7 @@ include::go_analysis.adoc[]
 
 //include::ml_classifier.adoc[]
 
-//include::UCSC_genome_browser.adoc[]
-
-include::differential_tx_expression.adoc[]
+include::UCSC_genome_browser.adoc[]
 
 include::splicing.adoc[]
 

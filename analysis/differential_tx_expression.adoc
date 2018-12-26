@@ -1,0 +1,62 @@
+= Differential transcript expression
+
+Run the DE with the edgeR package as before  but now using the transcript expression matrix (be careful takes read counts and not rpkm values as input):
+
+[source,cmd,subs="{markup-in-source}"]
+----
+edgeR.analysis.R --input_matrix ../quantifications/encode.mouse.transcript.expected_count.idr_NA.tsv \
+                 --metadata {rnaseq_folder}data/transcript.quantifications.index.tsv \
+                 --fields tissue
+----
+
+Write a list of the transcripts overexpressed after 18 days, according to edgeR analysis:
+
+[source,cmd]
+----
+awk '$NF<0.01 && $4>2{print $1"\tover18"}' edgeR.cpm1.n2.out.tsv > edgeR.0.01.overE18.txt
+----
+
+Write a list of the transcripts overexpressed after 14 days, according to edgeR analysis:
+
+[source,cmd]
+----
+awk '$NF<0.01 && $4<-2 {print $1"\tover14"}' edgeR.cpm1.n2.out.tsv > edgeR.0.01.overE14.txt
+----
+
+Count how many overexpressed transcripts there are in each stage:
+
+[source,cmd]
+----
+wc -l edgeR.0.01.over*.txt
+----
+
+Show the results in a heatmap:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+awk '$3=="transcript"{ match($0, /transcript_id "([^"]+).+transcript_type "([^"]+)/, var); print var[1],var[2] }' OFS="\t" {rnaseq_folder}refs/mm10.gencodeM11.gtf \
+| join.py --file1 stdin \
+          --file2 <(cat edgeR.0.01.over*.txt) \
+| sed '1itranscript\tedgeR\ttranscript_type' > transcript.edgeR.tsv
+----
+[source,cmd,subs="{markup-in-source}"]
+----
+cut -f1 transcript.edgeR.tsv \
+| tail -n+2 \
+| selectMatrixRows.sh - ../quantifications/encode.mouse.transcript.FPKM.idr_NA.tsv \
+| ggheatmap.R --width 5 \
+              --height 9 \
+              --col_metadata {rnaseq_folder}data/transcript.quantifications.index.tsv \
+              --colSide_by tissue \
+              --col_labels labExpId \
+              --row_metadata transcript.edgeR.tsv \
+              --merge_row_mdata_on transcript \
+              --rowSide_by edgeR,transcript_type \
+              --row_labels none \
+              --log \
+              --pseudocount 0.1 \
+              --col_dendro \
+              --row_dendro \
+              --matrix_palette {rnaseq_folder}palettes/terrain.colors.3.txt \
+              --output heatmap.edgeR.pdf
+----

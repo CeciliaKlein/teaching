@@ -75,4 +75,4 @@ cat {rnaseq_folder}data/gene.quantifications.index.txt \
 ----
 
 
-Generate de same two matrices for transcripts and check all the output files (e.g. using `head`).
+Generate de same two matrices for transcripts.

@@ -13,6 +13,6 @@ include::linux-commands.adoc[]
 
 include::editors/main.adoc[]
 
-//include::ant-cluster.adoc[]
+include::ant-cluster.adoc[]
 
 :leveloffset: -1

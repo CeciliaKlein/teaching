@@ -17,6 +17,6 @@ include::UCSC_genome_browser.adoc[]
 
 include::quantification.adoc[]
 
-//include::splicing.adoc[]
+include::splicing.adoc[]
 
 :leveloffset: -1

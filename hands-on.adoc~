@@ -35,8 +35,6 @@ include::introduction.adoc[]
 
 include::setup.adoc[]
 
-include::file_formats/main.adoc[]
-
 include::processing/main.adoc[]
 
 include::analysis/main.adoc[]

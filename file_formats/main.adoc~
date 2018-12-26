@@ -3,7 +3,7 @@
 
 :leveloffset: +1
 
-:annotation: refs/mm10.gencodeM11.gtf
+:annotation: /refs/mm10.gencodeM11.gtf
 
 include::fasta.adoc[]
 

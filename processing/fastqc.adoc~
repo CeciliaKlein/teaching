@@ -14,6 +14,8 @@ Run fastqc:
 fastqc -o fastqc -f fastq {rnaseq_folder}data/mouse_cns_E18_rep1_1.fastq.gz
 ----
 
+To monitor the status of the job, type `qstat`.
+
 You can view fastqc results on the browser outside the container:
 
 [source,bash]

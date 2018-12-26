@@ -1,27 +1,16 @@
 = Setup
 
-
-We are going to run all the commands of the hands-on within a Docker container. 
-
-
-NOTE: `Linux and Mac`: The Bash shell is available on Linux and Mac OS.
-
-NOTE: `Windows`: Use VirtualBox or VMWare player to import this virtual machine with `Ubuntu 18.04` and Docker pre-installed. Follow the instructions provided by Diego Garrido link:https://github.com/dgarrimar/uvic_msc/wiki[here].
-
-
-Pull the image from DockerHub:
-[source,cmd,	subs="{markup-in-source}"]
-----
-docker pull ceciliaklein/teaching:uvic
-----
-
-
 All the data needed for the course is stored in the following directory:
 
 [source,bash,	subs="{markup-in-source}"]
 ----
 {base_folder}
 ----
+
+NOTE: `Linux and Mac`: The Bash shell is available on Linux and Mac OS.
+
+NOTE: `Windows`: Use VirtualBox or VMWare player to import this virtual machine with `Ubuntu 18.04` and Docker pre-installed. Follow the instructions provided by Diego Garrido link:https://github.com/dgarrimar/uvic_msc/wiki[here].
+
 
 Download and uncompress the data:
 [source,cmd,	subs="{markup-in-source}"]

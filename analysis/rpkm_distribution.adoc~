@@ -7,9 +7,9 @@ Have a look at the distribution of RPKM values:
 rpkm_distribution.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/gene.quantifications.index.tsv -f tissue
 ----
 
-To look at the plot outside the container:
+To look at the plots:
 
-[source,bash]
+[source,cmd]
 ----
 evince boxplot.log_T.psd_0.out.pdf
 ----

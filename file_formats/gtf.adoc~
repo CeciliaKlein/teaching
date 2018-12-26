@@ -19,7 +19,7 @@ cut -f9 {annotation} | head -1
 ----
 ----
 gene_id "ENSMUSG00000102693.1"; gene_type "TEC"; gene_status "KNOWN"; gene_name "4933401J01Rik"; level 2; havana_gene "OTTMUSG00000049935.1";
-
+//gene_id "ENSMUSG00000076490"; transcript_id "ENSMUST00000103291"; exon_number "1"; gene_name "Trbc1"; gene_type "IG_C_gene"; transcript_name "Trbc1-201"; protein_id "ENSMUSP00000100099"; transcript_type "IG_C_gene";
 ----
 
 Look at the first line:
@@ -37,6 +37,15 @@ gene <3>
 + <7>
 . <8>
 gene_id "ENSMUSG00000102693.1"; gene_type "TEC"; gene_status "KNOWN"; gene_name "4933401J01Rik"; level 2; havana_gene "OTTMUSG00000049935.1"; <9>
+//chr6 <1>
+//ENSEMBL <2>
+//CDS <3>
+//41488217 <4>
+//41488591 <5>
+//. <6>
+//+ <7>
+//2 <8>
+//gene_id "ENSMUSG00000076490"; transcript_id "ENSMUST00000103291"; exon_number "1"; gene_name "Trbc1"; gene_type "IG_C_gene"; transcript_name "Trbc1-201"; protein_id "ENSMUSP00000100099"; transcript_type "IG_C_gene"; <9>
 ----
 <1> `seqname` - The name of the sequence. Must be a chromosome or scaffold.
 <2> `source`  - The program that generated this feature.
@@ -61,15 +70,15 @@ awk '$3=="exon"' {annotation} | head -1
 ----
 chr1	HAVANA	exon	3073253	3074322	.	+	.	gene_id "ENSMUSG00000102693.1"; transcript_id "ENSMUST00000193812.1"; gene_type "TEC"; gene_status "KNOWN"; gene_name "4933401J01Rik"; transcript_type "TEC"; transcript_status "KNOWN"; transcript_name "4933401J01Rik-001"; exon_number 1; exon_id "ENSMUSE00001343744.1"; level 2; transcript_support_level "NA"; tag "basic"; havana_gene "OTTMUSG00000049935.1"; havana_transcript "OTTMUST00000127109.1";
 
-
-----
+//chr17	ENSEMBL	#intron#	46893352	46893968	.	-	.	gene_id "ENSMUSG00000036858"; transcript_id "ENSMUST00000041012"; exon_number "3"; gene_name "Ptcra"; gene_type "IG_C_gene"; transcript_name "Ptcra-201"; transcript_type "IG_C_gene";
+//----
 [source,cmd,subs="{markup-in-source}"]
 ----
 awk '$3=="gene"' {annotation} | head -1
 ----
 ----
 chr1	HAVANA	gene	3073253	3074322	.	+	.	gene_id "ENSMUSG00000102693.1"; gene_type "TEC"; gene_status "KNOWN"; gene_name "4933401J01Rik"; level 2; havana_gene "OTTMUSG00000049935.1";
-
+//chr4	ENSEMBL	#gene#	116791824	116798271	.	-	.	gene_id "ENSMUSG00000073771"; transcript_id "ENSMUSG00000073771"; gene_type "protein_coding"; gene_status "NULL"; gene_name "Btbd19"; transcript_type "protein_coding"; transcript_status "NULL"; transcript_name "Btbd19";
 ----
 [source,cmd,subs="{markup-in-source}"]
 ----
@@ -77,5 +86,5 @@ awk '$3=="transcript"' {annotation} | head -1
 ----
 ----
 chr1	HAVANA	transcript	3073253	3074322	.	+	.	gene_id "ENSMUSG00000102693.1"; transcript_id "ENSMUST00000193812.1"; gene_type "TEC"; gene_status "KNOWN"; gene_name "4933401J01Rik"; transcript_type "TEC"; transcript_status "KNOWN"; transcript_name "4933401J01Rik-001"; level 2; transcript_support_level "NA"; tag "basic"; havana_gene "OTTMUSG00000049935.1"; havana_transcript "OTTMUST00000127109.1";
-
+//chr13	ENSEMBL	transcript	19305972	19308487	.	+	.	gene_id "ENSMUSG00000076749"; transcript_id "ENSMUST00000103558"; exon_number "1"; gene_name "Gm17004"; gene_type "IG_C_gene"; transcript_name "Gm17004-201"; transcript_type "IG_C_gene";
 ----
