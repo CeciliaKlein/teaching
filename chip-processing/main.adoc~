@@ -1,0 +1,22 @@
+= RNA-seq data processing
+:queue: RNAseq
+
+include::intro.adoc[]
+
+:leveloffset: +1
+
+include::gene-annotation.adoc[]
+
+include::fastqc.adoc[]
+
+include::mapping.adoc[]
+
+include::bigwig.adoc[]
+
+include::UCSC_genome_browser.adoc[]
+
+include::quantification.adoc[]
+
+//include::splicing.adoc[]
+
+:leveloffset: -1

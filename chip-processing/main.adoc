@@ -1,0 +1,17 @@
+= ChIP-seq data processing
+
+//include::intro.adoc[]
+
+:leveloffset: +1
+
+
+//include::fastqc.adoc[]
+
+include::mapping.adoc[]
+
+//include::bigwig.adoc[]
+
+//include::UCSC_genome_browser.adoc[]
+
+
+:leveloffset: -1

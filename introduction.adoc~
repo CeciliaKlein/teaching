@@ -7,6 +7,6 @@ For time and memory restrictions, only one sample is used for the data processin
 
 //NOTE: The default working directory is `{working_dir}`, if nothing else is specified. You can use the `pwd` command to [crg]##**p**##rint your current [crg]##**w**##orking [crg]##**d**##irectory.
 
-NOTE: A cheatsheet with basic Linux and Cluster commands is available <<{cheatsheet}>>.
+NOTE: A cheatsheet with basic Linux commands is available <<{cheatsheet}>>.
 
-NOTE: A copy of the slides of the course can be found link:Tutorial_RNAseq_CRG_Oct2018.pdf[here].
+NOTE: A copy of the slides of the course can be found link:Tutorial_omicsdata.pdf[here].
