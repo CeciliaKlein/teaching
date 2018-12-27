@@ -1,4 +1,4 @@
-= CRG RNAseq course cheatsheet
+= Data Analysis course cheatsheet
 :sectnums:
 :hide-uri-scheme:
 :nofooter:

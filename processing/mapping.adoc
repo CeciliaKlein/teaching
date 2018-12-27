@@ -32,15 +32,15 @@ Run the following command to perform the mapping:
 ----
 STAR --runThreadN 2 \
      --genomeDir genomeIndex \
-     --readFilesIn {rnaseq_folder}data/mouse_cns_E18_rep1_1.fastq.gz \
-                   {rnaseq_folder}data/mouse_cns_E18_rep1_2.fastq.gz \
+     --readFilesIn {rnaseq_folder}data/mouse_brain_rep1_1.fastq.gz \
+                   {rnaseq_folder}data/mouse_brain_rep1_2.fastq.gz \
      --outSAMunmapped Within \
      --outFilterType BySJout \
      --outSAMattributes NH HI AS NM MD \
      --readFilesCommand pigz -p2 -dc \
      --outSAMtype BAM SortedByCoordinate \
      --quantMode TranscriptomeSAM \
-     --outFileNamePrefix alignments/mouse_cns_E18_rep1_
+     --outFileNamePrefix alignments/mouse_brain_rep1_
 ----
 // real	0m40.882s
 // user	0m40.841s
@@ -52,20 +52,23 @@ When finished we can look at the bam file:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-samtools view -h alignments/mouse_cns_E18_rep1_Aligned.sortedByCoord.out.bam | more
+samtools view -h alignments/mouse_brain_rep1_Aligned.sortedByCoord.out.bam | more
 ----
+Type kbd:[q] to exit the view.
+
 
 or at the mapping statistics that come with `STAR`:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-cat alignments/mouse_cns_E18_rep1_Log.final.out
+cat alignments/mouse_brain_rep1_Log.final.out
 ----
 ----
-                                 Started job on |	Oct 22 10:11:05
-                             Started mapping on |	Oct 22 10:11:05
-                                    Finished on |	Oct 22 10:11:46
-       Mapping speed, Million of reads per hour |	8.78
+
+                                 Started job on |	Dec 27 16:01:03
+                             Started mapping on |	Dec 27 16:01:04
+                                    Finished on |	Dec 27 16:02:16
+       Mapping speed, Million of reads per hour |	5.00
 
                           Number of input reads |	100000
                       Average input read length |	202
@@ -96,4 +99,6 @@ cat alignments/mouse_cns_E18_rep1_Log.final.out
                                   CHIMERIC READS:
                        Number of chimeric reads |	0
                             % of chimeric reads |	0.00%
+
+
 ----

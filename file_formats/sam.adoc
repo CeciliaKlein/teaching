@@ -106,8 +106,8 @@ region containing the entire alignment. To find the alignments that overlap a sp
 Many programs need an accompanying BAI index for every input BAM. They usually assume the index is located next to the input file in the filesystem and has the same name as the input file, with the `.bai` extension appended. E.g.:
 
 ----
-mouse_cns_E18_rep1_m4_n10_toGenome.bam
-mouse_cns_E18_rep1_m4_n10_toGenome.bam.bai
+mouse_brain_rep1_m4_n10_toGenome.bam
+mouse_brain_rep1_m4_n10_toGenome.bam.bai
 ----
 
 We will have a look at the contents of a BAM file in the <<GRAPE>> section.

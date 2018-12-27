@@ -1,6 +1,6 @@
 = Reference gene annotation
 :experimental:
-:annotation: {rnaseq_folder}refs/mm10.gencodeM11.gtf
+:annotation: {rnaseq_folder}refs/gencode.vM4.gtf
 
 Look at the mouse gene annotation (ensembl v65, long genes):
 

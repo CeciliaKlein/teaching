@@ -1,0 +1,12 @@
+= Emacs
+:emacs-beginners-guide: http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+
+Emacs is a text editor with a command mode interface. See {emacs-beginners-guide}[this article^] for a beginner's guide.
+
+
+[source,cmd]
+----
+emacs file.txt
+----
+
+When you are done, save the file (by pressing kbd:[Ctrl+x] kbd:[Ctrl+s] or by selecting menu:File[Save]) and close Emacs.

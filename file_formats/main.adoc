@@ -1,9 +1,10 @@
 = Common file formats
+:experimental:
 :icons: font
 
 :leveloffset: +1
 
-:annotation: refs/mm10.gencodeM11.gtf
+:annotation: refs/gencode.vM4.gtf
 
 include::fasta.adoc[]
 

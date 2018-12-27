@@ -43,7 +43,7 @@ awk '$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print v
 ----
 cut -f1 gene.edgeR.tsv \
 | tail -n+2 \
-| selectMatrixRows.sh - ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv \
+| selectMatrixRows.sh - ../quantifications/encode.mouse.gene.TPM.idr_NA.tsv \
 | ggheatmap.R --width 5 \
               --height 9 \
               --col_metadata {rnaseq_folder}data/gene.quantifications.index.tsv \

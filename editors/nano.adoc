@@ -1,0 +1,13 @@
+= Nano
+:nano-beginners-guide: https://www.howtogeek.com/howto/42980/the-beginners-guide-to-nano-the-linux-command-line-text-editor/
+
+Nano is a text editor with a command mode interface. See {nano-beginners-guide}[this article^] for a beginner's guide.
+
+To create a new file in the current folder just call `nano` with the name of the file:
+
+[source,cmd]
+----
+nano file.txt
+----
+
+When you are done, close Nano (by pressing kbd:[Ctrl+Shift+X]) and press kbd:[Y] for saving the changes.

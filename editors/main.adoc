@@ -2,10 +2,16 @@
 :experimental:
 
 There are several ways to write and edit files.
-The most commonly used text editors are `vi`, `emacs` and `gedit`. To make things simpler, we will use `gedit` from now on.
+The most commonly used text editors are `vi`, `emacs` and `nano`.
 
 :leveloffset: +1
 
-include::gedit.adoc[]
+include::vi.adoc[]
+
+include::emacs.adoc[]
+
+include::nano.adoc[]
+
+//include::gedit.adoc[]
 
 :leveloffset: -1

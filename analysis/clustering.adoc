@@ -4,7 +4,7 @@ Perform hierarchical clustering to check replicability:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-matrix_to_dist.R --input_matrix ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv \
+matrix_to_dist.R --input_matrix ../quantifications/encode.mouse.gene.TPM.idr_NA.tsv \
                  --log10 \
                  --cor pearson \
                  --output stdout \
@@ -13,10 +13,11 @@ matrix_to_dist.R --input_matrix ../quantifications/encode.mouse.gene.FPKM.idr_NA
               --col_dendro \
               --row_dendro \
               --base_size 10 \
-              --matrix_palette {rnaseq_folder}palettes/terrain.colors.3.txt \
+              --matrix_palette {rnaseq_folder}palettes/blue.9.txt \
+              --rowSide_palette /tutorial/palettes/palTissue.txt \
               --rowSide_by tissue \
               --matrix_fill_limits 0.85,1 \
-              --output cns.heatmap.pdf
+              --output heatmap.pdf
 ----
 
 Look at the clustering.

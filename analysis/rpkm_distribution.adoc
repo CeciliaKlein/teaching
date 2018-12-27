@@ -2,14 +2,33 @@
 
 Have a look at the distribution of RPKM values:
 
-[source,cmd]
+[source,cmd,subs="{markup-in-source}"]
 ----
-rpkm_distribution.R -i ../quantifications/encode.mouse.gene.FPKM.idr_NA.tsv -l -p 0 -m ../data/gene.quantifications.index.tsv -f tissue
+rpkm_distribution.R --input_matrix ../quantifications/encode.mouse.gene.TPM.idr_NA.tsv \
+                    --log \
+                    --pseudocount 0 \
+                    --metadata ../data/gene.quantifications.index.tsv \
+                    --fill_by tissue \
+                    --palette {rnaseq_folder}palettes/palTissue.txt \
+                    --output all_genes
+		    
+
 ----
 
 To look at the plot outside the container:
 
 [source,bash]
 ----
-evince boxplot.log_T.psd_0.out.pdf
+boxplot.log_T.psd_0.all_genes.pdf
 ----
+
+
+
+Look at the distributions of expression values for protein-coding and lincRNAs, using this command to subset the matrix:
+[source,cmd]
+----
+selectMatrixRows.sh /tutorial/protein_coding_IDs.txt /tutorial/quantifications/encode.mouse.gene.TPM.idr_NA.tsv > protein-coding.TPM.tsv
+----
+
+
+Repeat the generation of the boxplot with the new matrix (change the output label).

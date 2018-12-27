@@ -35,9 +35,9 @@ rsem-calculate-expression --num-threads 2 \
                           --forward-prob 0 \
                           --no-bam-output \
                           --seed 12345 \
-                          alignments/mouse_cns_E18_rep1_Aligned.toTranscriptome.out.bam \
+                          alignments/mouse_brain_rep1_Aligned.toTranscriptome.out.bam \
                           txIndex/RSEMref \
-                          quantifications/mouse_cns_E18_rep1
+                          quantifications/mouse_brain_rep1
 ----
 // real	0m5.070s
 // user	0m7.821s
@@ -49,7 +49,7 @@ NOTE: Remember that, in general, you can always have a look at programs options 
 
 RSEM generates expression quantification at transcript and gene level. For the data analysis section we are going to use only [crg]#gene expression data#.
 
-To obtain a matrix of gene FPKM values:
+To obtain a matrix of gene TPM values:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
@@ -58,7 +58,7 @@ cat {rnaseq_folder}data/gene.quantifications.index.txt \
 | retrieve_element_rpkms.py --output encode \
                             --organism mouse \
                             --element gene \
-                            --value FPKM \
+                            --value TPM \
                             --output_dir quantifications
 ----
 
@@ -75,4 +75,12 @@ cat {rnaseq_folder}data/gene.quantifications.index.txt \
 ----
 
 
-Generate de same two matrices for transcripts and check all the output files (e.g. using `head`).
+Generate de same two matrices for transcripts and check output files (e.g. by typing kbd:[head] or kbd:[more]).
+
+Compare number of quantified genes and transcripts (e.g. by typing kbd:[wc -l]).
+
+How many genes were quantified?
+
+How many transcripts were quantified?
+
+Is it the same number as in the annotation file `/tutorial/refs/gencode.vM4.gtf`?
