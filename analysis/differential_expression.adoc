@@ -1,26 +1,29 @@
 = Differential gene expression
 
-Run the DE with the edgeR package (be careful takes read counts and not rpkm values as input):
+Run the DE with the edgeR package (be careful takes read counts and not TPM values as input):
 
 [source,cmd,subs="{markup-in-source}"]
 ----
 edgeR.analysis.R --input_matrix ../quantifications/encode.mouse.gene.expected_count.idr_NA.tsv \
                  --metadata {rnaseq_folder}data/gene.quantifications.index.tsv \
-                 --fields tissue
+                 --fields tissue \
+                 --coefficient 2 \
+                 --output brain_X_heart
+		 
 ----
 
-Write a list of the genes overexpressed after 18 days, according to edgeR analysis:
-
-[source,cmd]
-----
-awk '$NF<0.01 && $4>2{print $1"\tover18"}' edgeR.cpm1.n2.out.tsv > edgeR.0.01.overE18.txt
-----
-
-Write a list of the genes overexpressed after 14 days, according to edgeR analysis:
+Write a list of the genes overexpressed in brain compared to heart, according to edgeR analysis:
 
 [source,cmd]
 ----
-awk '$NF<0.01 && $4<-2 {print $1"\tover14"}' edgeR.cpm1.n2.out.tsv > edgeR.0.01.overE14.txt
+awk '$NF<0.01 && $2<-10{print $1"\tover_brain_X_heart"}' edgeR.cpm1.n2.brain_X_heart.tsv > edgeR.0.01.over_brain_X_heart.txt
+----
+
+Write a list of the genes overexpressed heart compared to brain, according to edgeR analysis:
+
+[source,cmd]
+----
+awk '$NF<0.01 && $2>10 {print $1"\tover_heart_X_brain"}' edgeR.cpm1.n2.brain_X_heart.tsv > edgeR.0.01.over_heart_X_brain.txt
 ----
 
 Count how many overexpressed genes there are in each stage:
@@ -34,7 +37,7 @@ Show the results in a heatmap:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-awk '$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print var[1],var[2] }' OFS="\t" {rnaseq_folder}refs/genM11.gtf \
+awk '$3=="gene"{ match($0, /gene_id "([^"]+).+gene_type "([^"]+)/, var); print var[1],var[2] }' OFS="\t" {rnaseq_folder}refs/gencode.vM4.gtf \
 | join.py --file1 stdin \
           --file2 <(cat edgeR.0.01.over*.txt) \
 | sed '1igene\tedgeR\tgene_type' > gene.edgeR.tsv
@@ -45,7 +48,7 @@ cut -f1 gene.edgeR.tsv \
 | tail -n+2 \
 | selectMatrixRows.sh - ../quantifications/encode.mouse.gene.TPM.idr_NA.tsv \
 | ggheatmap.R --width 5 \
-              --height 9 \
+              --height 8 \
               --col_metadata {rnaseq_folder}data/gene.quantifications.index.tsv \
               --colSide_by tissue \
               --col_labels labExpId \
@@ -57,6 +60,7 @@ cut -f1 gene.edgeR.tsv \
               --pseudocount 0.1 \
               --col_dendro \
               --row_dendro \
-              --matrix_palette {rnaseq_folder}palettes/terrain.colors.3.txt \
-              --output heatmap.edgeR.pdf
+              --matrix_palette {rnaseq_folder}palettes/palDiverging.txt \
+              --colSide_palette /tutorial/palettes/palTissue.txt \
+              --output heatmap.brain_X_heart.pdf
 ----

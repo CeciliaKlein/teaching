@@ -4,30 +4,30 @@ Prepare a file with the list of all the genes in the annotation:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-awk '{split($10,a,"\""); print a[2]}' {rnaseq_folder}refs/genM11.gtf | sort -u > universe.txt
+awk '{split($10,a,/\"|\./); print a[2]}' {rnaseq_folder}refs/gencode.vM4.gtf | sort -u > universe.txt
 ----
 
-Launch the GO enrichment script for the Biological Processes, Molecular Function and Cellular Components in the set of genes overexpressed in E14:
+Launch the GO enrichment script for the Biological Processes, Molecular Function and Cellular Components in the set of genes overexpressed in brain:
 
 [source,cmd]
 ----
-cut -f1 edgeR.0.01.overE14.txt \
+awk '{split($1,a,"."); print a[1]}' edgeR.0.01.over_brain_X_heart.txt \
 | GO_enrichment.R --universe universe.txt \
                   --genes stdin \
                   --categ BP \
-                  --output edgeR.overE14 \
+                  --output edgeR.over_brain_X_heart \
                   --species mouse
-cut -f1 edgeR.0.01.overE14.txt \
+awk '{split($1,a,"."); print a[1]}' edgeR.0.01.over_brain_X_heart.txt \
 | GO_enrichment.R --universe universe.txt \
                   --genes stdin \
                   --categ MF \
-                  --output edgeR.overE14 \
+                  --output edgeR.over_brain_X_heart \
                   --species mouse
-cut -f1 edgeR.0.01.overE14.txt \
+awk '{split($1,a,"."); print a[1]}' edgeR.0.01.over_brain_X_heart.txt \
 | GO_enrichment.R --universe universe.txt \
                   --genes stdin \
                   --categ CC \
-                  --output edgeR.overE14 \
+                  --output edgeR.over_brain_X_heart \
                   --species mouse
 ----
 
@@ -35,31 +35,9 @@ The results can be visualized in a web browser, using the online Gene Ontology v
 
 [source,cmd]
 ----
-awk 'NR==1{$1="% "$1}{print $1,$2}' edgeR.overE14.BP.tsv
+awk 'NR==1{$1="% "$1}{print $1,$2}' edgeR.over_brain_X_heart.BP.tsv
 ----
 
 Copy the above command output and paste it in the text box on the main page of the REVIGO web site. Then click the button btn:[Start Revigo] and have a look at the results.
 
-You can repeat the same for the genes overexpressed in E18:
-
-[source,cmd]
-----
-cut -f1 edgeR.0.01.overE18.txt \
-| GO_enrichment.R --universe universe.txt \
-                  --genes stdin \
-                  --categ BP \
-                  --output edgeR.overE18 \
-                  --species mouse
-cut -f1 edgeR.0.01.overE18.txt \
-| GO_enrichment.R --universe universe.txt \
-                  --genes stdin \
-                  --categ MF \
-                  --output edgeR.overE18 \
-                  --species mouse
-cut -f1 edgeR.0.01.overE18.txt \
-| GO_enrichment.R --universe universe.txt \
-                  --genes stdin \
-                  --categ CC \
-                  --output edgeR.overE18 \
-                  --species mouse
-----
+You can repeat the same for the genes overexpressed in heart.

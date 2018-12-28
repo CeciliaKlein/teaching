@@ -1,0 +1,89 @@
+= Differential splicing analysis
+
+Create a directory dedicated to the splicing analyses within the `tutorial` folder:
+
+[source,cmd]
+----
+mkdir ../splicing
+----
+
+and move to it:
+
+[source,cmd]
+----
+cd ../splicing
+----
+
+== Prepare input files
+
+To generate alternative splicing (AS) events, we need the genome annotation restricted to exon features in the third field of the gtf file. In addition to that, we will filter it for protein-coding transcripts.
+
+[source,cmd]
+----
+# list if transcript ids
+awk '$3=="transcript" && $0~/gene_type "protein_coding"/{ match($0, /transcript_id "([^"]+)/, id); print id[1] }' /tutorial/refs/gencode.vM4.gtf |sort -u > protein_coding_transcript_IDs.txt
+
+# Genome annotation restricted to exon features
+cat /tutorial/refs/gencode.vM4.gtf |awk '$3=="exon"' |grep -Ff protein_coding_transcript_IDs.txt > exon-annot.gtf
+----
+
+Also restrict the transcript expression matrix (TPM) to only proteing-coding transcripts. Refer to section <<Transcript and gene expression quantification>>. And generate individual files per tissue.
+
+
+[source,cmd]
+----
+# filter transcript TPM matrix
+selectMatrixRows.sh protein_coding_transcript_IDs.txt /tutorial/quantifications/encode.mouse.transcript.TPM.idr_NA.tsv > pc-tx.tsv
+
+# individual transcript expression matrices
+for tissue in Brain Heart Liver; do
+    selectMatrixColumns.sh PRNAembryo${tissue}1:PRNAembryo${tissue}2 pc-tx.tsv > expr.$tissue.tsv
+done
+----
+
+== Generate local AS events
+
+Extract alternative splicing events from a given genomic annotation of exon-intron gene coordinates. We will focus in three types of events: Skipping Exon (SE), Mutually Exclusive Exons (MX) and Alternative First/Last Exons (AF/AL, using the option FL):
+
+[source,cmd]
+----
+suppa.py generateEvents -i annot.gtf -e SE MX FL -o localEvents -f ioe
+
+----
+
+Check how many local events were generated per type:
+
+[source,cmd]
+----
+wc -l localEvents*ioe
+----
+
+
+
+== Compute PSI values in specific pairs of transcripts
+
+Compute PSI and create a table for each sample:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+ls ../data/*.A06IPSA.ssj.tsv | while read file; do id=$(basename $file .A06IPSA.ssj.tsv); psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $file --out $id.astalavista.psi --event ESS --outdir; done
+----
+
+Create master table with all samples:
+
+[source,cmd]
+----
+join.2col.files.from.dir.pl --dir ESS --tag astalavista > ESS/ESS.tsv
+----
+
+== Generate a heatmap with best examples
+
+[source,cmd,subs="{markup-in-source}"]
+----
+grep -v NA ESS/ESS.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.65 && $5>0.65) || ($2>0.65 && $3>0.65 && $4<0.35 && $5<0.35)){print}'  | ggheatmap.R -i stdin --row_dendro --col_dendro -o ESS/ESS.pdf  --row_metadata metadata.PWAS.tsv --merge_row_mdata_on id --row_labels exon_position,event_position
+----
+
+== UCSC tracks
+
+Have a look at the examples in the heatmap on the {UCSC_genome_browser}[UCSC genome browser^].
+

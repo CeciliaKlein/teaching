@@ -57,7 +57,7 @@ In order to run the container shell you need to run the following command in you
 
 NOTE: Replace `/path/to/tutorial` to the path where the tutorial data is stored in your computer. Use `pwd` to check your current location.
 
-[source,cmd,subs="{markup-in-source}"]
+[source,bash]
 ----
 
 docker run -i -t -v /path/to/tutorial:/tutorial -w /tutorial ceciliaklein/teaching:uvic

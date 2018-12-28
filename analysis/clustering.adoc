@@ -13,11 +13,11 @@ matrix_to_dist.R --input_matrix ../quantifications/encode.mouse.gene.TPM.idr_NA.
               --col_dendro \
               --row_dendro \
               --base_size 10 \
-              --matrix_palette {rnaseq_folder}palettes/blue.9.txt \
+              --matrix_palette {rnaseq_folder}palettes/palSequential.txt \
               --rowSide_palette /tutorial/palettes/palTissue.txt \
               --rowSide_by tissue \
               --matrix_fill_limits 0.85,1 \
-              --output heatmap.pdf
+              --output samples_clustering.pdf
 ----
 
 Look at the clustering.

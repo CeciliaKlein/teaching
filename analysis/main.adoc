@@ -33,8 +33,10 @@ include::go_analysis.adoc[]
 
 //include::UCSC_genome_browser.adoc[]
 
-include::differential_tx_expression.adoc[]
+//include::differential_tx_expression.adoc[]
 
-include::splicing.adoc[]
+//include::splicing.adoc[]
+
+include::suppa.adoc[]
 
 :leveloffset: -1
