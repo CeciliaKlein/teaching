@@ -43,6 +43,8 @@ include::analysis/main.adoc[]
 
 include::chip-processing/main.adoc[]
 
+include::chip-analysis/main.adoc[]
+
 ifeval::["{backend}" == "pdf"]
 [[cheatsheet]]
 include::cheatsheet.adoc[]

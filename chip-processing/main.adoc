@@ -5,13 +5,15 @@
 :leveloffset: +1
 
 
-//include::fastqc.adoc[]
+include::fastqc.adoc[]
 
 include::mapping.adoc[]
 
-//include::bigwig.adoc[]
+include::macs.adoc[]
 
-//include::UCSC_genome_browser.adoc[]
+include::bigwig.adoc[]
+
+include::UCSC_genome_browser.adoc[]
 
 
 :leveloffset: -1

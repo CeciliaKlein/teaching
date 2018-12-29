@@ -1,0 +1,27 @@
+= Peak calling
+
+Create a folder for the peak calling output:
+
+[source,cmd]
+----
+mkdir peakOut
+----
+
+Run MACS2:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+macs2 callpeak -t chip-alignments/mouse_brain_H3K4me3_Aligned.sortedByCoord.out.bam -n mouse_brain_H3K4me3 --outdir peakOut -f BAM -g mm -q 0.01  --nomodel --extsize=200 -B --SPMR
+----
+
+NOTE: check MACS2 options by typing `macs2 callpeak --help`
+
+
+You can view results:
+
+[source,cmd]
+----
+ll -tr peakOut
+----
+
+Check the content of each file and the explanation of each column at link:https://github.com/taoliu/MACS[MACS2 github page].

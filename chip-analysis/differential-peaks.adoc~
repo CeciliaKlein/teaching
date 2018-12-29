@@ -1,0 +1,8 @@
+= Differential peaks
+
+Intersect the TSS BED file with the differential peaks identified for each tissue.
+
+NOTE: Use `bedtools intersect` or `bedops` for this task.
+
+
+Look at the UCSC genome browser the differential peaks you defined.

@@ -1,0 +1,14 @@
+= ChIP-seq signal files
+
+MACS2 produces two Bedgraph files: one called `treat_pileup`, the other is `control_lambda`. We convert the `treat_pileup` BedGraph file to BigWig:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+bedGraphToBigWig chip-alignments/mouse_brain_H3K4me3_treat_pileup.bdg \
+                 {rnaseq_folder}refs/genome.fa.fai \
+                 chip-alignments/mouse_brain_H3K4me3_pileup.bw
+----
+// real	0m0.440s
+// user	0m0.425s
+// sys	0m0.013s
+NOTE: Remember that, in general, you can always have a look at programs options by just typing the command name or `--help` after the command (e.g. `STAR --help`).

@@ -1,0 +1,5 @@
+= Compare peaks
+
+Use `bedtools intersect` or `bedops` to identify peaks specific to some tissue(s).
+
+NOTE: Remember that you can always have a look at the options for all the R scripts that we are using in the analysis by typing `--help` after the command (e.g. `bedtools --help`).

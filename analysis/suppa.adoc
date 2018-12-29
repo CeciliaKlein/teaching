@@ -20,10 +20,10 @@ To generate alternative splicing (AS) events, we need the genome annotation rest
 
 [source,cmd]
 ----
-# list if transcript ids
+# List of transcript ids
 awk '$3=="transcript" && $0~/gene_type "protein_coding"/{ match($0, /transcript_id "([^"]+)/, id); print id[1] }' /tutorial/refs/gencode.vM4.gtf |sort -u > protein_coding_transcript_IDs.txt
 
-# Genome annotation restricted to exon features
+# Genome annotation restricted to exon features and filtered by transcript type
 cat /tutorial/refs/gencode.vM4.gtf |awk '$3=="exon"' |grep -Ff protein_coding_transcript_IDs.txt > exon-annot.gtf
 ----
 
@@ -32,22 +32,22 @@ Also restrict the transcript expression matrix (TPM) to only proteing-coding tra
 
 [source,cmd]
 ----
-# filter transcript TPM matrix
+# Filter transcript TPM matrix
 selectMatrixRows.sh protein_coding_transcript_IDs.txt /tutorial/quantifications/encode.mouse.transcript.TPM.idr_NA.tsv > pc-tx.tsv
 
-# individual transcript expression matrices
+# Individual transcript expression matrices
 for tissue in Brain Heart Liver; do
-    selectMatrixColumns.sh PRNAembryo${tissue}1:PRNAembryo${tissue}2 pc-tx.tsv > expr.$tissue.tsv
+    selectMatrixColumns.sh PRNAembryo${tissue}1:PRNAembryo${tissue}2 pc-tx.tsv > expr.${tissue}.tsv
 done
 ----
 
 == Generate local AS events
 
-Extract alternative splicing events from a given genomic annotation of exon-intron gene coordinates. We will focus in three types of events: Skipping Exon (SE), Mutually Exclusive Exons (MX) and Alternative First/Last Exons (AF/AL, using the option FL):
+Extract alternative splicing events from a given genomic annotation of exon-intron gene coordinates. Types of events: Skipping Exon (SE), Alternative 5' (A5) or 3' (A3) splice sites (SS), Mutually Exclusive Exons (MX), Retained intron (RI) and Alternative First (AF)/Last (AL) Exons (FL). Check SUPPA detailed description link:https://github.com/comprna/SUPPA[here].
 
 [source,cmd]
 ----
-suppa.py generateEvents -i exon-annot.gtf -e SE MX FL -o localEvents -f ioe
+suppa.py generateEvents -i exon-annot.gtf -e SE SS MX RI FL -o localEvents -f ioe
 
 ----
 
@@ -58,32 +58,81 @@ Check how many local events were generated per type:
 wc -l localEvents*ioe
 ----
 
+Generate a barplot with the number of events found in the genome annotation. Use the R wrapper `ggbarplot.R`.
+
+NOTE: Check parameters by typing `ggbarplot.R --help`.
 
 
-== Compute PSI values in specific pairs of transcripts
+== Compute percent spliced in index (PSI) values for local events
 
-Compute PSI and create a table for each sample:
-
-[source,cmd,subs="{markup-in-source}"]
-----
-ls ../data/*.A06IPSA.ssj.tsv | while read file; do id=$(basename $file .A06IPSA.ssj.tsv); psi.AS.events.pl --asta astalavista.pw.id.gtf --ssj $file --out $id.astalavista.psi --event ESS --outdir; done
-----
-
-Create master table with all samples:
-
-[source,cmd]
-----
-join.2col.files.from.dir.pl --dir ESS --tag astalavista > ESS/ESS.tsv
-----
-
-== Generate a heatmap with best examples
+Compute PSI for local single exon skipping events (SE):
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-grep -v NA ESS/ESS.tsv | awk 'NR==1{print} NR>1 && (($2<0.35 && $3<0.35 && $4>0.65 && $5>0.65) || ($2>0.65 && $3>0.65 && $4<0.35 && $5<0.35)){print}'  | ggheatmap.R -i stdin --row_dendro --col_dendro -o ESS/ESS.pdf  --row_metadata metadata.PWAS.tsv --merge_row_mdata_on id --row_labels exon_position,event_position
+event=SE; suppa.py psiPerEvent --total-filter 10 --ioe-file localEvents_${event}_strict.ioe --expression-file pc-tx.tsv -o PSI-${event}
 ----
 
-== UCSC tracks
+Create individual files per tissue:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+event=SE; for tissue in Brain Heart Liver ;do ~abreschi/utils/selectMatrixColumns.sh PRNAembryo${tissue}1:PRNAembryo${tissue}2 PSI-${event}.psi > ${tissue}.${event}.psi;done
+----
+
+Generate a barplot with the number of PSI values of SE events computed for both replicates of each tissue. 
+Why these values vary per tissue?
+
+Use the R wrapper `ggbarplot.R`. Color the bars by tissues using the palette `palTissue.txt` located in the `/tutorial/palettes` folder.
+
+NOTE: Check parameters by typing `ggbarplot.R --help`.
+
+
+== Differential splicing analysis for local events
+
+Compute differential splicing analysis for SE events, comparing all tissues against all and performing multiple testing correction:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+event=SE; suppa.py diffSplice --method empirical --input localEvents_${event}_strict.ioe --psi Brain.${event}.psi Heart.${event}.psi Liver.${event}.psi --tpm expr.Brain.tsv expr.Heart.tsv expr.Liver.tsv -c -gc -o DS.${event}
+----
+
+Look at top cases and play with thresholds of p-value and delta PSI:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+event=SE; awk 'BEGIN{FS=OFS="\t"}NR==1{print }NR>1 && $2!="nan" && ($2>0.7 || $2<-0.7) && $3<0.05{print}' DS.${event}.dpsi
+event=SE; awk 'BEGIN{FS=OFS="\t"}NR==1{print }NR>1 && $4!="nan" && ($4>0.7 || $4<-0.7) && $5<0.05{print}' DS.${event}.dpsi
+event=SE; awk 'BEGIN{FS=OFS="\t"}NR==1{print }NR>1 && $6!="nan" && ($6>0.7 || $6<-0.7) && $7<0.05{print}' DS.${event}.dpsi
+----
+
+== Generate a heatmap with best examples 
+
+Use the PSI vectors `.psivec` files and the R wrapper `ggheatmap.R`.
+
+== Look at examples at UCSC genome browser
 
 Have a look at the examples in the heatmap on the {UCSC_genome_browser}[UCSC genome browser^].
 
+Highlight the skipped exon and zoom out to look at the entire gene loci.
+
+
+== Functional analysis
+
+Search for functional information of differentially spliced transcripts, using link:https://www.ensembl.org/Mus_musculus/Info/Index[ENSEMBL] and other databases.
+Check for domains, use transcript comparison tool, phenotypes, gene expression, etc.
+ 
+
+== Perform PSI calculation and differential splicing analysis for other local event types
+
+Repeat every analysis steps performed for SE events to other AS events. Start by checking MX and AF events.
+
+
+== Generate plots and tables summarizing the analysis performed 
+
+Generate a barplot with the number of PSI values computed per tissue (both replicates) per local AS event.
+
+Generate a barplot with the number of top events per tissue were foudn at a chosen threshold of delta PSI (p-value<0.05).
+
+NOTE: Plots should be visualized outside the Docker container.
+
+Perform other summary statistics of the AS events, e.g. number of events found per chromosome or in the different strands. 

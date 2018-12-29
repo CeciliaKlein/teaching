@@ -1,0 +1,23 @@
+= Fastq files and read QC
+
+Create a folder for the fastqc output:
+
+[source,cmd]
+----
+mkdir fastqc
+----
+
+Run fastqc:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+fastqc -o fastqc -f fastq {rnaseq_folder}data/mouse_brain_H3K4me3.fastq.gz
+----
+
+You can view fastqc results on the browser outside the container:
+
+[source,bash]
+----
+fastqc/mouse_brain_H3K4me3_fastqc.html
+----
+

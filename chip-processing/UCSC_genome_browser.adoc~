@@ -1,0 +1,32 @@
+= Visualize ChIP-seq signal in the UCSC genome browser
+:UCSC_genome_browser: http://genome-euro.ucsc.edu
+
+Add the gene expression track to the genome browser in bigWig format.
+The bigWig files must be either uploaded or linked (if they are present somewhere online)
+
+Go to the UCSC genome browser web page:
+
+{UCSC_genome_browser}[^]
+
+On the main menu, move to mouse over btn:[Genomes] and click btn:[Mouse GRCm38/mm10].
+Scroll down and click on btn:[Add custom track].
+Make sure the assembly information is as follows:
+
+----
+genome: Mouse    assembly: Dec 2011 (GRCm38/mm10)    [mm10]
+----
+
+Paste the track specifications in the box `Paste URLs or data`:
+
+----
+track autoScale=on name=ChIPseq,brain,CHIPembryoBrain1 color=204,204,0 viewLimits=0:80 maxHeightPixels=30 type=bigWig visibility=2 bigDataUrl=https://public-docs.crg.es/rguigo/Data/cklein/courses/UVIC/UCSC/CHIPembryoBrain1.bw
+track autoScale=on name=ChIPseq,brain,CHIPembryoBrain2 color=204,204,0 viewLimits=0:80 maxHeightPixels=30 type=bigWig visibility=2 bigDataUrl=https://public-docs.crg.es/rguigo/Data/cklein/courses/UVIC/UCSC/CHIPembryoBrain2.bw
+track autoScale=on name=ChIPseq,heart,CHIPembryoHeart1 color=128,0,128 viewLimits=0:80 maxHeightPixels=30 type=bigWig visibility=2 bigDataUrl=https://public-docs.crg.es/rguigo/Data/cklein/courses/UVIC/UCSC/CHIPembryoHeart1.bw
+track autoScale=on name=ChIPseq,heart,CHIPembryoHeart2 color=128,0,128 viewLimits=0:80 maxHeightPixels=30 type=bigWig visibility=2 bigDataUrl=https://public-docs.crg.es/rguigo/Data/cklein/courses/UVIC/UCSC/CHIPembryoHeart2.bw
+track autoScale=on name=ChIPseq,liver,CHIPembryoLiver1 color=107,142,35 viewLimits=0:80 maxHeightPixels=30 type=bigWig visibility=2 bigDataUrl=https://public-docs.crg.es/rguigo/Data/cklein/courses/UVIC/UCSC/CHIPembryoLiver1.bw
+track autoScale=on name=ChIPseq,liver,CHIPembryoLiver2 color=107,142,35 viewLimits=0:80 maxHeightPixels=30 type=bigWig visibility=2 bigDataUrl=https://public-docs.crg.es/rguigo/Data/cklein/courses/UVIC/UCSC/CHIPembryoLiver2.bw
+----
+
+Click btn:[Submit]
+
+Go to the genome browser to look at some genes and their RNA-seq signal

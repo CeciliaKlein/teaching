@@ -1,0 +1,33 @@
+= ChIP-seq data analysis
+:experimental:
+
+Create a directory dedicated to the analyses:
+
+[source,cmd]
+----
+mkdir chip-analysis
+----
+
+And move into it:
+
+[source,cmd]
+----
+cd chip-analysis
+----
+
+:leveloffset: +1
+
+NOTE: Remember that you can always have a look at the options for all the R scripts that we are using in the analysis by typing `--help` after the command (e.g. `bedtools --help`).
+
+
+include::summary-stats.adoc[]
+
+include::consensus-peaks.adoc[]
+
+include::genomic-location.adoc[]
+
+include::differential-peaks.adoc[]
+
+
+
+:leveloffset: -1

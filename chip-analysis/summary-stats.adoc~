@@ -1,0 +1,9 @@
+= Peak calling statistics
+
+ Have a look at the number of peaks called per tissue:
+
+[source,cmd,subs="{markup-in-source}"]
+----
+wc -l /tutorial/results/*narrowPeak
+----
+

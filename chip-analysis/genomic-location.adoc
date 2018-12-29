@@ -1,0 +1,10 @@
+= Genomic location
+
+
+Create a BED file with 200bp up and downstream the transcription start site (TSS) of every protein-coding transcript (e.g. use transcript ids from `/tutorial/splicing/protein_coding_transcript_IDs.txt` section <<Prepare input files>>).
+
+
+Check <<BED>> section for further information of file format.
+
+
+
