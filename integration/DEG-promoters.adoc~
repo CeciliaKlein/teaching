@@ -1,0 +1,10 @@
+= Promoter regions of differentially expressed genes
+
+
+Use bash commands to intersect the list of differentially expressed genes (DEG) with the differential H3K4me3 peaks computed in section <<Differential peaks>>.
+
+
+Look at promoter regions of DEGs with and without differential peaks of H3K4me3 at the UCSC genome browser.
+
+
+

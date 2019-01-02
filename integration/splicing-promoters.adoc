@@ -1,0 +1,11 @@
+= Promoter regions of differentially spliced genes
+
+Use bash commands to intersect the list of differentially spliced genes with the differential H3K4me3 peaks computed in section <<Differential peaks>>.
+
+
+Look at promoter regions of alternative first exon events at the UCSC genome browser.
+
+
+Do you see a relationship between chromatin features (H3K4me3 marking and the open chromatin) with the isoform expression in different tissues?
+
+

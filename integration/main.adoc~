@@ -1,0 +1,18 @@
+= Integrative data analysis
+:experimental:
+
+
+:leveloffset: +1
+
+include::encode.adoc[]
+
+include::ATACseq-UCSC.adoc[]
+
+include::DEG-promoters.adoc[]
+
+include::splicing-promoters.adoc[]
+
+include::omics-projects.adoc[]
+
+
+:leveloffset: -1

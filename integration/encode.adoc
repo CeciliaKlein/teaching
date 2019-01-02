@@ -1,0 +1,32 @@
+= ENCODE portal
+:encode: https://www.encodeproject.org/
+
+Search in the ENCODE portal {encode}[^] the dataset we have been using in this hands-on.
+
+
+Refer to <<Introduction>> for the information of this dataset.
+
+
+Refer to link:https://www.encodeproject.org/help/getting-started/[getting started] to learn about the portal.
+
+
+Explore the data available using the `Data` -> `Search` menu or by clincking in the graphics in the home page.
+
+
+Explore the information available in the `Material & Methods` menu.
+
+
+Look at standards and guidelines.
+
+Look at software and pipelines.
+
+Which data formats are available for download?
+
+
+
+Which other omics data is available for the precise same tissue and developmental stage we are using in this hands-on?
+
+
+
+Find the signal files of ATAC-seq samples.
+

@@ -1,0 +1,19 @@
+= Omics portals
+
+
+Exploring the ENCODE portal, which other omics data would you include in your analysis to follow up the study of the differentially expressed/spliced genes?
+
+
+
+Propose other analysis that could be performed using the ENCODE data, for instance, related to enhancers or the evolution.
+
+
+Explore the portal of other omics projects to find out the datasets available, for instance:
+
+link:https://gtexportal.org/home/[GTEX]
+
+
+link:https://www.humancellatlas.org/[Human Cell Atlas]
+
+
+link:http://www.blueprint-epigenome.eu/[Blueprint]

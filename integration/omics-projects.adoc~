@@ -1,7 +1,7 @@
 = Visualize ChIP-seq signal in the UCSC genome browser
 :UCSC_genome_browser: http://genome-euro.ucsc.edu
 
-Add the signal track to the genome browser in bigWig format.
+Add the gene expression track to the genome browser in bigWig format.
 The bigWig files must be either uploaded or linked (if they are present somewhere online)
 
 Go to the UCSC genome browser web page:
