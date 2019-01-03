@@ -76,7 +76,7 @@ Create individual files per tissue:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-event=SE; for tissue in Brain Heart Liver ;do ~abreschi/utils/selectMatrixColumns.sh PRNAembryo${tissue}1:PRNAembryo${tissue}2 PSI-${event}.psi > ${tissue}.${event}.psi;done
+event=SE; for tissue in Brain Heart Liver ;do selectMatrixColumns.sh PRNAembryo${tissue}1:PRNAembryo${tissue}2 PSI-${event}.psi > ${tissue}.${event}.psi;done
 ----
 
 Generate a barplot with the number of PSI values of SE events computed for both replicates of each tissue. 

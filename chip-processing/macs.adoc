@@ -13,7 +13,7 @@ Run MACS2:
 ----
 macs2 callpeak --treatment chip-alignments/mouse_brain_H3K4me3_Aligned.sortedByCoord.out.bam \
                --name mouse_brain_H3K4me3 \
-               --outdir peakOut 
+               --outdir peakOut \
                --format BAM \
                --gsize mm \
                --qvalue 0.01 \

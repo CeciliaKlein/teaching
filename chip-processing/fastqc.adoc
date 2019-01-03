@@ -1,5 +1,12 @@
 = Fastq files and read QC
 
+Move back to the main folder:
+
+[source,cmd]
+----
+cd /tutorial
+----
+
 Create a folder for the fastqc output:
 
 [source,cmd]

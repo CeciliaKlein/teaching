@@ -1,12 +1,22 @@
 = ChIP-seq signal files
 
-MACS2 produces two Bedgraph files: one called `treat_pileup`, the other is `control_lambda`. We convert the `treat_pileup` BedGraph file to BigWig:
+MACS2 produces two Bedgraph files: one called `treat_pileup`, the other is `control_lambda`.
+
+Sort the Bedgraph file using bedtools: 
+[source,cmd,subs="{markup-in-source}"]
+----
+bedtools sort -i peakOut/mouse_brain_H3K4me3_treat_pileup.bdg >\
+                 peakOut/mouse_brain_H3K4me3_pileup_treat_pileup_sorted.bdg
+----
+
+
+We convert the `treat_pileup` BedGraph file to BigWig:
 
 [source,cmd,subs="{markup-in-source}"]
 ----
-bedGraphToBigWig chip-alignments/mouse_brain_H3K4me3_treat_pileup.bdg \
+bedGraphToBigWig peakOut/mouse_brain_H3K4me3_treat_pileup_sorted.bdg \
                  {rnaseq_folder}refs/genome.fa.fai \
-                 chip-alignments/mouse_brain_H3K4me3_pileup.bw
+                 peakOut/mouse_brain_H3K4me3_pileup.bw
 ----
 // real	0m0.440s
 // user	0m0.425s

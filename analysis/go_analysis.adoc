@@ -11,18 +11,23 @@ Launch the GO enrichment script for the Biological Processes, Molecular Function
 
 [source,cmd]
 ----
+# BP
 awk '{split($1,a,"."); print a[1]}' edgeR.0.01.over_brain_X_heart.txt \
 | GO_enrichment.R --universe universe.txt \
                   --genes stdin \
                   --categ BP \
                   --output edgeR.over_brain_X_heart \
                   --species mouse
+
+# MF
 awk '{split($1,a,"."); print a[1]}' edgeR.0.01.over_brain_X_heart.txt \
 | GO_enrichment.R --universe universe.txt \
                   --genes stdin \
                   --categ MF \
                   --output edgeR.over_brain_X_heart \
                   --species mouse
+
+# CC
 awk '{split($1,a,"."); print a[1]}' edgeR.0.01.over_brain_X_heart.txt \
 | GO_enrichment.R --universe universe.txt \
                   --genes stdin \
