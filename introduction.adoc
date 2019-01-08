@@ -9,4 +9,4 @@ For time and memory restrictions, only one sample is used for the data processin
 
 NOTE: A cheatsheet with basic Linux commands is available <<{cheatsheet}>>.
 
-NOTE: A copy of the slides of the course can be found link:Tutorial_omicsdata.pdf[here].
+NOTE: A copy of the slides of the course can be found here: link:UVIC2018_RNA-seq_processing.pdf[RNA-seq processing].
